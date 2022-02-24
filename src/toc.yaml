@@ -1,0 +1,54 @@
+/: Home
+/docs:
+  name: Documentation
+  children:
+    /command:
+      name: Command
+      children:
+        /commands: Commands
+        /sub-commands: Sub commands
+        /options: Options
+        /types: Types
+        /environment-variables: Environment variables
+        /help: Help
+        /shell-completions: Shell completions
+        /build-in-commands: Build-in commands
+        /error-handling: Error handling
+        /generics: Generics
+        /others: Others
+    /flags:
+      name: Flags
+      children:
+        /parse-options: Parse options
+        /flag-options: Flag options
+        /error-handling: Error handling
+    /prompt:
+      name: Prompt
+      children:
+        /types:
+          name: Types
+          children:
+            /input: Input
+            /number: Number
+            /secret: Secret
+            /confirm: Confirm
+            /toggle: Toggle
+            /list: List
+            /select: Select
+            /checkbox: Checkbox
+        /dynamic-prompts: Dynamic prompts
+        /auto-suggestions: Auto suggestions
+        /os-signals: OS signals
+    /keycode: Keycode
+    /keypress: Keypress
+    /table:
+      name: Table
+      children:
+        /options: Table options
+        /rows-and-cells: Rows and cells
+    /ansi:
+      name: Ansi
+      children:
+        /ansi: Ansi
+        /tty: Tty
+        /colors: Colors
