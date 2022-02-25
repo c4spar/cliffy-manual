@@ -1,5 +1,4 @@
-/: Home
-/docs:
+/:
   name: Documentation
   children:
     /command:
