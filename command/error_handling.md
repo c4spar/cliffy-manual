@@ -2,7 +2,7 @@
 
 Cliffy throws an `ValidationError` for invalid user input. By default, when a
 `ValidationError` is thrown, cliffy prints the auto generated help and the error
-message and calls `Deno.exit(1)` to eit the program. This behaviour can be
+message and calls `Deno.exit(1)` to exit the program. This behaviour can be
 changed by calling `.throwErrors()` or `.noExit()`.
 
 ## Throw errors
