@@ -64,8 +64,8 @@ same order they were defined with the `arguments` method.
 > variable definitions automatically and applies them properly to the types of
 > the options object and arguments array 🚀.
 
-Here is an example of simple command with some options, arguements, environment
-variables and types.
+Here is an example of a simple command with some options, arguements,
+environment variables and types.
 
 ```typescript
 import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";

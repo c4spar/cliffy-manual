@@ -1,6 +1,6 @@
 # Getting started
 
-Create simple and powerfull interactive prompts.
+Create simple and powerfull interactive prompts with cliffy's prompt module.
 
 ## Usage
 
@@ -40,8 +40,8 @@ const name: string = await Input.prompt({
 ### Prompt list
 
 To execute a list of prompts you can use the `prompt()` method. The prompt
-method accepts an array of [prompt options](#-types) combined with a `name` and
-`type` property.
+method accepts an array of [prompt options](./types/index.md) combined with a
+`name` and `type` property.
 
 > ❗ Make sure to give each prompt a unique name to prevent overwriting values!
 
