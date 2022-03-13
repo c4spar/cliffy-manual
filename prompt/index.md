@@ -1,6 +1,6 @@
 # Getting started
 
-Create simple and powerfull interactive prompts with cliffy's prompt module.
+Create simple and powerful interactive prompts with cliffy's prompt module.
 
 ## Usage
 
