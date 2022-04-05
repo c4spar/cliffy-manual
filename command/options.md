@@ -100,6 +100,19 @@ $ deno run https://deno.land/x/cliffy/examples/command/dotted_options.ts --audio
 { bitrate: { audio: 300, video: 900 } }
 ```
 
+## Wildcard options
+
+Wildcard options are options with wildcard names. A wildcard option allows any
+name matching the wildcard pattern. Wildcard options can be specified in
+following ways:
+
+- `--*`: Matches all options.
+- `--foo.*`: Matches all --foo.* options.
+- `--foo.*.bar`: Matches all --foo.*.bar options.
+- `--foo.*.*` Matches all --foo._._ options.
+
+> The `*` means any name is allowed.
+
 ## Default option value
 
 You can specify a default value for an option with an optional value.
