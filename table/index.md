@@ -1,4 +1,4 @@
-# Getting started
+# Table
 
 Fast and customizable table module to render unicode table's on the command
 line.

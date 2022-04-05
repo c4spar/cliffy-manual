@@ -1,8 +1,8 @@
-# Getting started
+# Command
 
 The complete and type safe solution for building command-line interfaces.
 
-The command module suports type safe options and arguments, input validation,
+The command module supports type safe options and arguments, input validation,
 auto generated help, build-in shell completions, and more.
 
 ## Usage
@@ -46,13 +46,13 @@ defined.
 
 ### Defining your command
 
-You can than add options, environemnt variables, arguments and custom types to
+You can than add options, environment variables, arguments and custom types to
 your command as many you want.
 
 Environment variables will be merged into the options object. They have the same
 naming as options. For example the option `--template-engine` and the
-environment variable `TEMPLATE_ENGINE` will both renmaned to `templateEngine`.
-If both are defined at the same time the option will overide the value of the
+environment variable `TEMPLATE_ENGINE` will both renamed to `templateEngine`. If
+both are defined at the same time the option will override the value of the
 environment variable.
 
 The `action` method allows you to define a callback function that will be called
@@ -64,8 +64,8 @@ same order they were defined with the `arguments` method.
 > variable definitions automatically and applies them properly to the types of
 > the options object and arguments array 🚀.
 
-Here is an example of a simple command with some options, arguements,
-environment variables and types.
+Here is an example of a simple command with some options, arguments, environment
+variables and types.
 
 ```typescript
 import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";

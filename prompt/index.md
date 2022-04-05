@@ -1,4 +1,4 @@
-# Getting started
+# Prompt
 
 Create simple and powerful interactive prompts with cliffy's prompt module.
 

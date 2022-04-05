@@ -1,4 +1,4 @@
-# Getting started
+# Ansi
 
 Chainable ansi escape sequences.
 

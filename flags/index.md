@@ -1,4 +1,4 @@
-# Getting started
+# Flags
 
 Command line arguments parser with build-in validations.
 

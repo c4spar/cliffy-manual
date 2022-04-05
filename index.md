@@ -2,7 +2,7 @@
 
 Cliffy includes several modules which helps you to create interactive command
 line tools. The main modules are the [command](./command/index.md) module which
-lets you easily write complex command line interfaces and the
+lets you easily create complex command line interfaces and the
 [prompt](./prompt/index.md) module which provides beautiful and feature rich cli
 prompts.
 

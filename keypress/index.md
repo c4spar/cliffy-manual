@@ -13,7 +13,7 @@ except that the `keypress()` method always returns the same instance, unless the
 ### Promise
 
 The keypress module can be used as promise. It reads one chunk from stdin and
-returns an `KeyPressEvent` for the first parsed character.
+returns a `KeyPressEvent` for the first parsed character.
 
 ```typescript
 import {
