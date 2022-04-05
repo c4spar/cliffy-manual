@@ -9,7 +9,7 @@ Types can be declared after the argument name, separated by colon `<name:type>`.
 If no type is specified, the type defaults to `string`. If an option with no
 arguments is defined the type defaults to `true`.
 
-## Common types
+## Build-in types
 
 Following types are available by default on all commands.
 
@@ -17,6 +17,7 @@ Following types are available by default on all commands.
 - **string:** Can be any value.
 - **number:** Can be any numeric value.
 - **integer:** Can be any integer value.
+- **file:** Same as string but adds support for path completion.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
@@ -33,7 +34,7 @@ const { options } = await new Command()
   // Option with required number value.
   .option("-a, --amount <amount:integer>", "Pieces of pizza.")
   // One required and one optional command arguemnt.
-  .arguments("<input:string> [output:string]")
+  .arguments("<input:file> [output:file]")
   .parse(Deno.args);
 
 console.log(options);
