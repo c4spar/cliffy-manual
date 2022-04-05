@@ -156,7 +156,9 @@ await new Command()
 
 The `--version` and `-V` option flag prints the version number defined with the
 `version()` method. The version number will be also display in the auto
-generated help.
+generated help. If the long `--version` option is used, the long format will be
+printed including command name and all meta data defined with the
+[.meta()](#additional-info) method.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
