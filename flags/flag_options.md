@@ -145,3 +145,9 @@ are available in the `args` array.
 - [optionalValue](#optional-value)
 - [variadic](#variadic-value)
 - [list](#list-value)
+
+## Ignore defaults
+
+The `ignoreDefaults` option can be used to ignore the default values from
+specific options. The `ignoreDefaults` option is an object. The keys have to
+match the option name but the value can be anything (values are ignored).
