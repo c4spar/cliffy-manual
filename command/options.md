@@ -132,7 +132,6 @@ You may specify a required (mandatory) option.
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 await new Command()
-  .allowEmpty(false)
   .option("-c, --cheese [type:string]", "pizza must have cheese", {
     required: true,
   })
@@ -143,6 +142,11 @@ await new Command()
 $ deno run https://deno.land/x/cliffy/examples/command/required_options.ts
 Error: Missing required option "--cheese".
 ```
+
+### Allow empty
+
+If `.allowEmpty()` is called, the command will not throw an error if the command
+has a required option but no argument is passed to the command.
 
 ## Negatable options
 
