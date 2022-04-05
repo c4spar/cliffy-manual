@@ -99,7 +99,8 @@ source <(COMMAND completions zsh)
 ## Upgrade command
 
 The `UpgradeCommand` can be used to upgrade your cli to a given or latest
-version.
+version. If the `UpgradeCommand` is registered, a hint is shown in the help and
+the long version output if a new version is available.
 
 ```shell
 COMMAND upgrade --version 1.0.2
