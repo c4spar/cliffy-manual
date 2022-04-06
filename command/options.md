@@ -107,9 +107,11 @@ name matching the wildcard pattern. Wildcard options can be specified in
 following ways:
 
 - `--*`: Matches all options.
-- `--foo.*`: Matches all --foo.* options.
-- `--foo.*.bar`: Matches all --foo.*.bar options.
-- `--foo.*.*` Matches all --foo._._ options.
+- `--foo.*`: Matches options like `--foo.bar` but not `--foo` or
+  `--foo.bar.baz`.
+- `--foo.*.bar`: Matches options like `--foo.any-name.bar`.
+- `--foo.*.*` Matches options like `--foo.bar.baz` but not `--foo` or
+  `--foo.bar`.
 
 > The `*` means any name is allowed.
 
