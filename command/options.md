@@ -163,6 +163,22 @@ Error: Missing required option "--cheese".
 If `.allowEmpty()` is called, the command will not throw an error if the command
 has a required option but no argument is passed to the command.
 
+This can be used for example if you have required option but want to show the
+help by default if no arguments are passed to the command.
+
+```ts
+new Comand()
+  .option("--foo", "...", { required: true })
+  .allowEmpty()
+  .action(function ({ foo }) {
+    if (!foo) {
+      this.showHelp();
+      return;
+    }
+    // Do something else...
+  });
+```
+
 ## Negatable options
 
 You can specify a boolean option long name with a leading `no-` to set the
