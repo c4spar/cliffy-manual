@@ -6,10 +6,11 @@ commands, environment variables and examples are displayed in the help.
 
 To display the help you can invoke the [help option](#help-option) (`-h` or
 `--help`) or the [help command](./build_in_commands.md#help-command) (`help`) on
-the main or on one of the sub commands.
+the main or on one of the sub commands. The `help` command needs to be
+registered manually.
 
-To retrieve the help text programmatically you can use the `.showHelp()` and
-`.getHelp()` methods.
+To retrieve the help text programmatically you can use the
+[.showHelp()](#print-help) and [.getHelp()](#get-help) methods.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/command.ts";
@@ -34,6 +35,14 @@ $ deno run https://deno.land/x/cliffy/examples/command/help.ts --help
 ```
 
 ![](assets/img/help.gif)
+
+## Print help
+
+You can use the `.showHelp()` method to output the help to stdout.
+
+## Get help
+
+The `.getHelp()` method returns the auto generated help as string.
 
 ## Additional info
 
