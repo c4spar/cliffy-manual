@@ -469,3 +469,54 @@ main context
 $ deno run https://deno.land/x/cliffy/examples/command/action_options.ts --baz
 --baz action
 ```
+
+## Grouped options
+
+Options can be grouped with the `.group()` method to display them separately in
+the help text.
+
+When the `.group()` method has been called, all options which are registered
+after the `.group()` method will be added to this group.
+
+```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
+await new Command()
+  .version("0.1.0")
+  .description("Grouped options example.")
+  .option("--foo", "Foo option.")
+  .group("Other options")
+  .option("--bar", "Bar option.")
+  .option("--baz", "Baz option.")
+  .group("Other options 2")
+  .option("--beep", "Beep option.")
+  .option("--boop", "Boop option.")
+  .parse(Deno.args);
+```
+
+```console
+$ deno run https://deno.land/x/cliffy/examples/command/grouped_options.ts --help
+
+  Usage:   COMMAND
+  Version: 0.1.0
+
+  Description:
+
+    Grouped options example.
+
+  Options:
+
+    -h, --help     - Show this help.
+    -V, --version  - Show the version number for this program.
+    --foo          - Foo option.
+
+  Other options:
+
+    --bar  - Bar option.
+    --baz  - Baz option.
+
+  Other options 2:
+
+    --beep  - Beep option.
+    --boop  - Boop option.
+```
