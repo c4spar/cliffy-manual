@@ -29,6 +29,26 @@ displayed in the auto generated help. If the help options is called with the
 short flag `-h` only the first line is displayed. If called with the long name
 `--help`, the full description is displayed.
 
+For better multiline formatting, unnecessary indentations and empty leading and
+trailing lines will be automatically removed.
+
+For example, following description:
+
+```ts
+new Command()
+  .description(`
+    This is a multine description.
+      The indentation of this line will be preserved.
+  `);
+```
+
+is formatted as follows:
+
+```console
+This is a multine description.
+  The indentation of this line will be preserved.
+```
+
 ## Usage
 
 With the `.usage()` method you can override the usage text that is displayed at
