@@ -44,8 +44,8 @@ $ deno run https://deno.land/x/cliffy/examples/command/options.ts -p 80
 server running at localhost:80
 ```
 
-> Note: There is a difference of defining parameters without an equals sign like
-> `--foo <bar>` and with an equals sign like `--foo=<bar>`.
+> Note: There is a difference of defining option values without an equals sign
+> like `--foo <bar>` and with an equals sign like `--foo=<bar>`.
 >
 > - If the option is defined _without_ an equals sign, the option can be called
   > with and without an equals sign.
@@ -55,8 +55,8 @@ server running at localhost:80
 > The difference is, an option with an optional value which is defined with an
 > equals sign can be used before an argument without the value:
 >
-> - `example --allow-env mod.ts`
-> - `example --allow-env=FOO,BAR mod.ts`
+> - `deno run --allow-env mod.ts`
+> - `deno run --allow-env=FOO,BAR mod.ts`
 
 ### Variadic arguments
 
