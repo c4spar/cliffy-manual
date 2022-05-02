@@ -53,7 +53,7 @@ server running at localhost:80
   > with an equals sign as well.
 >
 > The difference is, an option with an optional value which is defined with an
-> equals sign can be used before an argument without the value:
+> equals sign can be used before an argument without the option value:
 >
 > - `deno run --allow-env mod.ts`
 > - `deno run --allow-env=FOO,BAR mod.ts`
