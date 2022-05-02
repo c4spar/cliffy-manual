@@ -47,9 +47,9 @@ server running at localhost:80
 > Note: There is a difference of defining option values without an equals sign
 > like `--foo <bar>` and with an equals sign like `--foo=<bar>`.
 >
-> - If the option is defined __without__ an equals sign, the option can be called
-  > with and without an equals sign.
-> - If the option is defined __with__ an equals sign, the option must be called
+> - If the option is defined **without** an equals sign, the option can be
+  > called with and without an equals sign.
+> - If the option is defined **with** an equals sign, the option must be called
   > with an equals sign as well.
 >
 > The difference is, an option with an optional value which is defined with an
