@@ -33,7 +33,7 @@ const { options } = await new Command()
   .option("-s, --silent", "disable output.")
   .option("-d, --debug [level]", "output extra debugging.")
   .option("-p, --port <port>", "the port number.")
-  .option("-h, --host [hostname]", "the host name.", { default: "localhost" })
+  .option("-h, --host=[hostname]", "the host name.", { default: "localhost" })
   .parse(Deno.args);
 
 console.log("server running at %s:%s", options.host, options.port);
@@ -44,10 +44,24 @@ $ deno run https://deno.land/x/cliffy/examples/command/options.ts -p 80
 server running at localhost:80
 ```
 
+> Note: There is a difference of defining parameters without an equals sign like
+> `--foo <bar>` and with an equals sign like `--foo=<bar>`.
+>
+> - If the option is defined _without_ an equals sign, the option can be called
+  > with and without an equals sign.
+> - If the option is defined _with_ an equals sign, the option must be called
+  > with an equals sign as well.
+>
+> The difference is, an option with an optional value which is defined with an
+> equals sign can be used before an argument without the value:
+>
+> - `example --allow-env mod.ts`
+> - `example --allow-env=FOO,BAR mod.ts`
+
 ### Variadic arguments
 
 The last argument of an option can be variadic. To make an argument variadic you
-can append or prepand `...` to the argument name. For example:
+can append or prepend `...` to the argument name. For example:
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";

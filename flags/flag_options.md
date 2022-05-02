@@ -67,6 +67,11 @@ not be provided if a specific flag is set. If `conflicts` is set to
 `["foo", "bar"]`, an error is throw if one of this flags is provided on
 commandline.
 
+## Equals sign
+
+If `equalsSign` is set to `true` the option must be call with an equals sign
+`--foo=bar`.
+
 ## Collect values
 
 If `collect` is enabled, an flag can be specified multiple times on commandline.
