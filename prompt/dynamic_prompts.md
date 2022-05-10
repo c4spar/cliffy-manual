@@ -13,12 +13,12 @@ import {
 
 const result = await prompt([{
   name: "animals",
-  message: "Select some animal's",
+  message: "Select some animals",
   type: Checkbox,
   options: ["dog", "cat", "snake"],
 }, {
   name: "like",
-  message: "Do you like animal's?",
+  message: "Do you like animals?",
   type: Confirm,
   after: async ({ like }, next) => { // executed after like prompt
     if (like) {
@@ -71,11 +71,11 @@ option.
 The first argument is the `result` object which contains all already availalbe
 answers.
 
-The second argument is the `next()` method which execute's the next prompt in
-the list (for the before callback it's the current prompt). To jump to a
-specific prompt you can pass the name or index of the prompt to the `next()`
-method. To skip this prompt you can pass `true` to the `next()` method. If
-`next()` isn't called all other prompts will be skipped.
+The second argument is the `next()` method which executes the next prompt in the
+list (for the before callback it's the current prompt). To jump to a specific
+prompt you can pass the name or index of the prompt to the `next()` method. To
+skip this prompt you can pass `true` to the `next()` method. If `next()` isn't
+called all other prompts will be skipped.
 
 ### OS signals
 

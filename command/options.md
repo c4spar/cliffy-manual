@@ -5,7 +5,7 @@ properties on the options object which is passed to the `.action()` handler and
 returned by the `.parse()` method.
 
 With the first argument of the `.options()` method you define the option names
-and arguments. Each option can have multiple short and long flag's, separated by
+and arguments. Each option can have multiple short and long flags, separated by
 comma. The name of the first long flag will be uesed as option name. If no long
 flag is provided the first short flag will be used.
 
@@ -241,7 +241,7 @@ await new Command()
   .option("-l, --local [val:string]", "Only available on this command.")
   .globalOption(
     "-g, --global [val:string]",
-    "Available on this and all nested child command's.",
+    "Available on this and all nested child commands.",
   )
   .action(console.log)
   .command(
@@ -266,7 +266,7 @@ $ deno run https://deno.land/x/cliffy/examples/command/global_options.ts command
 
 ## Hidden options
 
-To exclude option's from the help and completion command's you can use the
+To exclude options from the help and completion commands you can use the
 `hidden` option.
 
 ```typescript
