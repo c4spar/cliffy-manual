@@ -1,7 +1,6 @@
 # Table
 
-Fast and customizable table module to render unicode table's on the command
-line.
+Fast and customizable table module to render unicode tables on the command line.
 
 ## Usage
 

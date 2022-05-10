@@ -5,7 +5,7 @@ properties on the options object which is passed to the `.action()` handler and
 returned by the `.parse()` method.
 
 With the first argument of the `.options()` method you define the option names
-and arguments. Each option can have multiple short and long flag's, separated by
+and arguments. Each option can have multiple short and long flags, separated by
 comma. The name of the first long flag will be uesed as option name. If no long
 flag is provided the first short flag will be used.
 
@@ -33,7 +33,7 @@ const { options } = await new Command()
   .option("-s, --silent", "disable output.")
   .option("-d, --debug [level]", "output extra debugging.")
   .option("-p, --port <port>", "the port number.")
-  .option("-h, --host [hostname]", "the host name.", { default: "localhost" })
+  .option("-h, --host=[hostname]", "the host name.", { default: "localhost" })
   .parse(Deno.args);
 
 console.log("server running at %s:%s", options.host, options.port);
@@ -44,10 +44,24 @@ $ deno run https://deno.land/x/cliffy/examples/command/options.ts -p 80
 server running at localhost:80
 ```
 
+> Note: There is a difference of defining option values without an equals sign
+> like `--foo <bar>` and with an equals sign like `--foo=<bar>`.
+>
+> - If the option is defined **without** an equals sign, the option can be
+  > called with and without an equals sign.
+> - If the option is defined **with** an equals sign, the option must be called
+  > with an equals sign as well.
+>
+> The difference is, an option with an optional value which is defined with an
+> equals sign can be used before an argument without the option value:
+>
+> - `deno run --allow-env mod.ts`
+> - `deno run --allow-env=FOO,BAR mod.ts`
+
 ### Variadic arguments
 
 The last argument of an option can be variadic. To make an argument variadic you
-can append or prepand `...` to the argument name. For example:
+can append or prepend `...` to the argument name. For example:
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
@@ -227,7 +241,7 @@ await new Command()
   .option("-l, --local [val:string]", "Only available on this command.")
   .globalOption(
     "-g, --global [val:string]",
-    "Available on this and all nested child command's.",
+    "Available on this and all nested child commands.",
   )
   .action(console.log)
   .command(
@@ -252,7 +266,7 @@ $ deno run https://deno.land/x/cliffy/examples/command/global_options.ts command
 
 ## Hidden options
 
-To exclude option's from the help and completion command's you can use the
+To exclude options from the help and completion commands you can use the
 `hidden` option.
 
 ```typescript

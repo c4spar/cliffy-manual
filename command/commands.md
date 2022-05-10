@@ -248,7 +248,7 @@ $ deno run https://deno.land/x/cliffy/examples/command/global_commands.ts comman
 
 ## Hidden commands
 
-To exclude sub commands's from the auto generated help and shell completions you
+To exclude sub commands from the auto generated help and shell completions you
 can use the `.hidden()` method.
 
 ```typescript

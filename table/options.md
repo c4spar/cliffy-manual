@@ -34,11 +34,11 @@ affected by any `Array` method like `.sort()` because it is stored as a separate
 property and not in the array stack. The `.body()` method adds an array of rows
 to the table and removes all existing rows.
 
-The first argument of the `.header()` method can be an `Array` of `string`'s and
-`Cell`'s.
+The first argument of the `.header()` method can be an `Array` of `string`
+and/or `Cell`.
 
-The first argument of the `.body()` can be an `Array` of row's and a row can be
-an `Array` of `string`'s and `Cell`'s. You can read more about rows and cells
+The first argument of the `.body()` can be an `Array` of rows and a row can be
+an `Array` of `string` and `Cell`. You can read more about rows and cells
 [here](./rows_and_cells.md).
 
 ```ts

@@ -200,12 +200,12 @@ $ deno run --unstable https://deno.land/x/cliffy/examples/prompt/secret.ts
 The `Secret` prompt has all [base options](#base-options) and the following
 prompt specific options.
 
-| Param     |   Type   | Required | Description                                                              |
-| --------- | :------: | :------: | ------------------------------------------------------------------------ |
-| label     | `string` |    No    | Name of secret. Defaults to `Password`.                                  |
-| hidden    | `number` |    No    | Hide input during typing and show a fix number of asterisk's on success. |
-| minLength | `number` |    No    | Min length of secret value. Defaults to `0`.                             |
-| maxLength | `number` |    No    | Max length of secret value. Defaults to `infinity`.                      |
+| Param     |   Type   | Required | Description                                                             |
+| --------- | :------: | :------: | ----------------------------------------------------------------------- |
+| label     | `string` |    No    | Name of secret. Defaults to `Password`.                                 |
+| hidden    | `number` |    No    | Hide input during typing and show a fix number of asterisks on success. |
+| minLength | `number` |    No    | Min length of secret value. Defaults to `0`.                            |
+| maxLength | `number` |    No    | Max length of secret value. Defaults to `infinity`.                     |
 
 ### 👌 Confirm
 
@@ -371,7 +371,7 @@ prompt specific options.
 
 | Param       |          Type          | Required | Description                                             |
 | ----------- | :--------------------: | :------: | ------------------------------------------------------- |
-| options     | `(string \| Option)[]` |   Yes    | Array of string's or Option's.                          |
+| options     | `(string \| Option)[]` |   Yes    | Array of strings or Options.                            |
 | maxRows     |        `number`        |    No    | Number of options displayed per page. Defaults to `10`. |
 | listPointer |        `string`        |    No    | Change the list pointer icon.                           |
 | search      |       `boolean`        |    No    | Enable search/filter input.                             |
@@ -418,7 +418,7 @@ prompt specific options.
 
 | Param       |          Type          | Required | Description                                               |
 | ----------- | :--------------------: | :------: | --------------------------------------------------------- |
-| options     | `(string \| Option)[]` |   Yes    | Array of string's or Option's.                            |
+| options     | `(string \| Option)[]` |   Yes    | Array of strings or Options.                              |
 | maxRows     |        `number`        |    No    | Number of options displayed per page. Defaults to `10`.   |
 | minOptions  |        `number`        |    No    | Min number of selectable options. Defaults to `0`.        |
 | maxOptions  |        `number`        |    No    | Max number of selectable options. Defaults to `infinity`. |
