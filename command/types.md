@@ -51,10 +51,10 @@ $ deno run https://deno.land/x/cliffy/examples/command/common_option_types.ts -s
 ## Enum type
 
 The `EnumType` can be used to define a list of allowed values. The constructor
-accapts eather an `Array<string | number>` or an `enum`. The values are used for
-input validation and shell completions and displayed in the help text and types
-will be automatically inferred and applied to the values of the command options
-and arguments.
+accepts either an `Array<string | number | boolean>` or an `enum`. The values
+are used for input validation and shell completions and displayed in the help
+text and types will be automatically inferred and applied to the values of the
+command options and arguments.
 
 ```typescript
 import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
@@ -99,7 +99,7 @@ error: Option "--color" must be of type "color", but got "foo". Expected values:
 
 ## List types
 
-Each type can be used as a list. A list type acpects a `,` seperated list of
+Each type can be used as a list. A list type accepts a `,` seperated list of
 items with the specified type. The default separator is `,` but can be changed
 with the `separator` option.
 
@@ -130,8 +130,9 @@ $ deno run https://deno.land/x/cliffy/examples/command/list_option_type.ts -o "1
 
 ## Global types
 
-To make an type available for child commands you can set the `global` option in
-the options argument.
+To make a type also available for child commands, you can use the
+`.globalType()` method. You can also make a type global with the `global` option
+in `.type()` method.
 
 ```typescript
 import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
