@@ -1,7 +1,7 @@
 # Auto generated help
 
 The help information is auto-generated based on the information you have defined
-on your command's. The name, version, description, meta informations, options,
+on your commands. The name, version, description, meta informations, options,
 commands, environment variables and examples are displayed in the help.
 
 To display the help you can invoke the [help option](#help-option) (`-h` or
@@ -103,7 +103,7 @@ await new Command()
 ## Override help
 
 The `.help()` method can be also used to override the help output. This
-overrides the output of the `.getHelp()` and `.showHelp()` method's which are
+overrides the output of the `.getHelp()` and `.showHelp()` methods which are
 used by the help option and help command. The help handler will be also used for
 all sub command, but can be overridden in each sub command separately.
 
@@ -189,7 +189,7 @@ The version option is completely customizable with the `.versionOption()`
 method. It has the same arguments as the normal `.option()` method. With the
 first argument you specify the flags followed by the description. The third
 argument can be an action handler or an options object. The second and third
-argument's are optional.
+arguments are optional.
 
 ```typescript
 await new Command()
