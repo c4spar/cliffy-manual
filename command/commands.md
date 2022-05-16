@@ -37,7 +37,7 @@ For example, following description:
 ```ts
 new Command()
   .description(`
-    This is a multine description.
+    This is a multiline description.
       The indentation of this line will be preserved.
   `);
 ```
@@ -45,7 +45,7 @@ new Command()
 is formatted as follows:
 
 ```console
-This is a multine description.
+This is a multiline description.
   The indentation of this line will be preserved.
 ```
 
@@ -148,7 +148,7 @@ with the `.action()` method. The first arguments is the options object, which
 contains all options and environment variables, followed by all arguments, in
 the same order in which they were defined with the `.arguments()` method.
 Options and arguments will be automatically typed by infering the types and
-names of all options, arguments and evnironment variables 🚀.
+names of all options, arguments and environment variables 🚀.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
@@ -288,7 +288,7 @@ const { args, options, literal, cmd } = new Command()
   .parse();
 ```
 
-All types and names for options, arguments and environemnt variables are
+All types and names for options, arguments and environment variables are
 automatically inferred and properly typed. If the command has sub commands,
 options and arguments will be of type `Record<string, unknown>` and
 `Array<unknown>`, because cliffy can not know with sub command was executed to

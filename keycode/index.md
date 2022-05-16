@@ -4,7 +4,7 @@ ANSI key code parser.
 
 ## Usage
 
-The `keykoce` module exports a `parse()` method which accepts an ansi string and
+The `keycode` module exports a `parse()` method which accepts an ansi string and
 return an array of `KeyCode`.
 
 ```typescript

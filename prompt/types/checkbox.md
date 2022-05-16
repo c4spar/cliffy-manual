@@ -48,7 +48,7 @@ Name is displayed in the list. Defaults to `value`.
 
 Disabled item. Can't be selected.
 
-##### Checke option
+##### Checked option
 
 Whether item is checked or not. Defaults to `false`.
 

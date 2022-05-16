@@ -60,5 +60,5 @@ argument will be added to the `unknown` array.
 ## Allow empty
 
 If an required option is specified, by default an error is thrown if the command
-is invoked without any flags. To disable this behaviour yu can set `allowEmpty`
+is invoked without any flags. To disable this behavior you can set `allowEmpty`
 to `true`. The default is `false`.
