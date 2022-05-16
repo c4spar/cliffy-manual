@@ -46,7 +46,7 @@ $ deno run https://deno.land/x/cliffy/examples/command/general_error_handling.ts
 
 ## Validation errors
 
-This example will catch all errors. You can differenciate between runtime and
+This example will catch all errors. You can differentiate between runtime and
 validation errors by checking if the `error` is an instance of
 `ValidationError`. The validation error has a `exitCode` property that should be
 used to exit the program.

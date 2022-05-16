@@ -33,7 +33,7 @@ const { options } = await new Command()
   .option("-p, --pizza-type <type>", "Flavour of pizza.")
   // Option with required number value.
   .option("-a, --amount <amount:integer>", "Pieces of pizza.")
-  // One required and one optional command arguemnt.
+  // One required and one optional command argument.
   .arguments("<input:file> [output:file]")
   .parse(Deno.args);
 
@@ -192,7 +192,7 @@ const { options } = await new Command()
 $ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -e "red"
 { color: "red" }
 $ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -e "green"
-Error: Option "--color" must be a valid color, but got "green". Possilbe values are: red, blue, yellow
+Error: Option "--color" must be a valid color, but got "green". Possible values are: red, blue, yellow
 ```
 
 ### Class types
@@ -238,7 +238,7 @@ $ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.
 Error: Option "--color" must be a valid color, but got "green". Possible values are: red, blue, yellow
 ```
 
-The `ValidationError` ensures that the help is displayed befor the program
+The `ValidationError` ensures that the help is displayed before the program
 exits. You can read more about error handling [here](./error_handling.md).
 
 #### Shell completions

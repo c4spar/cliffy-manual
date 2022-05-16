@@ -6,8 +6,8 @@ returned by the `.parse()` method.
 
 With the first argument of the `.options()` method you define the option names
 and arguments. Each option can have multiple short and long flags, separated by
-comma. The name of the first long flag will be uesed as option name. If no long
-flag is provided the first short flag will be used.
+comma. The name of the first long flag will be unused as an option name. If no
+long flag is provided the first short flag will be used.
 
 Multi-word options such as `--template-engine` are camel-cased to
 `templateEngine` and multiple short flags may be combined as a single arg, for
@@ -193,7 +193,7 @@ new Comand()
   });
 ```
 
-## Negatable options
+## Negateable options
 
 You can specify a boolean option long name with a leading `no-` to set the
 option value to false when used. Defined alone this also makes the option true

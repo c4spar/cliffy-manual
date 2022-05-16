@@ -50,7 +50,7 @@ $ deno run --unstable https://deno.land/x/cliffy/examples/prompt/dynamic_prompts
 ## Options
 
 Following options are available as global and/or prompt specific options. Global
-options will be passt as second argument to the `prompt()` method.
+options will be passed as second argument to the `prompt()` method.
 
 ### Prompt name
 
@@ -68,7 +68,7 @@ The `before` callback method is called before and the `after` callback method
 after the prompt is executed. It is available as global and prompt specific
 option.
 
-The first argument is the `result` object which contains all already availalbe
+The first argument is the `result` object which contains all already available
 answers.
 
 The second argument is the `next()` method which executes the next prompt in the

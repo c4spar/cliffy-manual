@@ -26,7 +26,7 @@ import { Input } from "https://deno.land/x/cliffy/prompt/mod.ts";
 const name: string = await Input.prompt(`What's your name?`);
 ```
 
-Execute a single prompt with an options object as firts argument.
+Execute a single prompt with an options object as first argument.
 
 ```typescript
 import { Input } from "https://deno.land/x/cliffy/prompt/mod.ts";

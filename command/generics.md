@@ -6,7 +6,7 @@ environment-variable names will be automatically magically inferred 🪄.
 > ❗ It is no longer recommended to define the types manually with the generic
 > parameters.
 
-The only exception where you define generics manuelly is when you want to
+The only exception where you define generics manually is when you want to
 organize your sub commands in separate files, than you can use the first two
 generic constructor parameters which are used do define required global options
 and types which is explained in [Generic parent types](#generic-parent-types).
@@ -72,11 +72,11 @@ The types of the options object will look like this:
 
 If you want to extend the `Command` class like cliffy it does with the
 `HelpCommand`. New instances of this command will have `void` types by default.
-In this case you can specify the types manuelly with the generic constructor
+In this case you can specify the types manually with the generic constructor
 parameters of the `Command` class. But this is completely optional. You can add
 `void` commands to any other command.
 
-> When you specify the types, it is recommanded to return the command instance
+> When you specify the types, it is recommended to return the command instance
 > in the constructor.
 
 This way you can ensure the constructor typings matches your command typings,
