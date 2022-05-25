@@ -1,7 +1,7 @@
 # Build-in commands
 
 Cliffy provides some predefined commands like `help`, `completions` and
-`upgrade`. These commands are optional and must be registered manuelly if you
+`upgrade`. These commands are optional and must be registered manually if you
 want to use them.
 
 ## Help command
@@ -40,7 +40,7 @@ $ deno run https://deno.land/x/cliffy/examples/command/help_option_and_command.t
 
 The `CompetionsCommand` includes sub commands for all supported shell
 environments. The sub commands generates the shell completions script and
-outputs it to stdout. The completions command must be registered manuelly.
+outputs it to stdout. The completions command must be registered manually.
 
 ```ts
 import {

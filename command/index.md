@@ -20,7 +20,7 @@ available on the main command. All methods from the command class are chainable.
 
 You should start with creating a main command and adding a name, version and
 description to it. It is required to define the name for your main command
-manuelly, because cliffy cannot know the name of the installed script.
+manually, because cliffy cannot know the name of the installed script.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";

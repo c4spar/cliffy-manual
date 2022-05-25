@@ -40,7 +40,7 @@ To enable row border you can use the `.border()` method.
 
 ### Align row content
 
-The `.aling()` method aligns the content of all cells in the row. The first
+The `.align()` method aligns the content of all cells in the row. The first
 argument is the direction. Possible values are:
 
 - `"left"`

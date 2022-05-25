@@ -1,7 +1,7 @@
 # Auto generated help
 
 The help information is auto-generated based on the information you have defined
-on your commands. The name, version, description, meta informations, options,
+on your commands. The name, version, description, meta information, options,
 commands, environment variables and examples are displayed in the help.
 
 To display the help you can invoke the [help option](#help-option) (`-h` or

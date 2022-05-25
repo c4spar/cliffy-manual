@@ -62,7 +62,7 @@ not provided on commandline.
 
 ## Conflicts
 
-This is the opposit of the `conflicts` option. You can specify flags which can
+This is the opposite of the `conflicts` option. You can specify flags which can
 not be provided if a specific flag is set. If `conflicts` is set to
 `["foo", "bar"]`, an error is throw if one of this flags is provided on
 commandline.
