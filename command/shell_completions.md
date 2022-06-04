@@ -35,7 +35,7 @@ await new Command()
 
 ## Complete method
 
-Another way to add competions is by registering a completions action with the
+Another way to add completions is by registering a completions action with the
 `.complete()` method. The values returned by the `.complete()` method will be
 used for shell completions.
 
