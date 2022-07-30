@@ -262,11 +262,11 @@ await new Command()
 Global options can also be placed before a sub-command.
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/global_options_2.ts -g test command1 command2
+$ deno run https://deno.land/x/cliffy/examples/command/global_options.ts -g test command1 command2
 { global: "test" }
-$ deno run https://deno.land/x/cliffy/examples/command/global_options_2.ts command1 -g test command2
+$ deno run https://deno.land/x/cliffy/examples/command/global_options.ts command1 -g test command2
 { global: "test" }
-$ deno run https://deno.land/x/cliffy/examples/command/global_options_2.ts command1 command2 -g test
+$ deno run https://deno.land/x/cliffy/examples/command/global_options.ts command1 command2 -g test
 { global: "test" }
 ```
 
