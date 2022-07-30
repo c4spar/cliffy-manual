@@ -254,7 +254,10 @@ await new Command()
         new Command()
           .description("Some nested sub command.")
           .action(console.log),
-      ),
+      )
+      // Currently it is necessary to call the reset method for sub-commands
+      // with sub-commands, otherwise a type error occurs.
+      .reset(),
   )
   .parse(Deno.args);
 ```
