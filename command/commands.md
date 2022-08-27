@@ -95,18 +95,17 @@ Error: Missing argument(s): input
 ### Variadic arguments
 
 The last argument of a command can be variadic. To make an argument variadic you
-can append or perpend `...` to the argument name. The variadic argument is
-passed to the action handler as an array.
+can append or prepend `...` to the argument name (`<...NAME>` or `<NAME...>`).
+Required rest arguments `<...args>` requires at least one argument, optional
+rest args `[...args]` are completely optional.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
-const { args } = await new Command()
+const { args: dirs } = await new Command()
   .description("Remove directories.")
   .arguments("<dirs...>")
   .parse(Deno.args);
-
-const dirs = args[0];
 
 for (const dir of dirs) {
   console.log("rmdir %s", dir);
@@ -179,9 +178,9 @@ import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 await new Command()
   .option("-d, --debug-level <level:string>", "Debug level.")
-  .arguments("[script] [args...]")
+  .arguments("[script] [...args]")
   .stopEarly() // <-- enable stop early
-  .action((options, script?: string, args?: Array<string>) => {
+  .action((options, script?: string, ...args: Array<string>) => {
     console.log("options:", options);
     console.log("script:", script);
     console.log("args:", args);
