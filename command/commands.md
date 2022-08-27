@@ -281,9 +281,9 @@ arguments that should be consumed. By default `Deno.args` is used.
 import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
 
 const { args, options, literal, cmd } = new Command()
+  .env("DEBUG", "Enable debugging.")
   .option("--debug", "Enable debugging.")
   .arguments("<input:string>")
-  .env("DEBUG", "Enable debugging.")
   .parse();
 ```
 
