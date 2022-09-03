@@ -244,6 +244,24 @@ $ deno run https://deno.land/x/cliffy/examples/command/global_commands.ts comman
 {} test
 ```
 
+### Disable globals
+
+With the `.noGlobals()` method you can disable inheriting global _commands_,
+_options_ and _environment variables_ from parent commands.
+
+> The build-in `--help` option and the `help` command are excluded from the
+> `.noGlobals()` method.
+
+```ts
+new Command()
+  .globalOption("--beep", "Beep...")
+  .command("foo", "Foo...")
+  .command("bar", "Bar...")
+  // disable global --foo option and all other globals for command bar:
+  .noGlobals()
+  .parse();
+```
+
 ## Hidden commands
 
 To exclude sub commands from the auto generated help and shell completions you
