@@ -1,8 +1,8 @@
 # Environment variables
 
-> ❗ To allow deno to access environment variables the `--allow-env` flag is
-> required. If the `--allow-env` flag is not provided, environment variables
-> will be ignored.
+> ❗ To allow deno to access environment variables the `--allow-env=<allow-env>`
+> flag is required. If the `--allow-env` flag is not provided, environment
+> variables will be ignored if not marked as required.
 
 Environment variables added with the `.env()` method will be validated when the
 command is executed. Only environment variables that are available for the

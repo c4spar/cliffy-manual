@@ -95,18 +95,17 @@ Error: Missing argument(s): input
 ### Variadic arguments
 
 The last argument of a command can be variadic. To make an argument variadic you
-can append or perpend `...` to the argument name. The variadic argument is
-passed to the action handler as an array.
+can append or prepend `...` to the argument name (`<...NAME>` or `<NAME...>`).
+Required rest arguments `<...args>` requires at least one argument, optional
+rest args `[...args]` are completely optional.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
-const { args } = await new Command()
+const { args: dirs } = await new Command()
   .description("Remove directories.")
   .arguments("<dirs...>")
   .parse(Deno.args);
-
-const dirs = args[0];
 
 for (const dir of dirs) {
   console.log("rmdir %s", dir);
@@ -179,9 +178,9 @@ import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 await new Command()
   .option("-d, --debug-level <level:string>", "Debug level.")
-  .arguments("[script] [args...]")
+  .arguments("[script] [...args]")
   .stopEarly() // <-- enable stop early
-  .action((options, script?: string, args?: Array<string>) => {
+  .action((options, script?: string, ...args: Array<string>) => {
     console.log("options:", options);
     console.log("script:", script);
     console.log("args:", args);
@@ -245,6 +244,24 @@ $ deno run https://deno.land/x/cliffy/examples/command/global_commands.ts comman
 {} test
 ```
 
+### Disable globals
+
+With the `.noGlobals()` method you can disable inheriting global _commands_,
+_options_ and _environment variables_ from parent commands.
+
+> The build-in `--help` option and the `help` command are excluded from the
+> `.noGlobals()` method.
+
+```ts
+new Command()
+  .globalOption("--beep", "Beep...")
+  .command("foo", "Foo...")
+  .command("bar", "Bar...")
+  // disable global --foo option and all other globals for command bar:
+  .noGlobals()
+  .parse();
+```
+
 ## Hidden commands
 
 To exclude sub commands from the auto generated help and shell completions you
@@ -281,9 +298,9 @@ arguments that should be consumed. By default `Deno.args` is used.
 import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
 
 const { args, options, literal, cmd } = new Command()
+  .env("DEBUG", "Enable debugging.")
   .option("--debug", "Enable debugging.")
   .arguments("<input:string>")
-  .env("DEBUG", "Enable debugging.")
   .parse();
 ```
 

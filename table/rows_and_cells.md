@@ -68,8 +68,44 @@ direction. Possible values are:
 
 ### Colspan and rowspan
 
-Colspan and rowspan allows a single table cell to span the width/height of more
-than one column and/or row.
+`.colSpan()` and `.rowSpan()` allows a single table cell to span the
+width/height of more than one column and/or row. With `.colSpan()` and
+`.rowSpan()` the next or lower cell is moved to the right if the next or lower
+cell is not of type `undefined`. If it's of type `undefined` the cell is
+overriden.
+
+The following examples both have the same output.
+
+**Override undefined values**
+
+```ts
+import { Cell, Table } from "https://deno.land/x/cliffy/table/mod.ts";
+
+Table.from([
+  [
+    new Cell("Row 1 & 2 Column 1").rowSpan(2),
+    "Row 1 Column 2",
+    "Row 1 Column 3",
+  ],
+  [undefined, new Cell("Row 2 Column 2 & 3").colSpan(2), undefined],
+  [
+    new Cell("Row 3 & 4 Column 1").rowSpan(2),
+    "Row 3 Column 2",
+    "Row 3 Column 3",
+  ],
+  [undefined, new Cell("Row 4 Column 2 & 3").colSpan(2), undefined],
+  [
+    "Row 5 Column 1",
+    new Cell("Row 5 & 6 Column 2 & 3").rowSpan(2).colSpan(2),
+    undefined,
+  ],
+  ["Row 6 Column 1", undefined, undefined],
+])
+  .border(true)
+  .render();
+```
+
+**Omit undefined values**
 
 ```ts
 import { Cell, Table } from "https://deno.land/x/cliffy/table/mod.ts";
