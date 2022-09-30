@@ -44,7 +44,7 @@ Value which will be returned as result.
 
 Name is displayed in the list. Defaults to `value`.
 
-##### Option disabled
+##### Disable option
 
 Disabled item. Can't be selected.
 
