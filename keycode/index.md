@@ -37,8 +37,9 @@ $ deno run --unstable https://deno.land/x/cliffy/examples/keycode/example.ts
 
 ## Example
 
-> ❗ For this example the `--unstable` flag is required to make `Deno.setRaw()`
-> available. The module itself does not require the `--unstable` flag.
+> ❗ For this example the `--unstable` flag is required to make
+> `Deno.stdin.setRaw()` available. The module itself does not require the
+> `--unstable` flag.
 
 ```typescript
 import { KeyCode, parse } from "https://deno.land/x/cliffy/keycode/mod.ts";
@@ -47,9 +48,9 @@ async function* keypress(): AsyncGenerator<KeyCode, void> {
   while (true) {
     const data = new Uint8Array(8);
 
-    Deno.setRaw(Deno.stdin.rid, true);
+    Deno.stdin.setRaw(true);
     const nread = await Deno.stdin.read(data);
-    Deno.setRaw(Deno.stdin.rid, false);
+    Deno.stdin.setRaw(false);
 
     if (nread === null) {
       return;
