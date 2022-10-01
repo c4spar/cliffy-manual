@@ -59,7 +59,7 @@ $ deno run https://deno.land/x/cliffy/examples/flags/flags.ts \
 }
 ```
 
-### Flags
+### Define flags
 
 You can specify flags with the options object. For all unknown or invalid flags
 an `ValidationError` is thrown. Read more about error handling
