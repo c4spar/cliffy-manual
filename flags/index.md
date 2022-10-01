@@ -87,9 +87,9 @@ $ deno run https://deno.land/x/cliffy/examples/flags/options.ts -vvv -f ./exampl
 
 ### Parse context
 
-The `parseFlags` method accepts also an object as first argument. The object can
-be either a manually created object or the result of a previously called
-`parseFlags` method.
+The `parseFlags` method accepts also a parse context as first argument. The
+context can either be a manually created object or the result of a previously
+called `parseFlags` method.
 
 This can be used to parse command line flags in multiple steps, for example,
 when parsing options that precede a subcommand.
