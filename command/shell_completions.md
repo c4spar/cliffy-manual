@@ -26,8 +26,10 @@ used for shell completions. Read more about the enum type
 ```typescript
 import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
 
+const colorType = new EnumType(["red", "blue", "yellow"]);
+
 await new Command()
-  .type("color", new EnumType(["red", "blue", "yellow"]))
+  .type("color", colorType)
   .arguments("[color-name:color]")
   .option("-c, --color <name:color>", "Choose a color.")
   .parse(Deno.args);
