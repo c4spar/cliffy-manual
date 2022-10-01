@@ -2,7 +2,7 @@
 
 ## Flags
 
-B default the `parseFlags` method parses all flags and tries to autodetect the
+By default the `parseFlags` method parses all flags and tries to autodetect the
 type. With the `flags` options you can specify an Array of flags options. If the
 `flags` option is set the `parseFlags` method will throw an error for all
 unknown or invalid flags. You can find a list of all possible flag options
@@ -55,7 +55,14 @@ The `option` callback method option is called for each parsed option.
 ## Stop early
 
 If `stopEarly` is enabled, all values starting from the first non option
-argument will be added to the `unknown` array.
+argument will be added to the `unknown` array (can be combined with
+[stopEarly](#stop-on-unknown)).
+
+## Stop on unknown
+
+If `stopOnUnknown` is enabled, all values starting from the first unknown option
+argument will be added to the `unknown` array (can be combined with
+[stopEarly](#stop-early)).
 
 ## Allow empty
 
