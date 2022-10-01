@@ -56,7 +56,7 @@ The `option` callback method option is called for each parsed option.
 
 If `stopEarly` is enabled, all values starting from the first non option
 argument will be added to the `unknown` array (can be combined with
-[stopEarly](#stop-on-unknown)).
+[stopOnUnknown](#stop-on-unknown)).
 
 ## Stop on unknown
 
