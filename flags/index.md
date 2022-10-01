@@ -52,7 +52,7 @@ $ deno run https://deno.land/x/cliffy/examples/flags/flags.ts \
 
 ### Flags
 
-You can specify flagswith the options object. For all unknown or invalid flags
+You can specify flags with the options object. For all unknown or invalid flags
 an `ValidationError` is thrown. Read more about error handling
 [here](./error_handling.md). A list of all available flag options can be found
 [here](./flag_options.md).
@@ -83,4 +83,52 @@ console.log(flags);
 ```console
 $ deno run https://deno.land/x/cliffy/examples/flags/options.ts -vvv -f ./example.ts
 { verbose: 3, file: "./example.ts" }
+```
+
+### Parse context
+
+The `parseFlags` method accepts also a parse context as first argument. The
+context can either be a manually created object or the result of a previously
+called `parseFlags` method.
+
+This can be used to parse command line flags in multiple steps, for example,
+when parsing options that precede a subcommand.
+
+```ts
+const globalFlags = [{
+  name: "foo-global",
+  alias: ["g"],
+  collect: true,
+}];
+
+const flags = [{
+  name: "foo",
+  alias: ["f"],
+  collect: true,
+}];
+
+const args = ["--foo-global", "cmd1", "--foo-global", "--foo", "arg1", "--foo"];
+
+// Parse main command args (all flags until the first unknown argument).
+const ctx = parseFlags(args, {
+  flags: globalFlags,
+  stopEarly: true, // Stop on first non option argument.
+  stopOnUnknown: true, // Stop on first option argument.
+  dotted: false, // Don't convert dotted option keys to nested objects.
+});
+
+// Shift sub-command from arguments.
+const subCommand = ctx.unknown.shift();
+
+// Parse all sub command args.
+parseFlags(ctx, {
+  flags: [
+    ...globalFlags,
+    ...flags,
+  ],
+});
+
+console.log("sub-command:", subCommand); // -> cmd1
+console.log("options:", ctx.flags); // -> { fooGlobal: [ true, true ], foo: [ true, true ] }
+console.log("arguments:", ctx.unknown); // -> [ "arg1" ]
 ```
