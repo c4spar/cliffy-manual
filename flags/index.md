@@ -4,17 +4,18 @@ Command line arguments parser with build-in validations.
 
 ## Usage
 
-The `parseFlags` method accepts as first argument the arguments that to be
-parsed, usually `Deno.args`. As the second argument you can pass an options
-object. A list of all available options can be found [here](./parse_options.md).
+The `parseFlags` method takes as its first argument the arguments to be parsed,
+usually `Deno.args`, or a [parse context](#parse-context). As the second
+argument you can pass an options object. A list of all available options can be
+found [here](./parse_options.md).
 
 ### Basic usage
 
 If `parseFlags` is called without defining specific flags with the options
-object, all flags passed as first arguments to the `parseFlags` method are
-parsed and added to the flags object returned by the `parseFlags` method. All
-non-options arguments are added to the `unknown` array and all flags specified
-after the double dash (`--`) are added to the literal array.
+object, all arguments are parsed and added to the flags object returned by the
+`parseFlags` method. All non-options arguments are added to the `unknown` array
+and all flags specified after the double dash (`--`) are added to the `literal`
+array.
 
 ```typescript
 import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
@@ -24,7 +25,13 @@ console.log(parseFlags(Deno.args));
 
 ```console
 $ deno run https://deno.land/x/cliffy/examples/flags/flags.ts -a foo -b bar
-{ flags: { a: "foo", b: "bar" }, unknown: [], literal: [] }
+{
+  flags: { a: "foo", b: "bar" },
+  literal: [],
+  unknown: [],
+  stopEarly: false,
+  stopOnUnknown: false
+}
 
 $ deno run https://deno.land/x/cliffy/examples/flags/flags.ts \
     -x 3 \
@@ -45,8 +52,10 @@ $ deno run https://deno.land/x/cliffy/examples/flags/flags.ts \
     beep: "boop",
     deno: { land: true, com: true }
   },
+  literal: [ "--cliffy" ],
   unknown: [ "foo", "bar", "baz" ],
-  literal: [ "--cliffy" ]
+  stopEarly: false,
+  stopOnUnknown: false
 }
 ```
 
