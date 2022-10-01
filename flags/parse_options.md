@@ -69,3 +69,11 @@ argument will be added to the `unknown` array (can be combined with
 If an required option is specified, by default an error is thrown if the command
 is invoked without any flags. To disable this behavior you can set `allowEmpty`
 to `true`. The default is `false`.
+
+## Dotted
+
+By default, all option names that have dots in their names are converted to
+nested objects. For example, `{ "foo.bar": 1 }` becomes
+`{ "foo": { "bar": 1 } }`. You can disable this behavior by setting the `dotted`
+option to `false`. This is required when parsing command line arguments in
+multiple steps (see [parse-context](./index.md#parse-context)).
