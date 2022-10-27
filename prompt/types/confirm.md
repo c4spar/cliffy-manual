@@ -11,7 +11,7 @@ const confirmed: boolean = await Confirm.prompt("Can you confirm?");
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/confirm.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/confirm.ts
 ```
 
 ## Options

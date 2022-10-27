@@ -11,7 +11,7 @@ const password: string = await Secret.prompt("Enter your password");
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/secret.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/secret.ts
 ```
 
 ## Options

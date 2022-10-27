@@ -18,7 +18,7 @@ console.log(
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/keycode/example.ts
+$ deno run https://deno.land/x/cliffy/examples/keycode/example.ts
 ```
 
 **Output:**
@@ -36,10 +36,6 @@ $ deno run --unstable https://deno.land/x/cliffy/examples/keycode/example.ts
 ```
 
 ## Example
-
-> ❗ For this example the `--unstable` flag is required to make
-> `Deno.stdin.setRaw()` available. The module itself does not require the
-> `--unstable` flag.
 
 ```typescript
 import { KeyCode, parse } from "https://deno.land/x/cliffy/keycode/mod.ts";
@@ -76,5 +72,5 @@ for await (const key of keypress()) {
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/keycode/read_key.ts
+$ deno run https://deno.land/x/cliffy/examples/keycode/read_key.ts
 ```

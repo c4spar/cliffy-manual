@@ -21,7 +21,7 @@ const colors: string[] = await Checkbox.prompt({
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/checkbox.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/checkbox.ts
 ```
 
 ## Options

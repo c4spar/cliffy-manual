@@ -4,10 +4,6 @@ Create simple and powerful interactive prompts with cliffy's prompt module.
 
 ## Usage
 
-> ⚠️ This module requires the `--unstable` flag because it uses
-> [Deno.stdin.setRaw()](https://doc.deno.land/deno/unstable/~/Deno.setRaw) which
-> is still marked as unstable.
-
 There are two ways of using this module. You can either use standalone (single)
 prompts or you can run a list of prompts that can be dynamically controlled.
 
@@ -80,5 +76,5 @@ console.log(result);
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/prompt_list.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/prompt_list.ts
 ```
