@@ -58,7 +58,7 @@ suggestions [here](../auto_suggestions.md).
 ```typescript
 import { Number } from "https://deno.land/x/cliffy/prompt/number.ts";
 
-const color: string = await Number.prompt({
+const color: number = await Number.prompt({
   message: "Choose a number",
   id: "<local-storage-key>",
   suggestions: [

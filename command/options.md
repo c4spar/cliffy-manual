@@ -181,6 +181,8 @@ This can be used for example if you have required option but want to show the
 help by default if no arguments are passed to the command.
 
 ```ts
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 new Command()
   .option("--foo", "...", { required: true })
   .allowEmpty()

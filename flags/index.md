@@ -104,6 +104,8 @@ This can be used to parse command line flags in multiple steps, for example,
 when parsing options that precede a subcommand.
 
 ```ts
+import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+
 const globalFlags = [{
   name: "foo-global",
   alias: ["g"],

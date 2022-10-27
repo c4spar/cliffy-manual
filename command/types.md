@@ -164,7 +164,10 @@ the name of the type, the second can be either a function or an instance of
 This example shows you how to use a function as type handler.
 
 ```typescript
-import { ArgumentValue, Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import {
+  ArgumentValue,
+  Command,
+} from "https://deno.land/x/cliffy/command/mod.ts";
 
 const colors = ["red", "blue", "yellow"];
 
@@ -248,11 +251,19 @@ to your type. Read more about shell completions
 [here](./shell_completions.md#custom-type).
 
 ```ts
-import { Command, Type } from "https://deno.land/x/cliffy/command/mod.ts";
+import {
+  ArgumentValue,
+  Command,
+  Type,
+} from "https://deno.land/x/cliffy/command/mod.ts";
 
 class ColorType extends Type<string> {
   complete(): Array<string> {
     return ["red", "blue", "yellow"];
+  }
+
+  parse(type: ArgumentValue): string {
+    return type.value;
   }
 }
 ```
@@ -263,11 +274,19 @@ To override possible values listed in the auto generated help, you can add a
 `.values()` method to your custom type.
 
 ```ts
-import { Command, Type } from "https://deno.land/x/cliffy/command/mod.ts";
+import {
+  ArgumentValue,
+  Command,
+  Type,
+} from "https://deno.land/x/cliffy/command/mod.ts";
 
 class ColorType extends Type<string> {
   values(): Array<string> {
     return ["red", "blue", "yellow"];
+  }
+
+  parse(type: ArgumentValue): string {
+    return type.value;
   }
 }
 ```

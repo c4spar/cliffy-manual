@@ -35,6 +35,8 @@ trailing lines will be automatically removed.
 For example, following description:
 
 ```ts
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 new Command()
   .description(`
     This is a multiline description.
@@ -253,6 +255,8 @@ _options_ and _environment variables_ from parent commands.
 > `.noGlobals()` method.
 
 ```ts
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 new Command()
   .globalOption("--beep", "Beep...")
   .command("foo", "Foo...")
@@ -297,7 +301,7 @@ arguments that should be consumed. By default `Deno.args` is used.
 ```ts
 import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
 
-const { args, options, literal, cmd } = new Command()
+const { args, options, literal, cmd } = await new Command()
   .env("DEBUG", "Enable debugging.")
   .option("--debug", "Enable debugging.")
   .arguments("<input:string>")

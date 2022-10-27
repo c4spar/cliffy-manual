@@ -107,16 +107,21 @@ COMMAND upgrade --version 1.0.2
 ```
 
 ```typescript
-import { UpgradeCommand } from "https://deno.land/x/cliffy/command/upgrade/mod.ts";
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import {
+  DenoLandProvider,
+  UpgradeCommand,
+} from "https://deno.land/x/cliffy/command/upgrade/mod.ts";
 
-cmd.command(
-  "upgrade",
-  new UpgradeCommand({
-    main: "cliffy.ts",
-    args: ["--allow-net", "--unstable"],
-    provider: new DenoLandProvider(),
-  }),
-);
+new Command()
+  .command(
+    "upgrade",
+    new UpgradeCommand({
+      main: "cliffy.ts",
+      args: ["--allow-net", "--unstable"],
+      provider: new DenoLandProvider(),
+    }),
+  );
 ```
 
 With the `provider` option you specify which registries are supported. This
@@ -154,16 +159,25 @@ can optionally pass the registry module name to the provider which defaults to
 the command name.
 
 ```typescript
-cmd.command(
-  "upgrade",
-  new UpgradeCommand({
-    provider: [
-      new DenoLandProvider({ name: "cliffy" }),
-      new NestLandProvider({ name: "cliffy" }),
-      new GithubProvider({ repository: "c4spar/deno-cliffy" }),
-    ],
-  }),
-);
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import {
+  DenoLandProvider,
+  GithubProvider,
+  NestLandProvider,
+  UpgradeCommand,
+} from "https://deno.land/x/cliffy/command/upgrade/mod.ts";
+
+new Command()
+  .command(
+    "upgrade",
+    new UpgradeCommand({
+      provider: [
+        new DenoLandProvider({ name: "cliffy" }),
+        new NestLandProvider({ name: "cliffy" }),
+        new GithubProvider({ repository: "c4spar/deno-cliffy" }),
+      ],
+    }),
+  );
 ```
 
 ### List available versions

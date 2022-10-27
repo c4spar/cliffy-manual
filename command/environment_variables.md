@@ -98,6 +98,8 @@ remove before the value is added to the options object. This works also in
 combination with options.
 
 ```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 await new Command()
   .env(
     "DENO_INSTALL_ROOT=<path:string>",

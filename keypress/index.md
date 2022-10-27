@@ -48,7 +48,10 @@ pauses reading from stdin before emitting the events, so stdin is not blocked
 inside the for loop.
 
 ```typescript
-import { Keypress, keypress } from "https://deno.land/x/cliffy/keypress/mod.ts";
+import {
+  keypress,
+  KeyPressEvent,
+} from "https://deno.land/x/cliffy/keypress/mod.ts";
 
 for await (const event: KeyPressEvent of keypress()) {
   console.log(

@@ -22,6 +22,8 @@ You can create your own re-usable themes just bei storing your styles into a
 variable.
 
 ```typescript
+import { colors } from "https://deno.land/x/cliffy/ansi/colors.ts";
+
 // Define theme colors.
 const error = colors.bold.red;
 const warn = colors.bold.yellow;

@@ -50,6 +50,8 @@ You can add some additional information to the help text with the
 `.meta(name, value)` method.
 
 ```ts
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 new Command()
   .name("example")
   .version("1.0.0")
@@ -137,6 +139,8 @@ action handler or an options object. The second and third arguments are
 optional.
 
 ```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 await new Command()
   .helpOption("-i, --info", "Print help info.", function (this: Command) {
     console.log("some help info ...", this.getHelp());
@@ -148,6 +152,8 @@ You can also override the default options of the help option. The options are
 the same as for the `.option()` method.
 
 ```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 await new Command()
   .helpOption(" -x, --xhelp", "Print help info.", { global: true })
   .parse(Deno.args);
@@ -156,6 +162,8 @@ await new Command()
 To disable the help option you can pass false to the `.helpOption()` method.
 
 ```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 await new Command()
   .helpOption(false)
   .parse(Deno.args);
@@ -192,6 +200,8 @@ argument can be an action handler or an options object. The second and third
 arguments are optional.
 
 ```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 await new Command()
   .version("0.1.0")
   .versionOption(
@@ -208,6 +218,8 @@ You can also override the default options of the version option. The options are
 the same as for the `.option()` method.
 
 ```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 await new Command()
   .version("0.1.0")
   .versionOption(" -x, --xversion", "Print version info.", { global: true })
@@ -217,6 +229,8 @@ await new Command()
 The version option can be also disabled.
 
 ```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
 await new Command()
   .versionOption(false)
   .parse(Deno.args);
