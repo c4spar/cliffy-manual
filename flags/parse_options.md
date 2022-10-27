@@ -17,7 +17,10 @@ types.
 > also all build in types!
 
 ```typescript
-import { ArgumentValue, parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import {
+  ArgumentValue,
+  parseFlags,
+} from "https://deno.land/x/cliffy/flags/mod.ts";
 
 parseFlags(Deno.args, {
   flags: [{

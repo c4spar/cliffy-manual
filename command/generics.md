@@ -61,11 +61,11 @@ await new Command()
 The types of the options object will look like this:
 
 ```ts
-{
+type Options = {
   debug?: true | undefined;
   bar?: true | undefined;
   color?: "red" | "blue" | undefined;
-}
+};
 ```
 
 ## Extending commands

@@ -93,16 +93,16 @@ await new Command()
 The type of the options object will look like this:
 
 ```ts
-{
+type Options = {
   debug?: boolean | undefined;
   logLevel: "debug" | "info" | "warn" | "error";
-}
+};
 ```
 
 and the type of the arguments array will look like this:
 
 ```ts
-[string, (string | undefined)?]
+type Arguments = [string, (string | undefined)?];
 ```
 
 ### Sub commands and globals

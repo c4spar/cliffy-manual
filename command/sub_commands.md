@@ -28,8 +28,13 @@ await new Command()
     "Clone a repository into a newly created directory.",
   )
   .option("-r, --recursive", "Clone recursive.")
-  .action(({ recursive }, source: string, destination: string) => {
-    console.log("clone %s to %s", source, destination, recursive ? " (recursive)", "");
+  .action(({ recursive }, source: string, destination?: string) => {
+    console.log(
+      "clone %s to %s",
+      source,
+      destination,
+      recursive ? " (recursive)" : "",
+    );
   })
   .parse(Deno.args);
 ```
@@ -45,7 +50,7 @@ import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 const clone = new Command()
   .arguments("<source:string> [destination:string]")
   .description("Clone a repository into a newly created directory.")
-  .action((options: any, source: string, destination: string) => {
+  .action((options: any, source: string, destination?: string) => {
     console.log("clone command called");
   });
 
