@@ -12,7 +12,7 @@ const keywords: string[] = await List.prompt("Enter some keywords");
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/list.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/list.ts
 ```
 
 ## Options
@@ -87,7 +87,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/suggestions_list_prompt.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions_list_prompt.ts
 ```
 
 ![](../assets/img/suggestions_list_prompt.gif)

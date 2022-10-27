@@ -14,7 +14,7 @@ const name: string = await Input.prompt("What's your github user name?");
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/input.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/input.ts
 ```
 
 ## Options
@@ -76,7 +76,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/suggestions_list_prompt.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions_list_prompt.ts
 ```
 
 ![](../assets/img/suggestions.gif)

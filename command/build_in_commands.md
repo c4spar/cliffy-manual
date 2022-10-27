@@ -118,7 +118,7 @@ new Command()
     "upgrade",
     new UpgradeCommand({
       main: "cliffy.ts",
-      args: ["--allow-net", "--unstable"],
+      args: ["--allow-net"],
       provider: new DenoLandProvider(),
     }),
   );

@@ -44,7 +44,7 @@ console.log(result);
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/dynamic_prompts.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/dynamic_prompts.ts
 ```
 
 ## Options

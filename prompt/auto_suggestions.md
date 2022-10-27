@@ -43,7 +43,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/suggestions.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions.ts
 ```
 
 ![](assets/img/suggestions.gif)
@@ -91,7 +91,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/suggestions_list.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions_list.ts
 ```
 
 ![](assets/img/suggestions_list.gif)

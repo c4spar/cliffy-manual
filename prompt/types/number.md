@@ -12,7 +12,7 @@ const age: number = await Number.prompt("How old are you?");
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/number.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/number.ts
 ```
 
 ## Options
