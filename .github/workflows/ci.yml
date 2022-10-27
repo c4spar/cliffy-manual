@@ -1,4 +1,4 @@
-name: Lint
+name: ci
 on:
   push:
     branches: [main]
@@ -6,23 +6,23 @@ on:
       - v*
   pull_request:
 jobs:
-  lint:
-    name: Lint source
+  ci:
+    name: ci
     runs-on: ubuntu-latest
     steps:
-      - name: Setup repo
+      - name: checkout
         uses: actions/checkout@v3
 
-      - name: Setup Deno
+      - name: setup deno
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
 
-      - name: Check formatting
+      - name: fmt
         run: deno fmt --check
 
-      - name: Run linter
+      - name: lint
         run: deno lint
 
-      - name: Run linter
+      - name: test
         run: deno test --doc
