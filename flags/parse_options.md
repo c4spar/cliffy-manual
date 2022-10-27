@@ -17,14 +17,14 @@ types.
 > also all build in types!
 
 ```typescript
-import { ITypeInfo, parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import { ArgumentValue, parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
 
 parseFlags(Deno.args, {
   flags: [{
     name: "foo",
     type: "float",
   }],
-  parse: ({ label, name, value, type }: ITypeInfo) => {
+  parse: ({ label, name, value, type }: ArgumentValue) => {
     switch (type) {
       case "float":
         if (isNaN(Number(value))) {

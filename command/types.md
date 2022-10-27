@@ -164,11 +164,11 @@ the name of the type, the second can be either a function or an instance of
 This example shows you how to use a function as type handler.
 
 ```typescript
-import { Command, ITypeInfo } from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 const colors = ["red", "blue", "yellow"];
 
-function colorType({ label, name, value }: ITypeInfo): string {
+function colorType({ label, name, value }: ArgumentValue): string {
   if (!colors.includes(value.toLowerCase())) {
     throw new Error(
       `${label} "${name}" must be a valid color, but got "${value}". Possible values are: ${
@@ -201,8 +201,8 @@ This example shows you how to create a custom type that extends the base `Type`.
 
 ```typescript
 import {
+  ArgumentValue,
   Command,
-  ITypeInfo,
   Type,
   ValidationError,
 } from "https://deno.land/x/cliffy/command/mod.ts";
@@ -210,7 +210,7 @@ import {
 class ColorType extends Type<string> {
   private readonly colors = ["red", "blue", "yellow"];
 
-  public parse({ label, name, value }: ITypeInfo): string {
+  public parse({ label, name, value }: ArgumentValue): string {
     if (!this.colors.includes(value)) {
       throw new ValidationError(
         `${label} "${name}" must be a valid color, but got "${value}". Possible values are: ${
