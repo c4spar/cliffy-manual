@@ -2,6 +2,8 @@ name: Lint
 on:
   push:
     branches: [main]
+    tags:
+      - v*
   pull_request:
 jobs:
   lint:
@@ -21,3 +23,6 @@ jobs:
 
       - name: Run linter
         run: deno lint
+
+      - name: Run linter
+        run: deno test --doc
