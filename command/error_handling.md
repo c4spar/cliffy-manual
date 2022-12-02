@@ -2,19 +2,54 @@
 
 Cliffy throws an `ValidationError` for invalid user input. By default, when a
 `ValidationError` is thrown, cliffy prints the auto generated help and the error
-message and calls `Deno.exit(1)` to exit the program. This behaviour can be
-changed by calling `.throwErrors()` or `.noExit()`.
+message and calls `Deno.exit(validationError.exitCode ?? 1)` to exit the
+program. This behaviour can be changed by calling
+[`.throwErrors()`](#throw-errors) or [`.noExit()`](#no-exit).
 
 ## Throw errors
 
 By default, cliffy prints the help text and calls `Deno.exit()` when a
-`ValidationError` is thrown. You can override this behaviour with the
-`.throwErrors()` method. All other errors will be thrown by default.
+`ValidationError` is thrown. All other errors will be thrown by default. You can
+override this behaviour with the `.throwErrors()` method to always throw errors.
 
 ## No exit
 
 The `.noExit()` method does the same as `.throwErrors()` but also prevents the
-command from calling `Deno.exit()` when the help or version option is called.
+command from calling `Deno.exit()` for example when the help or version option
+is called.
+
+## Error handler
+
+Errors can be caught by simply wrapping the `.parse()` method into a try catch
+block. But you can also register an error handler with the `.error()` method.
+
+The first argument of the error handler is the error and the second argument the
+instance of the failed command. You can use this instance to print the help
+message of this command for validation errors.
+
+Child commands can override error handlers from parent commands. If the error
+handler doesn't throw or call `Deno.exit`, the default error handler is
+executed.
+
+```ts
+import {
+  Command,
+  ValidationError,
+} from "https://deno.land/x/cliffy/command/mod.ts";
+
+await new Command()
+  .error((error, cmd) => {
+    if (error instanceof ValidationError) {
+      cmd.showHelp();
+    }
+    console.error(error);
+    Deno.exit(error instanceof ValidationError ? error.exitCode : 1);
+  })
+  .action(() => {
+    throw new ValidationError("validation error message.");
+  })
+  .parse();
+```
 
 ## Runtime errors
 
@@ -30,7 +65,7 @@ const cmd = new Command()
   });
 
 try {
-  cmd.parse();
+  await cmd.parse();
 } catch (error) {
   console.error("[CUSTOM_ERROR]", error);
   Deno.exit(1);
