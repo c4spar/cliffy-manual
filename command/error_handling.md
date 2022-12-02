@@ -30,7 +30,7 @@ const cmd = new Command()
   });
 
 try {
-  cmd.parse();
+  await cmd.parse();
 } catch (error) {
   console.error("[CUSTOM_ERROR]", error);
   Deno.exit(1);
@@ -65,7 +65,7 @@ const cmd = new Command()
   });
 
 try {
-  cmd.parse();
+  await cmd.parse();
 } catch (error) {
   if (error instanceof ValidationError) {
     cmd.showHelp();
@@ -96,7 +96,7 @@ import {
   ValidationError,
 } from "https://deno.land/x/cliffy/command/mod.ts";
 
-const cmd = new Command()
+await new Command()
   .option("-c, --color <name:string>", "Choose a color.")
   .action(({ color }) => {
     if (color === "black") {

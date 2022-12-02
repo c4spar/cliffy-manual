@@ -60,7 +60,7 @@ usage is always prefixed with the command name.
 ```ts
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
-new Command()
+await new Command()
   .name("script-runner")
   .description("Simple script runner.")
   .usage("[options] [script] [script options]")
@@ -257,7 +257,7 @@ _options_ and _environment variables_ from parent commands.
 ```ts
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
-new Command()
+await new Command()
   .globalOption("--beep", "Beep...")
   .command("foo", "Foo...")
   .command("bar", "Bar...")

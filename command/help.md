@@ -52,7 +52,7 @@ You can add some additional information to the help text with the
 ```ts
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
-new Command()
+await new Command()
   .name("example")
   .version("1.0.0")
   .description("Example command.")
