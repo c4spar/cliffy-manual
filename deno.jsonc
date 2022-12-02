@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "check": "deno lint & deno fmt --check & deno test --doc",
+    "start": "deno run --watch=. --allow-env --allow-net --allow-read=./ main.ts"
+  }
+}
