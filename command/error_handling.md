@@ -1,16 +1,19 @@
 # Error and exit handling
 
-Cliffy throws an `ValidationError` for invalid user input. By default, when a
-`ValidationError` is thrown, cliffy prints the auto generated help and the error
-message and calls `Deno.exit(validationError.exitCode ?? 1)` to exit the
-program. This behaviour can be changed by calling
-[`.throwErrors()`](#throw-errors) or [`.noExit()`](#no-exit).
+Cliffy throws an `ValidationError` for invalid options, arguments and
+environment variables. `ValidationError`'s can be also throw by manually. By
+default, when a `ValidationError` is thrown, cliffy prints the auto generated
+help and the error message and calls `Deno.exit(validationError.exitCode ?? 1)`
+to exit the program. This behaviour can be changed by calling
+[`.throwErrors()`](#throw-errors) or [`.noExit()`](#no-exit) or by adding an
+[error handler](#error-handler).
 
 ## Throw errors
 
-By default, cliffy prints the help text and calls `Deno.exit()` when a
-`ValidationError` is thrown. All other errors will be thrown by default. You can
-override this behaviour with the `.throwErrors()` method to always throw errors.
+By default, cliffy prints the help text of the failed command together with the
+error message and calls `Deno.exit()` when a `ValidationError` is thrown. All
+other errors will be thrown by default. You can override this behaviour with the
+`.throwErrors()` method to always throw errors.
 
 ## No exit
 
@@ -23,13 +26,13 @@ is called.
 Errors can be caught by simply wrapping the `.parse()` method into a try catch
 block. But you can also register an error handler with the `.error()` method.
 
-The first argument of the error handler is the error and the second argument the
-instance of the failed command. You can use this instance to print the help
-message of this command for validation errors.
-
 Child commands can override error handlers from parent commands. If the error
 handler doesn't throw or call `Deno.exit`, the default error handler is
 executed.
+
+The first argument of the error handler is the error and the second argument the
+instance of the failed command. You can use this instance to print the help text
+from this command.
 
 ```ts
 import {
@@ -139,4 +142,60 @@ const cmd = new Command()
     }
   })
   .parse();
+```
+
+## Throw errors outside the command context
+
+The `.throw()` method can be used to throw errors outside the command context so
+you have the same behaviour as when you throw an error for example within an
+action handler or a type.
+
+```ts
+import {
+  Command,
+  ValidationError,
+} from "https://deno.land/x/cliffy/command/mod.ts";
+
+const { options, cmd } = await new Command()
+  .error((_error, _cmd) => {
+    console.error("error handler...");
+    // Throw or call Deno.exit() to disable the default error handler.
+    // throw _error;
+    // Deno.exit(_error instanceof ValidationError ? _error.exitCode : 1);
+  })
+  .option("-r, --runtime-error", "Triggers a runtime error.")
+  .option("-v, --validation-error", "Triggers a validation error.")
+  .parse();
+
+if (options.validationError) {
+  cmd.throw(new ValidationError("Black is an unsupported color."));
+}
+
+if (options.runtimeError) {
+  cmd.throw(new Error("White is an unsupported color."));
+}
+```
+
+```console
+$ deno run https://deno.land/x/cliffy/examples/command/throw.ts --runtime-error
+error handler...
+error: Uncaught Error: White is an unsupported color.
+  cmd.throw(new Error("White is an unsupported color."));
+            ^
+    at https://deno.land/x/cliffy/examples/command/throw.ts:21:13
+```
+
+```console
+$ deno run https://deno.land/x/cliffy/examples/command/throw.ts --validation-error
+error handler...
+
+  Usage: COMMAND
+
+  Options:
+
+    -h, --help              - Show this help.
+    -r, --runtime-error     - Triggers a runtime error.
+    -v, --validation-error  - Triggers a validation error.
+
+  error: Black is an unsupported color.
 ```
