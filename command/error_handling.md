@@ -168,11 +168,11 @@ const { options, cmd } = await new Command()
   .parse();
 
 if (options.validationError) {
-  cmd.throw(new ValidationError("Black is an unsupported color."));
+  cmd.throw(new ValidationError("validation error message."));
 }
 
 if (options.runtimeError) {
-  cmd.throw(new Error("White is an unsupported color."));
+  cmd.throw(new Error("runtime error message."));
 }
 ```
 
