@@ -1,7 +1,7 @@
 # Error and exit handling
 
 Cliffy throws an `ValidationError` for invalid options, arguments and
-environment variables. `ValidationError`'s can be also throw by manually. By
+environment variables. `ValidationError`'s can be also throw manually. By
 default, when a `ValidationError` is thrown, cliffy prints the auto generated
 help and the error message and calls `Deno.exit(validationError.exitCode ?? 1)`
 to exit the program. This behaviour can be changed by calling
@@ -87,7 +87,8 @@ $ deno run https://deno.land/x/cliffy/examples/command/general_error_handling.ts
 This example will catch all errors. You can differentiate between runtime and
 validation errors by checking if the `error` is an instance of
 `ValidationError`. The validation error has a `exitCode` property that should be
-used to exit the program.
+used to exit the program. It also provides a `cmd` property which references the
+failed command.
 
 ```typescript
 import {
@@ -106,7 +107,7 @@ try {
   await cmd.parse();
 } catch (error) {
   if (error instanceof ValidationError) {
-    cmd.showHelp();
+    error.cmd?.showHelp();
     console.error("Usage error: %s", error.message);
     Deno.exit(error.exitCode);
   } else {
