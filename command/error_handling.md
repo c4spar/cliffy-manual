@@ -180,8 +180,8 @@ if (options.runtimeError) {
 ```console
 $ deno run https://deno.land/x/cliffy/examples/command/throw.ts --runtime-error
 error handler...
-error: Uncaught Error: White is an unsupported color.
-  cmd.throw(new Error("White is an unsupported color."));
+error: Uncaught Error: runtime error message.
+  cmd.throw(new Error("runtime error message."));
             ^
     at https://deno.land/x/cliffy/examples/command/throw.ts:21:13
 ```
@@ -198,5 +198,5 @@ error handler...
     -r, --runtime-error     - Triggers a runtime error.
     -v, --validation-error  - Triggers a validation error.
 
-  error: Black is an unsupported color.
+  error: validation error message.
 ```
