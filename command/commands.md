@@ -170,6 +170,31 @@ $ deno run https://deno.land/x/cliffy/examples/command/action_handler.ts rm dir
 remove dir
 ```
 
+## Use raw args
+
+When `.useRawArgs()` is called, all options and arguments are passed as raw
+arguments to the action handler without validation.
+
+```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
+await new Command()
+  .option("-f, --foo <val:string>", "Foo option.")
+  .option("-b, --bar <val:string>", "Bar option.")
+  .useRawArgs() // <-- enable raw args
+  .action((options, ...args: Array<string>) => {
+    console.log("options:", options);
+    console.log("args:", args);
+  })
+  .parse(Deno.args);
+```
+
+```console
+$ deno run https://deno.land/x/cliffy/examples/command/use_raw_args.ts --foo abc --bar xyz
+options: {}
+args: [ "--foo", "abc", "--bar", "xyz" ]
+```
+
 ## Stop early
 
 If enabled, all arguments starting from the first non option argument will be
