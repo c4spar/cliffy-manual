@@ -1,8 +1,7 @@
 # OS signals
 
-> ⚠️ The [cbreak](https://doc.deno.land/deno/unstable/~/Deno.setRaw) option
-> requires the `--unstable` flag and Deno => 1.6 and works currently only on
-> Linux and macOS!
+> ⚠️ The [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
+> option works currently only on Linux and macOS!
 
 By default, cliffy will call `Deno.exit(0)` after the user presses `ctrl+c`. If
 you need to use a custom signal handler, you can enable the `cbreak` option on
@@ -32,5 +31,5 @@ console.log({ confirmed });
 ```
 
 ```console
-$ deno run --unstable https://deno.land/x/cliffy/examples/prompt/os_signals.ts
+$ deno run https://deno.land/x/cliffy/examples/prompt/os_signals.ts
 ```

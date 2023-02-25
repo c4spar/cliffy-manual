@@ -79,9 +79,8 @@ called all other prompts will be skipped.
 
 ### OS signals
 
-> ⚠️ The [cbreak](https://doc.deno.land/deno/unstable/~/Deno.setRaw) option
-> requires the `--unstable` flag and Deno => 1.6 and works currently only on
-> Linux and macOS!
+> ⚠️ The [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
+> option works currently only on Linux and macOS!
 
 The `cbreak` option enables pass-through of os signals to deno, allowing you to
 register your own signal handler. It is available as global and prompt specific
