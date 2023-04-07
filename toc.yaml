@@ -54,8 +54,8 @@
     /testing:
       name: Testing
       children:
-        /snapshot-testing:
-          name: Snapshot testing
+        /snapshot:
+          name: Snapshot
           children:
             /options: Options
             /examples: Examples
