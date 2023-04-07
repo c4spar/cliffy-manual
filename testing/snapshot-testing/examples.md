@@ -6,11 +6,11 @@ You can use the `ansi` module to generate some control sequences to control a
 prompt in your test.
 
 ```ts
-import { assertSnapshotCall } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
 import { Checkbox } from "https://deno.land/x/cliffy/prompt/checkbox.ts";
 import { ansi } from "https://deno.land/x/cliffy/ansi/ansi.ts";
 
-await assertSnapshotCall({
+await snapshotTest({
   name: "should check an option",
   meta: import.meta,
   stdin: ansi
@@ -38,10 +38,10 @@ A simple example with two steps and different arguments to snapshot the output
 of a command.
 
 ```ts
-import { assertSnapshotCall } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
-await assertSnapshotCall({
+await snapshotTest({
   name: "command",
   meta: import.meta,
   ignore: Deno.build.os === "windows",

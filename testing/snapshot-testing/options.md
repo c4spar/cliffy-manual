@@ -17,9 +17,9 @@ and `stderr` outputs of this function and stored in the snapshot file.
 ## steps
 
 With the `steps` option you can add multiple steps to the test function. The
-`assertSnapshotCall` method then calls the test function once for each step
-within a separate test step by calling `t.step()` from the test context. Each
-step can have separate options for `stdin` and `args`. (see
+`snapshotTest` method then calls the test function once for each step within a
+separate test step by calling `t.step()` from the test context. Each step can
+have separate options for `stdin` and `args`. (see
 [Test steps](./index.md#test-steps))
 
 ## denoArgs

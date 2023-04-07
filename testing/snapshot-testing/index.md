@@ -1,23 +1,23 @@
 # Snapshot testing
 
-Helper function for snapshot testing.
+The `snapshotTest` method can be used to test `stdin`, `stdout` and `stderr` of
+a single test case. It injects data to stdin and snapshots the `stdout` and
+`stderr` output of each test case separately.
 
 ## Usage
 
-The `assertSnapshotCall` method can be used to test `stdin`, `stdout` and
-`stderr` of a single test case. It injects data to stdin and snapshots the
-`stdout` and `stderr` output of each test case separately.
+The `snapshotTest` method behaves like a combination of `Deno.test()` and the
+`assertSnapshot` method from the deno std library. The `name`, `meta` and `fn`
+options are required.
 
 ### Basic usage
 
-The `assertSnapshotCall` method behaves like a combination of `Deno.test()` and
-the `assertSnapshot` method from the deno std library. The `name`, `meta` and
-`fn` options are required.
+This example snapshots the output of `console.log` and `console.error`.
 
 ```ts
-import { assertSnapshotCall } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
 
-await assertSnapshotCall({
+await snapshotTest({
   name: "should log to stdout and stderr",
   meta: import.meta,
   async fn() {
@@ -53,9 +53,9 @@ script args. You can simply use `Deno.args` as you normally would to get the
 script arguments.
 
 ```ts
-import { assertSnapshotCall } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
 
-await assertSnapshotCall({
+await snapshotTest({
   name: "should log Deno.args",
   meta: import.meta,
   args: ["--foo", "bar"],
@@ -67,14 +67,14 @@ await assertSnapshotCall({
 
 ### Stdin
 
-The `assertSnapshotCall` method can inject data to the test function with the
-`stdin` option. You can simply read the data from `Deno.stdin` as you normally
-would when reading data from stdin.
+The `snapshotTest` method can inject data to the test function with the `stdin`
+option. You can simply read the data from `Deno.stdin` as you normally would
+when reading data from stdin.
 
 ```ts
-import { assertSnapshotCall } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
 
-await assertSnapshotCall({
+await snapshotTest({
   name: "should read cliffy from stdin",
   meta: import.meta,
   stdin: ["cliffy"],
@@ -94,15 +94,15 @@ await assertSnapshotCall({
 
 ### Test steps
 
-You can also add multiple steps to the test function. The `assertSnapshotCall`
-method then calls the test function once for each step within a separate test
-step by calling `t.step()` from the test context. Each step can have separate
-options for `stdin` and `args`.
+You can also add multiple steps to the test function. The `snapshotTest` method
+then calls the test function once for each step within a separate test step by
+calling `t.step()` from the test context. Each step can have separate options
+for `stdin` and `args`.
 
 ```ts
-import { assertSnapshotCall } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
 
-await assertSnapshotCall({
+await snapshotTest({
   name: "should log to stdout and atderr",
   meta: import.meta,
   steps: {
