@@ -19,8 +19,8 @@ Create a new instance.
 import { tty } from "https://deno.land/x/cliffy/ansi/tty.ts";
 
 const myTty = tty({
-  stdout: Deno.stdout,
-  stdin: Deno.stdin,
+  writer: Deno.stdout,
+  reader: Deno.stdin,
 });
 
 myTty.cursorSave
