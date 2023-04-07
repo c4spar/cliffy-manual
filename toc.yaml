@@ -51,4 +51,11 @@
         /ansi: Ansi
         /tty: Tty
         /colors: Colors
-    /testing: Testing
+    /testing:
+      name: Testing
+      children:
+        /snapshot-testing:
+          name: Snapshot testing
+          children:
+            /options: Options
+            /examples: Examples
