@@ -192,9 +192,9 @@ const { options } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -e "red"
+$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -c "red"
 { color: "red" }
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -e "green"
+$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -c "green"
 Error: Option "--color" must be a valid color, but got "green". Possible values are: red, blue, yellow
 ```
 
@@ -235,9 +235,9 @@ const { options } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.ts -e "red"
+$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.ts -c "red"
 { color: "red" }
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.ts -e "green"
+$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.ts -c "green"
 Error: Option "--color" must be a valid color, but got "green". Possible values are: red, blue, yellow
 ```
 
