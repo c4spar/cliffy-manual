@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "https://deno.land/x/cliffy/": "https://raw.githubusercontent.com/c4spar/deno-cliffy/main/"
+  }
+}
