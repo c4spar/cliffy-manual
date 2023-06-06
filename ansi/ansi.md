@@ -33,7 +33,7 @@ Convert to `Uint8Array`:
 import { ansi } from "https://deno.land/x/cliffy/ansi/ansi.ts";
 
 await Deno.stdout.write(
-  ansi.cursorUp.cursorLeft.eraseDown.toBuffer(),
+  ansi.cursorUp.cursorLeft.eraseDown.bytes(),
 );
 ```
 
