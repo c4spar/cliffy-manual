@@ -170,6 +170,12 @@ $ deno run https://deno.land/x/cliffy/examples/command/action_handler.ts rm dir
 remove dir
 ```
 
+## Global action handler
+
+A global action handler works similar to the normal action handler but is called
+when the command or any child command is executed and can be registered with the
+`.globalAction()` method.
+
 ## Use raw args
 
 When `.useRawArgs()` is called, all options and arguments are passed as raw
