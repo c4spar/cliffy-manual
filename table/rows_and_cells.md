@@ -8,11 +8,11 @@ the `Row` and `Cell` class. The `Row` class is also an `Array` class like the
 import { Cell, Row, Table } from "https://deno.land/x/cliffy/table/mod.ts";
 
 new Table()
-  .header(Row.from(["Name", "Date", "City", "Country"]).border(true))
+  .header(Row.from(["Name", "Date", "City", "Country"]).border())
   .body([
     [
       "Baxter Herman",
-      new Cell("Oct 1, 2020").border(true),
+      new Cell("Oct 1, 2020").border(),
       "Row 1 Column 3",
       "Harderwijk",
       "Slovenia",
@@ -101,7 +101,7 @@ Table.from([
   ],
   ["Row 6 Column 1", undefined, undefined],
 ])
-  .border(true)
+  .border()
   .render();
 ```
 
@@ -126,7 +126,7 @@ Table.from([
   ["Row 5 Column 1", new Cell("Row 5 & 6 Column 2 & 3").rowSpan(2).colSpan(2)],
   ["Row 6 Column 1"],
 ])
-  .border(true)
+  .border()
   .render();
 ```
 

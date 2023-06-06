@@ -17,7 +17,7 @@ new Table()
   .maxColWidth(10)
   .padding(1)
   .indent(2)
-  .border(true)
+  .border()
   .render();
 ```
 
@@ -60,6 +60,51 @@ $ deno run https://deno.land/x/cliffy/examples/table/header_and_body.ts
 ```
 
 ![](assets/img/header_and_body.gif)
+
+## Columns
+
+The `.columns(columns)` method can be used to set column options of multiple
+columns. All available column options can be found [here](./columns.md).
+
+```ts
+import { Table } from "https://deno.land/x/cliffy/table/mod.ts";
+
+new Table()
+  .body([
+    ["Baxter Herman", "Oct 1, 2020", "Harderwijk", "Slovenia"],
+    ["Jescie Wolfe", "Dec 4, 2020", "Alto Hospicio", "Japan"],
+    ["Allegra Cleveland", "Apr 16, 2020", "Avernas-le-Bauduin", "Samoa"],
+    ["Aretha Gamble", "Feb 22, 2021", "Honolulu", "Georgia"],
+  ])
+  .columns([
+    { border: true },
+    new Column().align("right"),
+  ])
+  .render();
+```
+
+## Column
+
+With the `.column(index, options)` method you can set options for a single
+column at a specific index. All available column options can be found
+[here](./columns.md).
+
+```ts
+import { Column, Table } from "https://deno.land/x/cliffy/table/mod.ts";
+
+new Table()
+  .body([
+    ["Baxter Herman", "Oct 1, 2020", "Harderwijk", "Slovenia"],
+    ["Jescie Wolfe", "Dec 4, 2020", "Alto Hospicio", "Japan"],
+    ["Allegra Cleveland", "Apr 16, 2020", "Avernas-le-Bauduin", "Samoa"],
+    ["Aretha Gamble", "Feb 22, 2021", "Honolulu", "Georgia"],
+  ])
+  .column(0, {
+    border: true,
+  })
+  .column(1, new Column().align("right"))
+  .render();
+```
 
 ## Render
 
