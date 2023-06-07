@@ -56,6 +56,9 @@ await new Command()
 By calling `<command> completions <shell>`, the command will output the
 completions script fo the specified shell to stdout.
 
+Each shell command provides also a `--name` option which allows you to override
+the command name: `<command> completions <shell> --name <my-command>`
+
 ### Bash Completions
 
 To add support for bash completions you can either register the
