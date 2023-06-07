@@ -50,3 +50,13 @@ With the `indent` option you can change the prompt indentation. Default is
 The `cbreak` option enables pass-through of os signals to deno, allowing you to
 register your own signal handler. Read more about os signals
 [here](../os_signals.md).
+
+### Reader
+
+With the `reader` option you can change the input stream which defaults to
+`Deno.stdin`.
+
+### Writer
+
+With the `writer` option you can change the output stream which defaults to
+`Deno.stdout`.
