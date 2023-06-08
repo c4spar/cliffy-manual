@@ -67,7 +67,8 @@ You can change the search input label with the `searchLabel` option.
 
 ### Child options
 
-An array of child options.
+The `options` option allows you to group options together. It accepts an array
+of child options, of which you can nest as many as you want.
 
 ```ts
 const title: string = await Select.prompt({

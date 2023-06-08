@@ -93,7 +93,8 @@ Change the uncheck icon.
 
 ### Child options
 
-An array of child options.
+The `options` option allows you to group options together. It accepts an array
+of child options, of which you can nest as many as you want.
 
 ```ts
 const title: Array<string> = await Checkbox.prompt({
