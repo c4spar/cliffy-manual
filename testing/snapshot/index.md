@@ -65,6 +65,28 @@ await snapshotTest({
 });
 ```
 
+You can use this to create snapshot tests for commands.
+
+```ts
+import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
+
+await snapshotTest({
+  name: "should execute the command with the --foo option",
+  meta: import.meta,
+  args: ["--foo", "bar"],
+  async fn() {
+    await new Command()
+      .name("example")
+      .description("Example command.")
+      .option("-f, --foo <bar:string>", "Example option.")
+      .action(({ foo }) => {
+        console.log("foo: %s", foo);
+      })
+      .parse();
+  },
+});
+```
+
 ### Stdin
 
 The `snapshotTest` method can inject data to the test function with the `stdin`
@@ -87,6 +109,30 @@ await snapshotTest({
         break;
       }
     }
+    console.log("name:", name);
+  },
+});
+```
+
+You can use this to create snapshot tests for prompts. The `ansi` module can be
+used to generate escape sequences to control the prompt.
+
+```ts
+import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
+
+await snapshotTest({
+  name: "should select a color",
+  meta: import.meta,
+  stdin: ansi
+    .cursorDown
+    .cursorDown
+    .text("\n")
+    .toArray(),
+  async fn() {
+    const name = await Select.prompt({
+      message: "Select a color",
+      options: ["red", "green", "blue"],
+    });
     console.log("name:", name);
   },
 });
