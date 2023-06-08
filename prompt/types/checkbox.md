@@ -97,6 +97,8 @@ The `options` option allows you to group options together. It accepts an array
 of child options, of which you can nest as many as you want.
 
 ```ts
+import { Checkbox } from "https://deno.land/x/cliffy/prompt/checkbox.ts";
+
 const title: Array<string> = await Checkbox.prompt({
   message: "Pick some books",
   search: true,

@@ -71,6 +71,8 @@ The `options` option allows you to group options together. It accepts an array
 of child options, of which you can nest as many as you want.
 
 ```ts
+import { Select } from "https://deno.land/x/cliffy/prompt/select.ts";
+
 const title: string = await Select.prompt({
   message: "Pick a book",
   search: true,
