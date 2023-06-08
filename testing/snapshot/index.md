@@ -121,6 +121,7 @@ used to generate escape sequences to control the prompt.
 ```ts
 import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
 import { Select } from "https://deno.land/x/cliffy/prompt/mod.ts";
+import { ansi } from "https://deno.land/x/cliffy/ansi/mod.ts";
 
 await snapshotTest({
   name: "should select a color",
