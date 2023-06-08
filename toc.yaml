@@ -44,6 +44,7 @@
       name: Table
       children:
         /options: Table options
+        /columns: Columns
         /rows-and-cells: Rows and cells
     /ansi:
       name: Ansi
