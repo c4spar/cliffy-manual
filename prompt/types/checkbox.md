@@ -32,7 +32,8 @@ prompt specific options.
 ### Checkbox options
 
 With the `options` option you specify an array of options. An option can be
-either a string or an options object.
+either a string or an options object. Options can be also nested, see
+[options](#child-options).
 
 #### Checkbox option
 
@@ -89,3 +90,45 @@ Change the check icon.
 ### uncheck
 
 Change the uncheck icon.
+
+### Child options
+
+An array of child options.
+
+```ts
+const title: Array<string> = await Checkbox.prompt({
+  message: "Pick some books",
+  search: true,
+  options: [
+    {
+      name: "Harry Potter",
+      options: [
+        "Harry Potter and the Philosopher's Stone",
+        "Harry Potter and the Chamber of Secrets",
+        "Harry Potter and the Prisoner of Azkaban",
+        "Harry Potter and the Goblet of Fire",
+        "Harry Potter and the Order of the Phoenix",
+        "Harry Potter and the Half-Blood Prince",
+        "Harry Potter and the Deathly Hallows",
+      ],
+    },
+    {
+      name: "Middle-Earth",
+      options: [
+        "The Hobbit",
+        {
+          name: "The Lord of the Rings",
+          options: [
+            "The Fellowship of the Ring",
+            "The Two Towers",
+            "The Return of the King",
+          ],
+        },
+        "Silmarillion",
+      ],
+    },
+  ],
+});
+
+console.log({ title });
+```
