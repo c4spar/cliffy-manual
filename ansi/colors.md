@@ -18,7 +18,7 @@ $ deno run https://deno.land/x/cliffy/examples/ansi/colors.ts
 
 ## Themes
 
-You can create your own re-usable themes just bei storing your styles into a
+You can create your own re-usable themes just by storing your styles into a
 variable.
 
 ```typescript
