@@ -25,7 +25,7 @@ have separate options for `stdin` and `args`. (see
 ## denoArgs
 
 Arguments passed to the `deno test` command when executing the snapshot tests.
-`--allow-env=ASSERT_SNAPSHOT_CALL` is passed by default.
+`--allow-env=SNAPSHOT_TEST_NAME` is passed by default.
 
 ## dir
 
