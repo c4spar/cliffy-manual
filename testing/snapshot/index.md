@@ -69,6 +69,7 @@ You can use this to create snapshot tests for commands.
 
 ```ts
 import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 await snapshotTest({
   name: "should execute the command with the --foo option",
@@ -119,6 +120,7 @@ used to generate escape sequences to control the prompt.
 
 ```ts
 import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { Select } from "https://deno.land/x/cliffy/prompt/mod.ts";
 
 await snapshotTest({
   name: "should select a color",
