@@ -25,7 +25,8 @@ new Table()
 
 ### Border
 
-You can enable/disable the border by using the `.border()` method.
+You can enable/disable the border by using the `.border()` method which accepts
+an optional boolean value.
 
 ### Align column content
 
@@ -38,9 +39,14 @@ direction. Possible values are:
 
 ### Column width
 
-You can set the min/max with of columns with the `.minColWidth()` and
+You can set the min and max width of columns with the `.minColWidth()` and
 `.maxColWidth()` methods.
 
 ### Cell padding
 
 The `.padding()` method adds padding to all cell's in this column.
+
+### Set multiple options
+
+The `.options()` method allows you to set multiple options at once by passing an
+options bag to the `.options()` method.
