@@ -67,7 +67,7 @@ The `.columns(columns)` method can be used to set column options of multiple
 columns. All available column options can be found [here](./columns.md).
 
 ```ts
-import { Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Column, Table } from "https://deno.land/x/cliffy/table/mod.ts";
 
 new Table()
   .body([
