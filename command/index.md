@@ -3,7 +3,7 @@
 The complete and type safe solution for building command-line interfaces.
 
 The command module supports type safe options and arguments, input validation,
-auto generated help, build-in shell completions, and more.
+auto generated help, built-in shell completions, and more.
 
 ## Usage
 

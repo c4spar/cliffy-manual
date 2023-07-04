@@ -11,7 +11,7 @@
         /environment-variables: Environment variables
         /help: Help
         /shell-completions: Shell completions
-        /build-in-commands: Build-in commands
+        /built-in-commands: Built-in commands
         /error-handling: Error handling
         /generics: Generics
         /others: Others

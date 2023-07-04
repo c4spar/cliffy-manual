@@ -143,7 +143,7 @@ If your cli needs some permissions you can specify the permissions with the
 
 ### Providers
 
-There are three build in providers: `deno.land`, `nest.land` and `github`. If
+There are three built-in providers: `deno.land`, `nest.land` and `github`. If
 multiple providers are registered, you can specify the registry that should be
 used with the `--registry` option. The github provider can also be used to
 `upgrade` to any git branch.

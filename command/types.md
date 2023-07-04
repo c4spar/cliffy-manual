@@ -9,7 +9,7 @@ Types can be declared after the argument name, separated by colon `<name:type>`.
 If no type is specified, the type defaults to `string`. If an option with no
 arguments is defined the type defaults to `true`.
 
-## Build-in types
+## Built-in types
 
 Following types are available by default on all commands.
 

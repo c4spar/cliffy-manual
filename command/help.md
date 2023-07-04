@@ -5,7 +5,7 @@ on your commands. The name, version, description, meta information, options,
 commands, environment variables and examples are displayed in the help.
 
 To display the help you can invoke the [help option](#help-option) (`-h` or
-`--help`) or the [help command](./build_in_commands.md#help-command) (`help`) on
+`--help`) or the [help command](./built_in_commands.md#help-command) (`help`) on
 the main or on one of the sub commands. The `help` command needs to be
 registered manually.
 
@@ -128,7 +128,7 @@ description. With the long flag (`--help`) the full description is printed for
 each option and command.
 
 Optionally you can also register the pre-defined
-[help](./build_in_commands.md#help-command) command to display the help.
+[help](./built_in_commands.md#help-command) command to display the help.
 
 ### Customize help option
 

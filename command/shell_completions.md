@@ -2,14 +2,14 @@
 
 Cliffy supports shell completion out of the box. To enable shell completions it
 is required to register the
-[completions](./build_in_commands.md#completions-command) command.
+[completions](./built_in_commands.md#completions-command) command.
 
 The completions command generates a shell completions script for your specific
 shell environment. Currently supported shells are:
 
-- [bash](./build_in_commands.md#bash-completions)
-- [fish](./build_in_commands.md#fish-completions)
-- [zsh](./build_in_commands.md#zsh-completions)
+- [bash](./built_in_commands.md#bash-completions)
+- [fish](./built_in_commands.md#fish-completions)
+- [zsh](./built_in_commands.md#zsh-completions)
 
 The completions script enables completions for all sub-commands, options and
 arguments.
