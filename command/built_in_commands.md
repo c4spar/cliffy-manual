@@ -1,4 +1,4 @@
-# Build-in commands
+# Built-in commands
 
 Cliffy provides some predefined commands like `help`, `completions` and
 `upgrade`. These commands are optional and must be registered manually if you
