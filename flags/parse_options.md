@@ -14,7 +14,7 @@ With the `parse` method you can add a custom handler for handling and parsing
 types.
 
 > ❗ The `parse` method will be called for all types, which means it overrides
-> also all build in types!
+> also all built-in types!
 
 ```typescript
 import {

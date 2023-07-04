@@ -2,7 +2,7 @@
 
 ## Did you mean
 
-Cliffy has build-in _did-you-mean_ support to improve the user and developer
+Cliffy has built-in _did-you-mean_ support to improve the user and developer
 experience. For example, cliffy prints some suggestions, when the user executes
 an invalid command, or the developer has a typo in the name of a type.
 

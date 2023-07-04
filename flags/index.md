@@ -1,6 +1,6 @@
 # Flags
 
-Command line arguments parser with build-in validations.
+Command line arguments parser with built-in validations.
 
 ## Usage
 
