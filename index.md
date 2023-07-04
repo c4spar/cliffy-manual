@@ -6,10 +6,7 @@ lets you easily create complex command line interfaces and the
 [prompt](./prompt/index.md) module which provides beautiful and feature rich cli
 prompts.
 
-Cliffy is available on following registries and on github:
-
-- [deno.land](https://deno.land/x/cliffy/)
-- [nest.land](https://nest.land/package/cliffy/)
-- [Github](https://github.com/c4spar/deno-cliffy/)
+Cliffy is published to [deno.land](https://deno.land/x/cliffy/) and the source
+code is available on [Github](https://github.com/c4spar/deno-cliffy/).
 
 Choose the module you want to start with 🚀
