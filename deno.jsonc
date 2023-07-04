@@ -1,4 +1,5 @@
 {
+  "lock": false,
   "importMap": "import_map.json",
   "tasks": {
     "check": "deno lint & deno fmt --check & deno test --doc",
