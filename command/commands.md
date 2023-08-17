@@ -315,6 +315,20 @@ await new Command()
 $ deno run https://deno.land/x/cliffy/examples/command/hidden_commands.ts -h
 ```
 
+## Command alias
+
+With the `.alias()` method you can define an alias for the command name.
+
+```ts
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
+await new Command()
+  .command("install")
+  .alias("i")
+  .action(() => console.log("Install..."))
+  .parse();
+```
+
 ## Parse
 
 The `.parse()` method processes all arguments, leaving any options and
@@ -330,7 +344,7 @@ The parse method accepts optionally as first argument an array of command-line
 arguments that should be consumed. By default `Deno.args` is used.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 const { args, options, literal, cmd } = await new Command()
   .env("DEBUG", "Enable debugging.")
