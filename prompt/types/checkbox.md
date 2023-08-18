@@ -100,6 +100,15 @@ group option to any string value.
 
 Change the uncheck icon.
 
+### Confirm submit
+
+If `confirmSubmit` is enabled, the user needs to press enter twice to submit.
+Default is `true`.
+
+### Display usage info
+
+The `info` option enables the info bar which displays some usage information.
+
 ### Child options
 
 The `options` option allows you to group options together. It accepts an array
@@ -145,11 +154,31 @@ const title: Array<string> = await Checkbox.prompt({
 console.log({ title });
 ```
 
-### Confirm submit
+#### Max breadcrumb items
 
-If `confirmSubmit` is enabled, the user needs to press enter twice to submit.
-Default is `true`.
+The `maxBreadcrumbItems` option limits the maximum number of breadcrumb items
+which will be displayed.
 
-### Display usage info
+#### Breadcrumb separator
 
-The `info` option enables the info bar which displays some usage information.
+with the `breadcrumbSeparator` option the breadcrumb separator can be changed.
+
+#### Back pointer
+
+With the `backPointer` option you can change the icon of the _back_ option to
+any string value.
+
+#### Group pointer
+
+With the `groupPointer` option you can change the pointer of _group_ options to
+any string value.
+
+#### Group icon
+
+With the `groupIcon` option you can change the icon of _group_ options to any
+string value.
+
+#### Group open icon
+
+With the `groupOpenIcon` option you can change the icon of _opened group_
+options to any string value.
