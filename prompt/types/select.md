@@ -65,6 +65,10 @@ option is useful if you have a large list of options.
 
 You can change the search input label with the `searchLabel` option.
 
+### Display usage info
+
+The `info` option enables the info bar which displays some usage information.
+
 ### Child options
 
 The `options` option allows you to group options together. It accepts an array
@@ -109,3 +113,32 @@ const title: string = await Select.prompt({
 
 console.log({ title });
 ```
+
+#### Max breadcrumb items
+
+The `maxBreadcrumbItems` option limits the maximum number of breadcrumb items
+which will be displayed.
+
+#### Breadcrumb separator
+
+with the `breadcrumbSeparator` option the breadcrumb separator can be changed.
+
+#### Back pointer
+
+With the `backPointer` option you can change the icon of the _back_ option to
+any string value.
+
+#### Group pointer
+
+With the `groupPointer` option you can change the pointer of _group_ options to
+any string value.
+
+#### Group icon
+
+With the `groupIcon` option you can change the icon of _group_ options to any
+string value.
+
+#### Group open icon
+
+With the `groupOpenIcon` option you can change the icon of _opened group_
+options to any string value.
