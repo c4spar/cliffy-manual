@@ -70,3 +70,9 @@ const color: number = await Number.prompt({
 
 console.log({ color });
 ```
+
+#### List completions
+
+If the `list` option is set to `true`, possible suggestions are displayed as
+list below the prompt. The maximum number of displayed rows can be changed with
+the `maxRows` option which defaults to `8`.
