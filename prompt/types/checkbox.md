@@ -83,11 +83,20 @@ option is useful if you have a large list of options.
 
 You can change the search input label with the `searchLabel` option.
 
-### check
+### check icon
 
-Change the check icon.
+With the `check` option you can change the icon of a selected option to any
+string value.
 
-### uncheck
+### uncheck icon
+
+With the `uncheck` option you can change the icon of a unselected option to any
+string value.
+
+### Partial check icon
+
+With the `partialCheck` option you can change the icon of a partial selected
+group option to any string value.
 
 Change the uncheck icon.
 
