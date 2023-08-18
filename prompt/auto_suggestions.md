@@ -57,6 +57,12 @@ time the prompt is used.
 > ❕ The `id` option requires deno >= `1.10` and the `--location` flag. Since
 > deno `1.16.0` the `--location` flag is optional.
 
+### Path completions
+
+To enable path completions for relative and absolute files, set the `files`
+option to `true`. Path completions is only available for `Input` and `List`
+prompts.
+
 ### Suggestions list
 
 With the `list` option you can display a list of suggestions. Matched

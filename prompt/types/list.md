@@ -91,14 +91,3 @@ $ deno run https://deno.land/x/cliffy/examples/prompt/suggestions_list_prompt.ts
 ```
 
 ![](../assets/img/suggestions_list_prompt.gif)
-
-#### Path completions
-
-To enable path completions for relative and absolute files, set the `files`
-option to `true`.
-
-#### List completions
-
-If the `list` option is set to `true`, possible suggestions are displayed as
-list below the prompt. The maximum number of displayed rows can be changed with
-the `maxRows` option which defaults to `8`.
