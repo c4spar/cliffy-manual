@@ -38,14 +38,16 @@ await new Command()
 ## Complete method
 
 Another way to add completions is by registering a completions action with the
-`.complete()` method. The values returned by the `.complete()` method will be
-used for shell completions.
+`.complete()` or `.globalComplete()` method. The values returned by the callback
+method from the`.complete()` or `.globalComplete()` method will be used for
+shell completions.
 
 To use these completions you can add the name of the action after the type
 separated by colon.
 
-> ❗ Completions defined with the `.complete()` method will override the
-> completions defined with a type.
+> ❗ Completions defined with the `.complete()` or `.globalComplete()` method
+> will override completions defined with the `.type()` or `.globalType()`
+> method.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
