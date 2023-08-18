@@ -38,7 +38,10 @@
         /dynamic-prompts: Dynamic prompts
         /auto-suggestions: Auto suggestions
         /os-signals: OS signals
-    /keycode: Keycode
+    /keycode:
+      name: Keycode
+      children:
+        /keycode: Keycode Properties
     /keypress: Keypress
     /table:
       name: Table

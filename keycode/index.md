@@ -5,7 +5,7 @@ ANSI key code parser.
 ## Usage
 
 The `keycode` module exports a `parse()` method which accepts an ansi string and
-return an array of `KeyCode`.
+return an array of [`KeyCode`](./keycode.md).
 
 ```typescript
 import { parse } from "https://deno.land/x/cliffy/keycode/mod.ts";
