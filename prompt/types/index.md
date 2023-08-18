@@ -35,12 +35,24 @@ as first argument the sanitized user input.
 
 ### Info message
 
-With the `hint` option you can display a info message that is displayed below
+With the `hint` option you can display an info message that is displayed below
 the prompt.
 
 ### Pointer icon
 
-The `pointer` option lets you change the pointer icon.
+With the `pointer` option the pointer icon can be changed.
+
+```ts
+import { colors } from "https://deno.land/x/cliffy/ansi/colors.ts";
+import { Input } from "https://deno.land/x/cliffy/prompt/input.ts";
+
+const result: string = await Input.prompt({
+  message: "Say hallo!",
+  pointer: colors.bold.brightBlue("-->"),
+});
+
+console.log({ result });
+```
 
 ### Prompt indentation
 
