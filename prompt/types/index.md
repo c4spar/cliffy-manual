@@ -14,6 +14,11 @@ is required for all prompts.
 You can set a default value with the `default` option. The type depends on the
 prompt type.
 
+### Hide default value
+
+By default the default value is displayed in the prompt. To hide the default
+value, you can set the `hideDefault` option to `true`.
+
 ### Transform displayed value
 
 The `transform` callback option lets you transform the value to display. The
