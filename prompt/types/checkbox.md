@@ -149,3 +149,7 @@ console.log({ title });
 
 If `confirmSubmit` is enabled, the user needs to press enter twice to submit.
 Default is `true`.
+
+### Display usage info
+
+The `info` option enables the info bar which displays some usage information.
