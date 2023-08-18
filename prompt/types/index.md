@@ -68,6 +68,12 @@ The `cbreak` option enables pass-through of os signals to deno, allowing you to
 register your own signal handler. Read more about os signals
 [here](../os_signals.md).
 
+### Prefix
+
+By default each prompt message is prefixed with `yellow("? ")`. The prefix can
+be change with the `prefix` option. The value supports ansi color codes. To
+disable the prefix, set the `prefix` option to an empty string `""`.
+
 ### Reader
 
 With the `reader` option you can change the input stream which defaults to
