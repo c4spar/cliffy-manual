@@ -80,3 +80,8 @@ $ deno run https://deno.land/x/cliffy/examples/prompt/suggestions_list_prompt.ts
 ```
 
 ![](../assets/img/suggestions.gif)
+
+#### Path completions
+
+To enable path completions for relative and absolute files, set the `files`
+option to `true`.
