@@ -3,7 +3,7 @@
 ## Flags
 
 By default the `parseFlags` method parses all flags and tries to autodetect the
-type. With the `flags` options you can specify an Array of flags options. If the
+type. With the `flags` option you can specify an Array of flag options. If the
 `flags` option is set the `parseFlags` method will throw an error for all
 unknown or invalid flags. You can find a list of all possible flag options
 [here](./flag_options.md).

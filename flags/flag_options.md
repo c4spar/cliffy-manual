@@ -21,13 +21,13 @@ boolean value.
 
 ## Optional value
 
-by default for all options with a defined type the value is required. You can
-make the value optional by setting `optionalValue` to `true`.
+by default the value is required for all options with an explicitly defined
+type. You can make the value optional by setting `optionalValue` to `true`.
 
 ## Variadic value
 
 You can make an argument variadic with the `variadic` option. A variadic value
-can appear multiple times.
+can occur multiple times and is collected in an array.
 
 ## List value
 
@@ -44,10 +44,14 @@ You can specify some aliases for the flag with the `aliases` option.
 If `standalone` is set to `true`, this option cannot be combined with other
 options.
 
+If the `standalone` option is set to `true`, the option cannot be combined with
+other options. If additionally an option action handler is defined, only the
+option action handler is executed and not the command action handler.
+
 ## Default
 
-With the `default` option you specify the default value of the flag when the
-flag is not specified on comandline.
+The `default` option specifies the default value for the flag when the flag is
+not specified on commandline.
 
 ## Required
 
@@ -144,10 +148,10 @@ $ deno run https://deno.land/x/cliffy/examples/flags/value.ts --value foo
 ## Args
 
 The `args` array can be used if the flag has multiple values. Following options
-are available in the `args` array.
+can be set for each argument:
 
 - [type](#type)
-- [optionalValue](#optional-value)
+- optional (see [optionalValue](#optional-value))
 - [variadic](#variadic-value)
 - [list](#list-value)
 
