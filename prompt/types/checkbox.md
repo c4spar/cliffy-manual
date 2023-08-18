@@ -135,3 +135,8 @@ const title: Array<string> = await Checkbox.prompt({
 
 console.log({ title });
 ```
+
+### Confirm submit
+
+If `confirmSubmit` is enabled, the user needs to press enter twice to submit.
+Default is `true`.
