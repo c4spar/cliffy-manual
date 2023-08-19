@@ -18,6 +18,11 @@ The `KeyCode` interface represents a parsed ansi sequence:
 The `name` property defines the name of the key code. The type is
 `string | undefined`.
 
+### Char
+
+The `char` property defines the pressed character of the key code. The type is
+`string | undefined`.
+
 ### Sequence
 
 The `sequence` property defines the ansi sequence of the key code. The type is
@@ -42,8 +47,3 @@ The `meta` property defines whether the meta key is pressed or not. The type is
 
 The `shift` property defines whether the shift key is pressed or not. The type
 is `boolean | undefined`.
-
-### Char
-
-The `char` property defines the pressed character of the key code. The type is
-`string | undefined`.
