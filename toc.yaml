@@ -41,8 +41,11 @@
     /keycode:
       name: Keycode
       children:
-        /keycode: Keycode Properties
-    /keypress: Keypress
+        /keycode: Keycode
+    /keypress:
+      name: Keypress
+      children:
+        /keypress-event: Keypress Event
     /table:
       name: Table
       children:
