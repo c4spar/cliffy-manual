@@ -80,15 +80,12 @@ await new Command()
   .env("DEBUG=<enable:boolean>", "Enable debug output.")
   .option("-d, --debug", "Enable debug output.")
   .option("-l, --log-level <level:log-level>", "Set log level.", {
-    default: "info" as const,
+    default: "info",
   })
   .arguments("<input:string> [output:string]")
   .action((options, ...args) => {})
   .parse(Deno.args);
 ```
-
-> `"info" as const` is required to prevent `"info"` from being converted to type
-> `string`. With `as const` you make sure that the type will be `"info"`.
 
 The type of the options object will look like this:
 
