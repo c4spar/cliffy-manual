@@ -59,6 +59,24 @@ await new Command()
   .parse(Deno.args);
 ```
 
+## Command Literal Arguments
+
+For arguments with `--` the following can be used.
+
+```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
+const clone = new Command()
+  .action(function (options: any) {
+     const literals = this.getLiteralArgs()
+     // literals == ["--string_with_dashes--"]
+     console.log(`got these additional arguments: ${JSON.stringify(literals)}`);
+  });
+
+await new Command()
+  .parse(["something", "--", "--string_with_dashes--"]);
+```
+
 ## Executable commands
 
 > ⚠️ This is currently work in progress and in an experimental state!
