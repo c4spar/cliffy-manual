@@ -67,6 +67,7 @@ For arguments with `--` the following can be used.
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 const clone = new Command()
+  .arguments("[...args:string]")
   .action(function (options: any) {
      const literals = this.getLiteralArgs()
      // literals == ["--string_with_dashes--"]
