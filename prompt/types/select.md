@@ -33,7 +33,7 @@ specific options.
 
 With the `options` option you specify an array of options. An option can be
 either a string or an options object. Options can be also nested, see
-[options](#child-options).
+[child options](#child-options).
 
 #### Select option
 

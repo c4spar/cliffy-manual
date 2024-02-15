@@ -4,7 +4,7 @@ Options are defined with the `.option()` method and can be accessed as
 properties on the options object which is passed to the `.action()` handler and
 returned by the `.parse()` method.
 
-With the first argument of the `.options()` method you define the option names
+With the first argument of the `.option()` method you define the option names
 and arguments. Each option can have multiple short and long flags, separated by
 comma. The name of the first long flag will be unused as an option name. If no
 long flag is provided the first short flag will be used.
@@ -14,7 +14,7 @@ Multi-word options such as `--template-engine` are camel-cased to
 example `-abc` is equivalent to `-a -b -c` and `-n5` is equivalent to `-n 5` and
 `-n=5`.
 
-The second parameter of the `.options()` method is the description and the third
+The second parameter of the `.option()` method is the description and the third
 parameter can be an options object.
 
 ## Arguments
