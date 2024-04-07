@@ -53,7 +53,7 @@ error: Uncaught Error: Option "--foo" must be of type "float", but got "abc".
 
 ## Option callback
 
-The `option` callback method option is called for each parsed option.
+The `option` callback method is called for each parsed option.
 
 ## Stop early
 
