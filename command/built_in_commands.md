@@ -141,7 +141,7 @@ If your cli needs some permissions, you can specify the permissions with the
 `args` option which are passed to `deno install`.
 
 > - When `args` is defined, `--force` and `--name` is set by default.
-> - When `args` is not defined, `--fore`, `--name`, `--quiet` and `--no-check`
+> - When `args` is not defined, `--force`, `--name`, `--quiet` and `--no-check`
   > is set by default.
 
 ### Providers

@@ -12,7 +12,7 @@ also defined with the `.description()` method.
 > action will be registered to the sub command and not to your main command. You
 > can use the `.reset()` method to get the instance of the parent command back.
 
-There are three ways to specify sub-commands with the `.command()` method which
+There are two ways to specify sub-commands with the `.command()` method which
 are explained in the following section.
 
 ## Chained commands
@@ -59,25 +59,28 @@ await new Command()
   .parse(Deno.args);
 ```
 
-## Executable commands
+## Command Literal Arguments
 
-> ⚠️ This is currently work in progress and in an experimental state!
-
-When `.executable()` is invoked on a sub-command, this tells cliffy you're going
-to use a separate executable file for the sub-command. Cliffy will look for a
-globally installed program with the name program-sub-command, like
-`deno-install`, `deno-upgrade`.
-
-You handle the options for an executable (sub)command in the executable, and
-don't declare them at the top-level.
+For arguments with `--` the following can be used.
 
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 await new Command()
-  .command("install [name]", "install one or more packages").executable()
-  .command("search [query]", "search with optional query").executable()
-  .command("update", "update installed packages").executable()
-  .command("list", "list packages installed").executable()
-  .parse(Deno.args);
+  .name("my-command")
+  .arguments("[...args:string]")
+  .option("--foo", "Foo option.")
+  .action(function (options, ...args: Array<string>) {
+    console.log("Options:", options);
+    console.log("Arguments:", args);
+    console.log("Literal arguments:", this.getLiteralArgs());
+  })
+  .parse();
+```
+
+```console
+$ my-command --foo bar -- --baz
+Options: { foo: true }
+Arguments: [ "bar" ]
+Literal arguments: [ "--baz" ]
 ```
