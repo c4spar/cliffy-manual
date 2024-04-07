@@ -58,3 +58,29 @@ await new Command()
   .command("clone", clone)
   .parse(Deno.args);
 ```
+
+## Command Literal Arguments
+
+For arguments with `--` the following can be used.
+
+```typescript
+import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+
+await new Command()
+  .name("my-command")
+  .arguments("[...args:string]")
+  .option("--foo", "Foo option.")
+  .action(function (options, ...args: Array<string>) {
+    console.log("Options:", options);
+    console.log("Arguments:", args);
+    console.log("Literal arguments:", this.getLiteralArgs());
+  })
+  .parse();
+```
+
+```console
+$ my-command --foo bar -- --baz
+Options: { foo: true }
+Arguments: [ "bar" ]
+Literal arguments: [ "--baz" ]
+```
