@@ -66,14 +66,21 @@ For arguments with `--` the following can be used.
 ```typescript
 import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
-const clone = new Command()
-  .arguments("[...args:string]")
-  .action(function () {
-     const literals = this.getLiteralArgs()
-     // literals == ["--string_with_dashes--"]
-     console.log(`got these additional arguments: ${JSON.stringify(literals)}`);
-  });
-
 await new Command()
-  .parse(["something", "--", "--string_with_dashes--"]);
+  .name("my-command")
+  .arguments("[...args:string]")
+  .option("--foo", "Foo option.")
+  .action(function (options, ...args: Array<string>) {
+    console.log("Options:", options);
+    console.log("Arguments:", args);
+    console.log("Literal arguments:", this.getLiteralArgs());
+  })
+  .parse();
+```
+
+```console
+$ my-command --foo bar -- --baz
+Options: { foo: true }
+Arguments: [ "bar" ]
+Literal arguments: [ "--baz" ]
 ```
