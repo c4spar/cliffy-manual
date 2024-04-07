@@ -140,7 +140,7 @@ await new Command()
 ```
 
 > To make types, options and environment variables also available on child
-> commands you can use the [.globalOptions()](./options.md#global-options),
+> commands you can use the [.globalOption()](./options.md#global-options),
 > [.globalEnv()](./environment_variables.md#global-environment-variables) and
 > [.globalType()](./types.md#global-types) methods.
 
