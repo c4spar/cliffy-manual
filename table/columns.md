@@ -46,7 +46,7 @@ You can set the min and max width of columns with the `.minColWidth()` and
 
 The `.padding()` method adds padding to all cell's in this column.
 
-<!-- ### Set multiple options
+### Set multiple options
 
 The `.options()` method allows you to set multiple options at once by passing an
 options bag to the `.options()` method. -->
