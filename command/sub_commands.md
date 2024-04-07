@@ -68,7 +68,7 @@ import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
 
 const clone = new Command()
   .arguments("[...args:string]")
-  .action(function (options: any) {
+  .action(function () {
      const literals = this.getLiteralArgs()
      // literals == ["--string_with_dashes--"]
      console.log(`got these additional arguments: ${JSON.stringify(literals)}`);
