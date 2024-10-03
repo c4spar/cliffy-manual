@@ -38,7 +38,7 @@ $ deno run https://deno.land/x/cliffy/examples/command/help_option_and_command.t
 
 ## Completions command
 
-The `CompetionsCommand` includes sub commands for all supported shell
+The `CompletionsCommand` includes sub commands for all supported shell
 environments. The sub commands generates the shell completions script and
 outputs it to stdout. The completions command must be registered manually.
 
@@ -62,7 +62,7 @@ the command name: `<command> completions <shell> --name <my-command>`
 ### Bash Completions
 
 To add support for bash completions you can either register the
-`CompetionsCommand` or directly the `BashCompetionsCommand`.
+`CompletionsCommand` or directly the `BashCompletionsCommand`.
 
 To enable bash completions add the following line to your `~/.bashrc`:
 
@@ -75,7 +75,7 @@ source <(COMMAND completions bash)
 ### Fish Completions
 
 To add support for fish completions you can either register the
-`CompetionsCommand` or directly the `FishCompetionsCommand`.
+`CompletionsCommand` or directly the `FishCompletionsCommand`.
 
 To enable fish completions add the following line to your
 `~/.config/fish/config.fish`:
@@ -89,7 +89,7 @@ source (COMMAND completions fish | psub)
 ### Zsh Completions
 
 To add support for zsh completions you can either register the
-`CompetionsCommand` or directly the `ZshCompetionsCommand`.
+`CompletionsCommand` or directly the `ZshCompletionsCommand`.
 
 To enable zsh completions add the following line to your `~/.zshrc`:
 
