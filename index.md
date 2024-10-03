@@ -9,4 +9,10 @@ prompts.
 Cliffy is published to [deno.land](https://deno.land/x/cliffy/) and the source
 code is available on [Github](https://github.com/c4spar/deno-cliffy/).
 
+> Since
+> [v1.0.0-rc.4](https://github.com/c4spar/deno-cliffy/releases/tag/v1.0.0-rc.4)
+> cliffy is also published on [jsr.io](https://jsr.io/@cliffy). As soon as
+> jsr.io becomes stable, cliffy will probably only be published on jsr.io and no
+> longer on deno.land.
+
 Choose the module you want to start with 🚀
