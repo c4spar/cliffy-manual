@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/x/night_owl@v0.1.24/mod.ts";
+import { serve } from "https://deno.land/x/night_owl@v0.1.27/mod.ts";
 
 await serve({
   name: "Cliffy",

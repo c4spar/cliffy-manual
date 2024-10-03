@@ -131,10 +131,13 @@ With the `provider` option you specify which registries are supported. This
 option is required.
 
 The `main` option is the entry file of your cli. With the `name` option you can
-optional define the name of your cli which defaults to the name of your main
+optionally define the name of your cli which defaults to the name of your main
 file (`[name].ts`).
 
-If your cli needs some permissions you can specify the permissions with the
+> ❗️ The name cannot have spaces! If you use spaces, you (or your users!) will
+> get an error when upgrading.
+
+If your cli needs some permissions, you can specify the permissions with the
 `args` option which are passed to `deno install`.
 
 > - When `args` is defined, `--force` and `--name` is set by default.
