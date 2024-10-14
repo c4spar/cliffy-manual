@@ -43,8 +43,8 @@ the prompt.
 With the `pointer` option the pointer icon can be changed.
 
 ```ts
-import { colors } from "https://deno.land/x/cliffy/ansi/colors.ts";
-import { Input } from "https://deno.land/x/cliffy/prompt/input.ts";
+import { colors } from "@cliffy/ansi/colors";
+import { Input } from "@cliffy/prompt/input";
 
 const result: string = await Input.prompt({
   message: "Say hallo!",
@@ -61,7 +61,8 @@ With the `indent` option you can change the prompt indentation. Default is
 
 ### OS signals
 
-> ⚠️ The [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
+> ⚠️ The
+> [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
 > option works currently only on Linux and macOS!
 
 The `cbreak` option enables pass-through of os signals to deno, allowing you to

@@ -5,7 +5,7 @@ The `Confirm` prompt is a simple yes or no prompt.
 ![](../assets/img/confirm.gif)
 
 ```typescript
-import { Confirm } from "https://deno.land/x/cliffy/prompt/confirm.ts";
+import { Confirm } from "@cliffy/prompt/confirm.ts";
 
 const confirmed: boolean = await Confirm.prompt("Can you confirm?");
 ```

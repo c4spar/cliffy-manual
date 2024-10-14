@@ -13,7 +13,7 @@ To retrieve the help text programmatically you can use the
 [.showHelp()](#print-help) and [.getHelp()](#get-help) methods.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/command.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .name("help-option-and-command")
@@ -50,7 +50,7 @@ You can add some additional information to the help text with the
 `.meta(name, value)` method.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .name("example")
@@ -84,7 +84,7 @@ The `.help()` method can be used to disable or enable `types`, `hints` and
 `colors` for the auto generated help.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/command.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .help({
@@ -110,7 +110,7 @@ used by the help option and help command. The help handler will be also used for
 all sub command, but can be overridden in each sub command separately.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/command.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .help("My custom help")
@@ -139,7 +139,7 @@ action handler or an options object. The second and third arguments are
 optional.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .helpOption("-i, --info", "Print help info.", function (this: Command) {
@@ -152,7 +152,7 @@ You can also override the default options of the help option. The options are
 the same as for the `.option()` method.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .helpOption(" -x, --xhelp", "Print help info.", { global: true })
@@ -162,7 +162,7 @@ await new Command()
 To disable the help option you can pass false to the `.helpOption()` method.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .helpOption(false)
@@ -178,7 +178,7 @@ printed including command name and all meta data defined with the
 [.meta()](#additional-info) method.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .version("0.1.0")
@@ -200,7 +200,7 @@ argument can be an action handler or an options object. The second and third
 arguments are optional.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .version("0.1.0")
@@ -218,7 +218,7 @@ You can also override the default options of the version option. The options are
 the same as for the `.option()` method.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .version("0.1.0")
@@ -229,7 +229,7 @@ await new Command()
 The version option can be also disabled.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .versionOption(false)
@@ -242,8 +242,8 @@ You can add some examples for your command which will be displayed in the auto
 generated help.
 
 ```typescript
-import { red } from "https://deno.land/std/fmt/colors.ts";
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { red } from "@std/fmt/colors";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .name("examples")

@@ -18,7 +18,7 @@ and all flags specified after the double dash (`--`) are added to the `literal`
 array.
 
 ```typescript
-import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags } from "@cliffy/flags";
 
 console.log(parseFlags(Deno.args));
 ```
@@ -67,7 +67,7 @@ an `ValidationError` is thrown. Read more about error handling
 [here](./flag_options.md).
 
 ```typescript
-import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags } from "@cliffy/flags";
 
 const { flags } = parseFlags(Deno.args, {
   flags: [{
@@ -104,7 +104,7 @@ This can be used to parse command line flags in multiple steps, for example,
 when parsing options that precede a subcommand.
 
 ```ts
-import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags } from "@cliffy/flags";
 
 const globalFlags = [{
   name: "foo-global",

@@ -5,7 +5,7 @@ The `Secret` prompt is a hidden text input which doesn't diplay the input value.
 ![](../assets/img/secret.gif)
 
 ```typescript
-import { Secret } from "https://deno.land/x/cliffy/prompt/secret.ts";
+import { Secret } from "@cliffy/prompt/secret.ts";
 
 const password: string = await Secret.prompt("Enter your password");
 ```

@@ -20,7 +20,7 @@ Following types are available by default on all commands.
 - **file:** Same as string but adds support for path completion.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   // Env value must be always required.
@@ -57,7 +57,7 @@ text and types will be automatically inferred and applied to the values of the
 command options and arguments.
 
 ```typescript
-import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, EnumType } from "@cliffy/command";
 
 enum Animal {
   Dog = "dog",
@@ -104,7 +104,7 @@ items with the specified type. The default separator is `,` but can be changed
 with the `separator` option.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   // comma separated list
@@ -135,7 +135,7 @@ To make a type also available for child commands, you can use the
 in `.type()` method.
 
 ```typescript
-import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, EnumType } from "@cliffy/command";
 
 await new Command()
   .globalType("color", new EnumType(["red", "blue", "yellow"]))
@@ -164,10 +164,7 @@ the name of the type, the second can be either a function or an instance of
 This example shows you how to use a function as type handler.
 
 ```typescript
-import {
-  ArgumentValue,
-  Command,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command } from "@cliffy/command";
 
 const colors = ["red", "blue", "yellow"];
 
@@ -203,12 +200,7 @@ Error: Option "--color" must be a valid color, but got "green". Possible values 
 This example shows you how to create a custom type that extends the base `Type`.
 
 ```typescript
-import {
-  ArgumentValue,
-  Command,
-  Type,
-  ValidationError,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command, Type, ValidationError } from "@cliffy/command";
 
 class ColorType extends Type<string> {
   private readonly colors = ["red", "blue", "yellow"];
@@ -251,11 +243,7 @@ to your type. Read more about shell completions
 [here](./shell_completions.md#custom-type).
 
 ```ts
-import {
-  ArgumentValue,
-  Command,
-  Type,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command, Type } from "@cliffy/command";
 
 class ColorType extends Type<string> {
   complete(): Array<string> {
@@ -274,11 +262,7 @@ To override possible values listed in the auto generated help, you can add a
 `.values()` method to your custom type.
 
 ```ts
-import {
-  ArgumentValue,
-  Command,
-  Type,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command, Type } from "@cliffy/command";
 
 class ColorType extends Type<string> {
   values(): Array<string> {

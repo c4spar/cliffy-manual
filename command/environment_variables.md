@@ -17,7 +17,7 @@ will be parsed to `{ someEnvVar: true }`.
 > environment variable.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...")
@@ -40,7 +40,7 @@ global environment variables either with the `.env()` method and the `global`
 option or with the `.globalEnv()` method.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...", { global: true })
@@ -57,7 +57,7 @@ Required environment variables can be added with the `required` option. If a
 required environment variable is not defined on command line an error is thrown.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...", { required: true })
@@ -82,7 +82,7 @@ Hidden environment variables can be added with the `hidden` option and will be
 not displayed in the auto generated help.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...", { hidden: true })
@@ -98,7 +98,7 @@ remove before the value is added to the options object. This works also in
 combination with options.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env(

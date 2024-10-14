@@ -82,7 +82,7 @@ If `collect` is enabled, an flag can be specified multiple times on commandline.
 All values will be collected in to an array.
 
 ```typescript
-import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags } from "@cliffy/flags";
 
 const { flags } = parseFlags(Deno.args, {
   flags: [{
@@ -112,10 +112,7 @@ parameter the previous value. This allows you to coerce the option value to the
 desired type, or accumulate values, or do entirely custom processing.
 
 ```typescript
-import {
-  parseFlags,
-  ValidationError,
-} from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags, ValidationError } from "@cliffy/flags";
 
 const { flags } = parseFlags(Deno.args, {
   flags: [{

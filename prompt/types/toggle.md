@@ -5,7 +5,7 @@ The `Toggle` prompt is a simple yes or no switch.
 ![](../assets/img/toggle.gif)
 
 ```typescript
-import { Toggle } from "https://deno.land/x/cliffy/prompt/toggle.ts";
+import { Toggle } from "@cliffy/prompt/toggle.ts";
 
 const confirmed: boolean = await Toggle.prompt("Can you confirm?");
 ```

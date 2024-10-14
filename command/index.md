@@ -8,8 +8,7 @@ auto generated help, built-in shell completions, and more.
 ## Usage
 
 To create a program with cliffy you can import the `Command` class from the main
-module https://deno.land/x/cliffy/command/mod.ts or directly from the command
-module https://deno.land/x/cliffy/command/command.ts.
+module `@cliffy/command`.
 
 The `Command` class is used for main and sub-commands. The main command has two
 predefined options, a global help option (`-h, --help`) which is also available
@@ -23,7 +22,7 @@ description to it. It is required to define the name for your main command
 manually, because cliffy cannot know the name of the installed script.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .name("cliffy")
@@ -68,7 +67,7 @@ Here is an example of a simple command with some options, arguments, environment
 variables and types.
 
 ```typescript
-import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, EnumType } from "@cliffy/command";
 
 const logLevelType = new EnumType(["debug", "info", "warn", "error"]);
 
@@ -117,7 +116,7 @@ added to the newly created subcommand and no longer to the main command.
 You can read more about sub commands [here](./sub_commands.md).
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   // Main command.

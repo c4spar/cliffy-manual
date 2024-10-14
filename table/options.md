@@ -4,7 +4,7 @@ To customize the table, the table class provides a few chainable option methods.
 To see a list of all available options go to the [Table](#table) API section.
 
 ```ts
-import { Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Table } from "@cliffy/table";
 
 new Table()
   .header(["Name", "Date", "City", "Country"])
@@ -42,7 +42,7 @@ an `Array` of `string` and `Cell`. You can read more about rows and cells
 [here](./rows_and_cells.md).
 
 ```ts
-import { Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Table } from "@cliffy/table";
 
 new Table()
   .header(["Name", "Date", "City", "Country"])
@@ -67,7 +67,7 @@ The `.columns(columns)` method can be used to set column options of multiple
 columns. All available column options can be found [here](./columns.md).
 
 ```ts
-import { Column, Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Column, Table } from "@cliffy/table";
 
 new Table()
   .body([
@@ -90,7 +90,7 @@ column at a specific index. All available column options can be found
 [here](./columns.md).
 
 ```ts
-import { Column, Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Column, Table } from "@cliffy/table";
 
 new Table()
   .body([

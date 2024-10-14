@@ -6,7 +6,7 @@ The `Number` prompt is a simple number input with support for
 ![](../assets/img/number.gif)
 
 ```typescript
-import { Number } from "https://deno.land/x/cliffy/prompt/number.ts";
+import { Number } from "@cliffy/prompt/number.ts";
 
 const age: number = await Number.prompt("How old are you?");
 ```
@@ -56,7 +56,7 @@ suggestions [here](../auto_suggestions.md).
 > deno `1.16.0` the `--location` flag is optional.
 
 ```typescript
-import { Number } from "https://deno.land/x/cliffy/prompt/number.ts";
+import { Number } from "@cliffy/prompt/number.ts";
 
 const color: number = await Number.prompt({
   message: "Choose a number",

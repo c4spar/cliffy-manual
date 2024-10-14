@@ -35,7 +35,7 @@ trailing lines will be automatically removed.
 For example, following description:
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 new Command()
   .description(`
@@ -58,7 +58,7 @@ the top of the auto generated help which defaults to the command arguments. The
 usage is always prefixed with the command name.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .name("script-runner")
@@ -82,7 +82,7 @@ Optionally you can define [types](./types.md) and
 specified the type defaults to `string`.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { args } = await new Command()
   .arguments("<input> [output:string]")
@@ -102,7 +102,7 @@ Required rest arguments `<...args>` requires at least one argument, optional
 rest args `[...args]` are completely optional.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { args: dirs } = await new Command()
   .description("Remove directories.")
@@ -135,7 +135,7 @@ the type defaults to `true`. You can read more about options
 [here](./options.md).
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { args } = await new Command()
   .option("-f, --file <path:string>", "Force option.")
@@ -152,7 +152,7 @@ Options and arguments will be automatically typed by infering the types and
 names of all options, arguments and environment variables 🚀.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .name("rm")
@@ -182,7 +182,7 @@ When `.useRawArgs()` is called, all options and arguments are passed as raw
 arguments to the action handler without validation.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .option("-f, --foo <val:string>", "Foo option.")
@@ -207,7 +207,7 @@ If enabled, all arguments starting from the first non option argument will be
 interpreted as raw argument.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .option("-d, --debug-level <level:string>", "Debug level.")
@@ -237,7 +237,7 @@ instance of `Command`. You can read more about sub commands
 [here](./sub_commands.md).
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .command("foo [val:string]")
@@ -253,7 +253,7 @@ await new Command()
 To share commands with sub commands you can use the `.global()` method.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .command("global [val:string]", "global ...")
@@ -286,7 +286,7 @@ _options_ and _environment variables_ from parent commands.
 > `.noGlobals()` method.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .globalOption("--beep", "Beep...")
@@ -303,7 +303,7 @@ To exclude sub commands from the auto generated help and shell completions you
 can use the `.hidden()` method.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .command("debug", "Some internal debugging command.")
@@ -320,7 +320,7 @@ $ deno run https://deno.land/x/cliffy/examples/command/hidden_commands.ts -h
 With the `.alias()` method you can define an alias for the command name.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .command("install")
@@ -344,7 +344,7 @@ The parse method accepts optionally as first argument an array of command-line
 arguments that should be consumed. By default `Deno.args` is used.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { args, options, literal, cmd } = await new Command()
   .env("DEBUG", "Enable debugging.")

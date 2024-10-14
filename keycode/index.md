@@ -8,7 +8,7 @@ The `keycode` module exports a `parse()` method which accepts an ansi string and
 return an array of [`KeyCode`](./keycode.md).
 
 ```typescript
-import { parse } from "https://deno.land/x/cliffy/keycode/mod.ts";
+import { parse } from "@cliffy/keycode";
 
 console.log(
   parse(
@@ -38,7 +38,7 @@ $ deno run https://deno.land/x/cliffy/examples/keycode/example.ts
 ## Example
 
 ```typescript
-import { KeyCode, parse } from "https://deno.land/x/cliffy/keycode/mod.ts";
+import { KeyCode, parse } from "@cliffy/keycode";
 
 async function* keypress(): AsyncGenerator<KeyCode, void> {
   while (true) {

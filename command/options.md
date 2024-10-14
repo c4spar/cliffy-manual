@@ -27,7 +27,7 @@ type is specified the type defaults to `string`. If no argument is specified,
 the type defaults to `true`.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   .option("-s, --silent", "disable output.")
@@ -48,9 +48,9 @@ server running at localhost:80
 > like `--foo <bar>` and with an equals sign like `--foo=<bar>`.
 >
 > - If the option is defined **without** an equals sign, the option can be
-  > called with and without an equals sign.
+>   called with and without an equals sign.
 > - If the option is defined **with** an equals sign, the option must be called
-  > with an equals sign as well.
+>   with an equals sign as well.
 >
 > The difference is, an option with an optional value which is defined with an
 > equals sign can be used before an argument without the option value:
@@ -64,7 +64,7 @@ The last argument of an option can be variadic. To make an argument variadic you
 can append or prepend `...` to the argument name. For example:
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   .version("0.1.0")
@@ -87,7 +87,7 @@ Dotted options allows you to group your options together in nested objects.
 There is no limit for the level of nested objects.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   .option(
@@ -134,7 +134,7 @@ following ways:
 You can specify a default value for an option with an optional value.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   .option("-c, --cheese [type:string]", "add the specified type of cheese", {
@@ -158,7 +158,7 @@ cheese: mozzarella
 You may specify a required (mandatory) option.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .option("-c, --cheese [type:string]", "pizza must have cheese", {
@@ -181,7 +181,7 @@ This can be used for example if you have required option but want to show the
 help by default if no arguments are passed to the command.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 new Command()
   .option("--foo", "...", { required: true })
@@ -208,7 +208,7 @@ You can specify a default value for a flag and it can be overridden on command
 line.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   // default value will be automatically set to true if no --check option exists
@@ -237,7 +237,7 @@ To share options with child commands you can use the `.globalOption()` method or
 the `.option()` method together with the `global` option.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .option("-l, --local [val:string]", "Only available on this command.")
@@ -278,7 +278,7 @@ To exclude options from the help and completion commands you can use the
 `hidden` option.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .option("-H, --hidden [hidden:boolean]", "Nobody knows about me!", {
@@ -298,7 +298,7 @@ the `--help` and `--version` flag. You can achieve this with the `standalone`
 option.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .option("-s, --standalone [value:boolean]", "Some standalone option.", {
@@ -319,7 +319,7 @@ To define options which conflicts with other options you can use the `conflicts`
 option by defining an array with the names of these options.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   .option("-f, --file <file:string>", "read from file ...")
@@ -348,7 +348,7 @@ To define options which depends on other options you can use the `depends`
 option by defining an array with the names of these options.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   .option("-u, --audio-codec <type:string>", "description ...")
@@ -375,7 +375,7 @@ An option can occur multiple times in the command line to collect multiple
 values. Todo this, you have to activate the `collect` option.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   .option("-c, --color <color:string>", "read from file ...", { collect: true })
@@ -401,10 +401,7 @@ value. This allows you to coerce the option value to the desired type, or
 accumulate values, or do entirely custom processing.
 
 ```typescript
-import {
-  Command,
-  ValidationError,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, ValidationError } from "@cliffy/command";
 
 const { options } = await new Command()
   .option(
@@ -453,7 +450,7 @@ handler with the `action` option.
 > actions.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .version("0.1.0")
@@ -501,7 +498,7 @@ When the `.group()` method has been called, all options which are registered
 after the `.group()` method will be added to this group.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .version("0.1.0")

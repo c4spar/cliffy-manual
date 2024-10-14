@@ -6,7 +6,7 @@ support for [auto suggestions](#auto-suggestions).
 ![](../assets/img/list.gif)
 
 ```typescript
-import { List } from "https://deno.land/x/cliffy/prompt/list.ts";
+import { List } from "@cliffy/prompt/list.ts";
 
 const keywords: string[] = await List.prompt("Enter some keywords");
 ```
@@ -64,7 +64,7 @@ suggestions [here](../auto_suggestions.md).
 > deno `1.16.0` the `--location` flag is optional.
 
 ```typescript
-import { List } from "https://deno.land/x/cliffy/prompt/list.ts";
+import { List } from "@cliffy/prompt/list.ts";
 
 const color: Array<string> = await List.prompt({
   message: "Choose a color",

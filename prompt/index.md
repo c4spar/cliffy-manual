@@ -17,7 +17,7 @@ and returns the prompt result.
 Execute a single prompt with a message as first argument.
 
 ```typescript
-import { Input } from "https://deno.land/x/cliffy/prompt/mod.ts";
+import { Input } from "@cliffy/prompt";
 
 const name: string = await Input.prompt(`What's your name?`);
 ```
@@ -25,7 +25,7 @@ const name: string = await Input.prompt(`What's your name?`);
 Execute a single prompt with an options object as first argument.
 
 ```typescript
-import { Input } from "https://deno.land/x/cliffy/prompt/mod.ts";
+import { Input } from "@cliffy/prompt";
 
 const name: string = await Input.prompt({
   message: `Choose a username`,
@@ -45,13 +45,7 @@ Unlike npm's inquirer, the `type` property accepts a prompt object and not the
 name of the prompt.
 
 ```typescript
-import {
-  Checkbox,
-  Confirm,
-  Input,
-  Number,
-  prompt,
-} from "https://deno.land/x/cliffy/prompt/mod.ts";
+import { Checkbox, Confirm, Input, Number, prompt } from "@cliffy/prompt";
 
 const result = await prompt([{
   name: "name",

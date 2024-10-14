@@ -5,7 +5,7 @@ the `Row` and `Cell` class. The `Row` class is also an `Array` class like the
 `Table` class.
 
 ```ts
-import { Cell, Row, Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Cell, Row, Table } from "@cliffy/table";
 
 new Table()
   .header(Row.from(["Name", "Date", "City", "Country"]).border())
@@ -79,7 +79,7 @@ The following examples both have the same output.
 **Override undefined values**
 
 ```ts
-import { Cell, Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Cell, Table } from "@cliffy/table";
 
 Table.from([
   [
@@ -108,7 +108,7 @@ Table.from([
 **Omit undefined values**
 
 ```ts
-import { Cell, Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Cell, Table } from "@cliffy/table";
 
 Table.from([
   [

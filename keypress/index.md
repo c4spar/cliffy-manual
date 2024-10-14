@@ -16,10 +16,7 @@ The keypress module can be used as promise. It reads one chunk from stdin and
 returns a `KeyPressEvent` for the first parsed character.
 
 ```typescript
-import {
-  keypress,
-  KeyPressEvent,
-} from "https://deno.land/x/cliffy/keypress/mod.ts";
+import { keypress, KeyPressEvent } from "@cliffy/keypress";
 
 const event: KeyPressEvent = await keypress();
 
@@ -48,10 +45,7 @@ pauses reading from stdin before emitting the events, so stdin is not blocked
 inside the for loop.
 
 ```typescript
-import {
-  keypress,
-  KeyPressEvent,
-} from "https://deno.land/x/cliffy/keypress/mod.ts";
+import { keypress, KeyPressEvent } from "@cliffy/keypress";
 
 for await (const event: KeyPressEvent of keypress()) {
   console.log(
@@ -91,10 +85,7 @@ You can stop the event loop with `keypress().dispose()`.
 > in the background.
 
 ```typescript
-import {
-  keypress,
-  KeyPressEvent,
-} from "https://deno.land/x/cliffy/keypress/mod.ts";
+import { keypress, KeyPressEvent } from "@cliffy/keypress";
 
 keypress().addEventListener("keydown", (event: KeyPressEvent) => {
   console.log(
