@@ -15,7 +15,7 @@ options are required.
 This example snapshots the output of `console.log` and `console.error`.
 
 ```ts
-import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "@cliffy/testing";
 
 await snapshotTest({
   name: "should log to stdout and stderr",
@@ -53,7 +53,7 @@ script args. You can simply use `Deno.args` as you normally would to get the
 script arguments.
 
 ```ts
-import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "@cliffy/testing";
 
 await snapshotTest({
   name: "should log Deno.args",
@@ -68,8 +68,8 @@ await snapshotTest({
 You can use this to create snapshot tests for commands.
 
 ```ts
-import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { snapshotTest } from "@cliffy/testing";
+import { Command } from "@cliffy/command";
 
 await snapshotTest({
   name: "should execute the command with the --foo option",
@@ -95,7 +95,7 @@ option. You can simply read the data from `Deno.stdin` as you normally would
 when reading data from stdin.
 
 ```ts
-import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "@cliffy/testing";
 
 await snapshotTest({
   name: "should read cliffy from stdin",
@@ -119,9 +119,9 @@ You can use this to create snapshot tests for prompts. The `ansi` module can be
 used to generate escape sequences to control the prompt.
 
 ```ts
-import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
-import { Select } from "https://deno.land/x/cliffy/prompt/mod.ts";
-import { ansi } from "https://deno.land/x/cliffy/ansi/mod.ts";
+import { snapshotTest } from "@cliffy/testing";
+import { Select } from "@cliffy/prompt";
+import { ansi } from "@cliffy/ansi";
 
 await snapshotTest({
   name: "should select a color",
@@ -149,7 +149,7 @@ calling `t.step()` from the test context. Each step can have separate options
 for `stdin` and `args`.
 
 ```ts
-import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
+import { snapshotTest } from "@cliffy/testing";
 
 await snapshotTest({
   name: "should log to stdout and atderr",

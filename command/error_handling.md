@@ -35,10 +35,7 @@ instance of the failed command. You can use this instance to print the help text
 from this command.
 
 ```ts
-import {
-  Command,
-  ValidationError,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, ValidationError } from "@cliffy/command";
 
 await new Command()
   .error((error, cmd) => {
@@ -59,7 +56,7 @@ await new Command()
 This example will catch only runtime errors.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const cmd = new Command()
   .option("-p, --pizza-type <type>", "Flavour of pizza.")
@@ -76,9 +73,9 @@ try {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/general_error_handling.ts -t
+$ deno run examples/command/general_error_handling.ts -t
 Unknown option "-t". Did you mean option "-h"?
-$ deno run https://deno.land/x/cliffy/examples/command/general_error_handling.ts
+$ deno run examples/command/general_error_handling.ts
 [CUSTOM_ERROR] Some error happened.
 ```
 
@@ -91,10 +88,7 @@ used to exit the program. It also provides a `cmd` property which references the
 failed command.
 
 ```typescript
-import {
-  Command,
-  ValidationError,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, ValidationError } from "@cliffy/command";
 
 const cmd = new Command()
   .throwErrors() // <-- throw also validation errors.
@@ -118,7 +112,7 @@ try {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/validation_error_handling.ts -t
+$ deno run examples/command/validation_error_handling.ts -t
 Usage error: Unknown option "-t". Did you mean option "-h"?
 ```
 
@@ -130,10 +124,7 @@ when `Deno.exit()` is called after displaying the auto generated help and the
 error message.
 
 ```typescript
-import {
-  Command,
-  ValidationError,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, ValidationError } from "@cliffy/command";
 
 await new Command()
   .option("-c, --color <name:string>", "Choose a color.")
@@ -152,10 +143,7 @@ you have the same behaviour as when you throw an error for example within an
 action handler or a type.
 
 ```ts
-import {
-  Command,
-  ValidationError,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, ValidationError } from "@cliffy/command";
 
 const { options, cmd } = await new Command()
   .error((_error, _cmd) => {
@@ -178,16 +166,16 @@ if (options.runtimeError) {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/throw.ts --runtime-error
+$ deno run examples/command/throw.ts --runtime-error
 error handler...
 error: Uncaught Error: runtime error message.
   cmd.throw(new Error("runtime error message."));
             ^
-    at https://deno.land/x/cliffy/examples/command/throw.ts:21:13
+    at examples/command/throw.ts:21:13
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/throw.ts --validation-error
+$ deno run examples/command/throw.ts --validation-error
 error handler...
 
   Usage: COMMAND

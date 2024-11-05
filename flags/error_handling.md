@@ -4,10 +4,7 @@ You can catch validation errors with the `ValidationError` class. A validation
 error is thrown when an invalid command is invoked by the user.
 
 ```typescript
-import {
-  parseFlags,
-  ValidationError,
-} from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags, ValidationError } from "@cliffy/flags";
 
 try {
   const flags = parseFlags(Deno.args, {
@@ -28,6 +25,6 @@ try {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/error_handling.ts -d
+$ deno run examples/flags/error_handling.ts -d
 [VALIDATION_ERROR] Unknown option "-d". Did you mean option "--debug"?
 ```

@@ -1,6 +1,7 @@
 # OS signals
 
-> ⚠️ The [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
+> ⚠️ The
+> [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
 > option works currently only on Linux and macOS!
 
 By default, cliffy will call `Deno.exit(0)` after the user presses `ctrl+c`. If
@@ -13,8 +14,8 @@ to register your own signal handler.
 > manually. Maybe this will be improved somehow in the future.
 
 ```typescript
-import { tty } from "https://deno.land/x/cliffy/ansi/tty.ts";
-import { Toggle } from "https://deno.land/x/cliffy/prompt/toggle.ts";
+import { tty } from "@cliffy/ansi/tty";
+import { Toggle } from "@cliffy/prompt/toggle";
 
 Deno.addSignalListener("SIGINT", () => {
   tty.cursorLeft.eraseDown.cursorShow();
@@ -31,5 +32,5 @@ console.log({ confirmed });
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/os_signals.ts
+$ deno run examples/prompt/os_signals.ts
 ```

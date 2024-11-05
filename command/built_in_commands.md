@@ -14,10 +14,8 @@ To make the help command globally available for all child commands you can use
 the `.global()` method on the help command.
 
 ```typescript
-import {
-  Command,
-  HelpCommand,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
+import { HelpCommand } from "@cliffy/command/help";
 
 await new Command()
   .version("0.1.0")
@@ -31,9 +29,9 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/help_option_and_command.ts help
-$ deno run https://deno.land/x/cliffy/examples/command/help_option_and_command.ts help completions
-$ deno run https://deno.land/x/cliffy/examples/command/help_option_and_command.ts completions help
+$ deno run examples/command/help_option_and_command.ts help
+$ deno run examples/command/help_option_and_command.ts help completions
+$ deno run examples/command/help_option_and_command.ts completions help
 ```
 
 ## Completions command
@@ -43,10 +41,8 @@ environments. The sub commands generates the shell completions script and
 outputs it to stdout. The completions command must be registered manually.
 
 ```ts
-import {
-  Command,
-  CompletionsCommand,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
+import { CompletionsCommand } from "@cliffy/command/completions";
 
 await new Command()
   .command("completions", new CompletionsCommand())
@@ -110,11 +106,9 @@ COMMAND upgrade --version 1.0.2
 ```
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
-import {
-  DenoLandProvider,
-  UpgradeCommand,
-} from "https://deno.land/x/cliffy/command/upgrade/mod.ts";
+import { Command } from "@cliffy/command";
+import { UpgradeCommand } from "@cliffy/command/upgrade";
+import { DenoLandProvider } from "@cliffy/command/upgrade/provider/deno-land";
 
 new Command()
   .command(
@@ -142,7 +136,8 @@ If your cli needs some permissions, you can specify the permissions with the
 
 > - When `args` is defined, `--force` and `--name` is set by default.
 > - When `args` is not defined, `--force`, `--name`, `--quiet` and `--no-check`
-  > is set by default.
+>
+>> is set by default.
 
 ### Providers
 
@@ -165,13 +160,11 @@ can optionally pass the registry module name to the provider which defaults to
 the command name.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
-import {
-  DenoLandProvider,
-  GithubProvider,
-  NestLandProvider,
-  UpgradeCommand,
-} from "https://deno.land/x/cliffy/command/upgrade/mod.ts";
+import { Command } from "@cliffy/command";
+import { UpgradeCommand } from "@cliffy/command/upgrade";
+import { DenoLandProvider } from "@cliffy/command/upgrade/provider/deno-land";
+import { GithubProvider } from "@cliffy/command/upgrade/provider/github";
+import { NestLandProvider } from "@cliffy/command/upgrade/provider/nest-land";
 
 new Command()
   .command(

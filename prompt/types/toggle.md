@@ -5,13 +5,13 @@ The `Toggle` prompt is a simple yes or no switch.
 ![](../assets/img/toggle.gif)
 
 ```typescript
-import { Toggle } from "https://deno.land/x/cliffy/prompt/toggle.ts";
+import { Toggle } from "@cliffy/prompt/toggle";
 
 const confirmed: boolean = await Toggle.prompt("Can you confirm?");
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/toggle.ts
+$ deno run examples/prompt/toggle.ts
 ```
 
 ## Options

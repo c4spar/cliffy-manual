@@ -6,9 +6,9 @@ You can use the `ansi` module to generate some control sequences to control a
 prompt in your test.
 
 ```ts
-import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
-import { Checkbox } from "https://deno.land/x/cliffy/prompt/checkbox.ts";
-import { ansi } from "https://deno.land/x/cliffy/ansi/ansi.ts";
+import { snapshotTest } from "@cliffy/testing";
+import { Checkbox } from "@cliffy/prompt/checkbox";
+import { ansi } from "@cliffy/ansi";
 
 await snapshotTest({
   name: "should check an option",
@@ -38,8 +38,8 @@ A simple example with two steps and different arguments to snapshot the output
 of a command.
 
 ```ts
-import { snapshotTest } from "https://deno.land/x/cliffy/testing/mod.ts";
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { snapshotTest } from "@cliffy/testing";
+import { Command } from "@cliffy/command";
 
 await snapshotTest({
   name: "command",

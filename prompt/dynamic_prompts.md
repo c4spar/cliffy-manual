@@ -4,12 +4,7 @@ You can dynamically control the flow of the prompt list with the `before` and
 `after` callbacks which works like a middleware function.
 
 ```typescript
-import {
-  Checkbox,
-  Confirm,
-  Number,
-  prompt,
-} from "https://deno.land/x/cliffy/prompt/mod.ts";
+import { Checkbox, Confirm, Number, prompt } from "@cliffy/prompt";
 
 const result = await prompt([{
   name: "animals",
@@ -44,7 +39,7 @@ console.log(result);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/dynamic_prompts.ts
+$ deno run examples/prompt/dynamic_prompts.ts
 ```
 
 ## Options
@@ -79,7 +74,8 @@ called all other prompts will be skipped.
 
 ### OS signals
 
-> ⚠️ The [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
+> ⚠️ The
+> [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
 > option works currently only on Linux and macOS!
 
 The `cbreak` option enables pass-through of os signals to deno, allowing you to

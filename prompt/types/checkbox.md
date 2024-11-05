@@ -5,7 +5,7 @@ The `Checkbox` prompt is a multi select prompt.
 ![](../assets/img/checkbox.gif)
 
 ```typescript
-import { Checkbox } from "https://deno.land/x/cliffy/prompt/checkbox.ts";
+import { Checkbox } from "@cliffy/prompt/checkbox";
 
 const colors: string[] = await Checkbox.prompt({
   message: "Pick a color",
@@ -21,7 +21,7 @@ const colors: string[] = await Checkbox.prompt({
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/checkbox.ts
+$ deno run examples/prompt/checkbox.ts
 ```
 
 ## Options
@@ -115,7 +115,7 @@ The `options` option allows you to group options together. It accepts an array
 of child options, of which you can nest as many as you want.
 
 ```ts
-import { Checkbox } from "https://deno.land/x/cliffy/prompt/checkbox.ts";
+import { Checkbox } from "@cliffy/prompt/checkbox";
 
 const title: Array<string> = await Checkbox.prompt({
   message: "Pick some books",

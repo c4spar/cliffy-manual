@@ -12,7 +12,7 @@ simple table with three rows and without any styles. The only default option is
 `padding` which is set to `1`.
 
 ```ts
-import { Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Table } from "@cliffy/table";
 
 const table: Table = new Table(
   ["Baxter Herman", "Oct 1, 2020", "Harderwijk", "Slovenia"],
@@ -25,7 +25,7 @@ console.log(table.toString());
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/table/basic_usage.ts
+$ deno run examples/table/basic_usage.ts
 ```
 
 ![](assets/img/basic_usage.gif)
@@ -36,7 +36,7 @@ Since the `Table` class is an `Array`, you can call all the methods of the array
 class like `.from()`, `.sort()`, `.push()`, `.unshift()` and friends.
 
 ```ts
-import { Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Table } from "@cliffy/table";
 
 const table: Table = Table.from([
   ["Baxter Herman", "Oct 1, 2020", "Harderwijk", "Slovenia"],
@@ -50,7 +50,7 @@ table.render();
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/table/using_as_array.ts
+$ deno run examples/table/using_as_array.ts
 ```
 
 ![](assets/img/using_as_array.gif)

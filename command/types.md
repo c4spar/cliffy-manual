@@ -20,7 +20,7 @@ Following types are available by default on all commands.
 - **file:** Same as string but adds support for path completion.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   // Env value must be always required.
@@ -41,10 +41,10 @@ console.log(options);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/common_option_types.ts -p
+$ deno run examples/command/common_option_types.ts -p
 Error: Missing value for option "--pizza-type".
 
-$ deno run https://deno.land/x/cliffy/examples/command/common_option_types.ts -sp vegetarian --amount 3
+$ deno run examples/command/common_option_types.ts -sp vegetarian --amount 3
 { small: true, pizzaType: "vegetarian", amount: 3 }
 ```
 
@@ -57,7 +57,7 @@ text and types will be automatically inferred and applied to the values of the
 command options and arguments.
 
 ```typescript
-import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, EnumType } from "@cliffy/command";
 
 enum Animal {
   Dog = "dog",
@@ -89,11 +89,11 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/enum_option_type.ts --color red --animal dog
+$ deno run examples/command/enum_option_type.ts --color red --animal dog
 color: red
 animal: dog
 
-$ deno run https://deno.land/x/cliffy/examples/command/enum_option_type.ts --color foo
+$ deno run examples/command/enum_option_type.ts --color foo
 error: Option "--color" must be of type "color", but got "foo". Expected values: "blue", "yellow", "red"
 ```
 
@@ -104,7 +104,7 @@ items with the specified type. The default separator is `,` but can be changed
 with the `separator` option.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   // comma separated list
@@ -121,10 +121,10 @@ console.log(options);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/list_option_type.ts -l 1,2,3
+$ deno run examples/command/list_option_type.ts -l 1,2,3
 { list: [ 1, 2, 3 ] }
 
-$ deno run https://deno.land/x/cliffy/examples/command/list_option_type.ts -o "1 2 3"
+$ deno run examples/command/list_option_type.ts -o "1 2 3"
 { otherList: [ "1", "2", "3" ] }
 ```
 
@@ -135,7 +135,7 @@ To make a type also available for child commands, you can use the
 in `.type()` method.
 
 ```typescript
-import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, EnumType } from "@cliffy/command";
 
 await new Command()
   .globalType("color", new EnumType(["red", "blue", "yellow"]))
@@ -149,7 +149,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/global_custom_type.ts login --color "red"
+$ deno run examples/command/global_custom_type.ts login --color "red"
 { color: "red" }
 ```
 
@@ -164,10 +164,7 @@ the name of the type, the second can be either a function or an instance of
 This example shows you how to use a function as type handler.
 
 ```typescript
-import {
-  ArgumentValue,
-  Command,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command } from "@cliffy/command";
 
 const colors = ["red", "blue", "yellow"];
 
@@ -192,9 +189,9 @@ const { options } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -c "red"
+$ deno run examples/command/custom_option_type.ts -c "red"
 { color: "red" }
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -c "green"
+$ deno run examples/command/custom_option_type.ts -c "green"
 Error: Option "--color" must be a valid color, but got "green". Possible values are: red, blue, yellow
 ```
 
@@ -203,12 +200,7 @@ Error: Option "--color" must be a valid color, but got "green". Possible values 
 This example shows you how to create a custom type that extends the base `Type`.
 
 ```typescript
-import {
-  ArgumentValue,
-  Command,
-  Type,
-  ValidationError,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command, Type, ValidationError } from "@cliffy/command";
 
 class ColorType extends Type<string> {
   private readonly colors = ["red", "blue", "yellow"];
@@ -235,9 +227,9 @@ const { options } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.ts -c "red"
+$ deno run examples/command/custom_option_type_class.ts -c "red"
 { color: "red" }
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.ts -c "green"
+$ deno run examples/command/custom_option_type_class.ts -c "green"
 Error: Option "--color" must be a valid color, but got "green". Possible values are: red, blue, yellow
 ```
 
@@ -251,14 +243,10 @@ to your type. Read more about shell completions
 [here](./shell_completions.md#custom-type).
 
 ```ts
-import {
-  ArgumentValue,
-  Command,
-  Type,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command, Type } from "@cliffy/command";
 
 class ColorType extends Type<string> {
-  complete(): Array<string> {
+  override complete(): Array<string> {
     return ["red", "blue", "yellow"];
   }
 
@@ -274,14 +262,10 @@ To override possible values listed in the auto generated help, you can add a
 `.values()` method to your custom type.
 
 ```ts
-import {
-  ArgumentValue,
-  Command,
-  Type,
-} from "https://deno.land/x/cliffy/command/mod.ts";
+import { ArgumentValue, Command, Type } from "@cliffy/command";
 
 class ColorType extends Type<string> {
-  values(): Array<string> {
+  override values(): Array<string> {
     return ["red", "blue", "yellow"];
   }
 

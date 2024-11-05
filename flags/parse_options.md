@@ -17,10 +17,7 @@ types.
 > also all built-in types!
 
 ```typescript
-import {
-  ArgumentValue,
-  parseFlags,
-} from "https://deno.land/x/cliffy/flags/mod.ts";
+import { ArgumentValue, parseFlags } from "@cliffy/flags";
 
 parseFlags(Deno.args, {
   flags: [{
@@ -44,10 +41,10 @@ parseFlags(Deno.args, {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/custom_option_processing.ts --foo 1.2
+$ deno run examples/flags/custom_option_processing.ts --foo 1.2
 { flags: { foo: 1.2 }, unknown: [], literal: [] }
 
-$ deno run https://deno.land/x/cliffy/examples/flags/custom_option_processing.ts --foo abc
+$ deno run examples/flags/custom_option_processing.ts --foo abc
 error: Uncaught Error: Option "--foo" must be of type "float", but got "abc".
 ```
 
