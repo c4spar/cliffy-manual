@@ -8,16 +8,14 @@ feature-rich CLI prompts.
 ## Key Modules
 
 - **[command](./command/index.md)**: This module allows you to create
-  sophisticated
-  command-line interfaces effortlessly. It provides a robust framework for
-  defining commands, options, and arguments, making it easy to build and manage
-  CLI applications.
+  sophisticated command-line interfaces effortlessly. It provides a robust
+  framework for defining commands, options, and arguments, making it easy to
+  build and manage CLI applications.
 
 - **[prompt](./prompt/index.md)**: The prompt module offers a variety of
-  beautiful and highly
-  customizable CLI prompts. It supports different types of prompts such as
-  input, select, toggle, and more, enabling you to create interactive and
-  user-friendly command-line experiences.
+  beautiful and highly customizable CLI prompts. It supports different types of
+  prompts such as input, select, toggle, and more, enabling you to create
+  interactive and user-friendly command-line experiences.
 
 ## Getting Started
 
@@ -28,15 +26,13 @@ documentation and examples to help you understand how to use Cliffy effectively.
 ## Version Information
 
 > Cliffy is exclusively published on [jsr.io](https://jsr.io/@cliffy) starting
-> from
-> version [v1.0.0-rc.5](https://github.com/c4spar/deno-cliffy/releases/tag/v1.0.0-rc.5).
-> The latest version available on deno.land
-> is [v1.0.0-rc.4](https://deno.land/x/cliffy@v1.0.0-rc.4).
+> from version
+> [v1.0.0-rc.5](https://github.com/c4spar/deno-cliffy/releases/tag/v1.0.0-rc.5).
+> The latest version available on deno.land is
+> [v1.0.0-rc.4](https://deno.land/x/cliffy@v1.0.0-rc.4).
 >
-> Please note that
-> versions [v1.0.0-rc.6](https://deno.land/x/cliffy@v1.0.0-rc.6)
-> and [v1.0.0-rc.7](https://deno.land/x/cliffy@v1.0.0-rc.7) published on
-> deno.land
-> are not functional and should only be used
-> from [jsr.io](https://jsr.io/@cliffy).
-
+> Please note that versions
+> [v1.0.0-rc.6](https://deno.land/x/cliffy@v1.0.0-rc.6) and
+> [v1.0.0-rc.7](https://deno.land/x/cliffy@v1.0.0-rc.7) published on deno.land
+> are not functional and should only be used from
+> [jsr.io](https://jsr.io/@cliffy).
