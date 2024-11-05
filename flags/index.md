@@ -24,7 +24,7 @@ console.log(parseFlags(Deno.args));
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/flags.ts -a foo -b bar
+$ deno run examples/flags/flags.ts -a foo -b bar
 {
   flags: { a: "foo", b: "bar" },
   literal: [],
@@ -33,7 +33,7 @@ $ deno run https://deno.land/x/cliffy/examples/flags/flags.ts -a foo -b bar
   stopOnUnknown: false
 }
 
-$ deno run https://deno.land/x/cliffy/examples/flags/flags.ts \
+$ deno run examples/flags/flags.ts \
     -x 3 \
     -y.z -n5 \
     -abc \
@@ -90,7 +90,7 @@ console.log(flags);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/options.ts -vvv -f ./example.ts
+$ deno run examples/flags/options.ts -vvv -f ./example.ts
 { verbose: 3, file: "./example.ts" }
 ```
 

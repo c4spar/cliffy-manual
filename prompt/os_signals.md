@@ -15,7 +15,7 @@ to register your own signal handler.
 
 ```typescript
 import { tty } from "@cliffy/ansi/tty";
-import { Toggle } from "@cliffy/prompt/toggle.ts";
+import { Toggle } from "@cliffy/prompt/toggle";
 
 Deno.addSignalListener("SIGINT", () => {
   tty.cursorLeft.eraseDown.cursorShow();
@@ -32,5 +32,5 @@ console.log({ confirmed });
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/os_signals.ts
+$ deno run examples/prompt/os_signals.ts
 ```

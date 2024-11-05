@@ -39,7 +39,7 @@ console.log(result);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/dynamic_prompts.ts
+$ deno run examples/prompt/dynamic_prompts.ts
 ```
 
 ## Options

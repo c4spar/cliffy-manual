@@ -26,10 +26,10 @@ await new Command()
 ```
 
 ```console
-$ SOME_ENV_VAR=abc deno run --allow-env=SOME_ENV_VAR https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ SOME_ENV_VAR=abc deno run --allow-env=SOME_ENV_VAR examples/command/environment_variables.ts
 Error: Environment variable "SOME_ENV_VAR" must be of type "number", but got "abc".
 
-$ SOME_ENV_VAR=1 deno run --allow-env=SOME_ENV_VAR https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ SOME_ENV_VAR=1 deno run --allow-env=SOME_ENV_VAR examples/command/environment_variables.ts
 { someEnvVar: 1 }
 ```
 
@@ -66,13 +66,13 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ deno run examples/command/environment_variables.ts
 error: Missing required environment variable "SOME_ENV_VAR".
 
-$ SOME_ENV_VAR=abc deno run --allow-env=SOME_ENV_VAR https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ SOME_ENV_VAR=abc deno run --allow-env=SOME_ENV_VAR examples/command/environment_variables.ts
 Error: Environment variable "SOME_ENV_VAR" must be of type "number", but got "abc".
 
-$ SOME_ENV_VAR=1 deno run --allow-env=SOME_ENV_VAR https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ SOME_ENV_VAR=1 deno run --allow-env=SOME_ENV_VAR examples/command/environment_variables.ts
 { someEnvVar: 1 }
 ```
 
@@ -115,6 +115,6 @@ await new Command()
 ```
 
 ```console
-$ DENO_INSTALL_ROOT=foo/bar deno run --allow-env=DENO_INSTALL_ROOT https://deno.land/x/cliffy/examples/command/environment_variables_prefix.ts
+$ DENO_INSTALL_ROOT=foo/bar deno run --allow-env=DENO_INSTALL_ROOT examples/command/environment_variables_prefix.ts
 { installRoot: "foo/bar" }
 ```

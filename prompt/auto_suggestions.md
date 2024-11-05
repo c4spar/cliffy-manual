@@ -43,7 +43,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions.ts
+$ deno run examples/prompt/suggestions.ts
 ```
 
 ![](assets/img/suggestions.gif)
@@ -97,7 +97,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions_list.ts
+$ deno run examples/prompt/suggestions_list.ts
 ```
 
 ![](assets/img/suggestions_list.gif)

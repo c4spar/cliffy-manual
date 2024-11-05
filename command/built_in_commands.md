@@ -29,9 +29,9 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/help_option_and_command.ts help
-$ deno run https://deno.land/x/cliffy/examples/command/help_option_and_command.ts help completions
-$ deno run https://deno.land/x/cliffy/examples/command/help_option_and_command.ts completions help
+$ deno run examples/command/help_option_and_command.ts help
+$ deno run examples/command/help_option_and_command.ts help completions
+$ deno run examples/command/help_option_and_command.ts completions help
 ```
 
 ## Completions command
@@ -133,7 +133,8 @@ If your cli needs some permissions you can specify the permissions with the
 
 > - When `args` is defined, `--force` and `--name` is set by default.
 > - When `args` is not defined, `--force`, `--name`, `--quiet` and `--no-check`
->   is set by default.
+>
+>> is set by default.
 
 ### Providers
 
@@ -158,18 +159,9 @@ the command name.
 ```typescript
 import { Command } from "@cliffy/command";
 import { UpgradeCommand } from "@cliffy/command/upgrade";
-import {
-  DenoLandProvider,
-  UpgradeCommand,
-} from "@cliffy/command/upgrade/provider/deno-land";
-import {
-  GithubProvider,
-  UpgradeCommand,
-} from "@cliffy/command/upgrade/provider/github";
-import {
-  NestLandProvider,
-  UpgradeCommand,
-} from "@cliffy/command/upgrade/provider/nest-land";
+import { DenoLandProvider } from "@cliffy/command/upgrade/provider/deno-land";
+import { GithubProvider } from "@cliffy/command/upgrade/provider/github";
+import { NestLandProvider } from "@cliffy/command/upgrade/provider/nest-land";
 
 new Command()
   .command(

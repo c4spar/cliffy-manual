@@ -33,7 +33,7 @@ console.log(
 ```
 
 ```console
-$ deno run --reload https://deno.land/x/cliffy/examples/keypress/promise.ts
+$ deno run --reload examples/keypress/promise.ts
 ```
 
 ### Async Iterator
@@ -47,7 +47,7 @@ inside the for loop.
 ```typescript
 import { keypress, KeyPressEvent } from "@cliffy/keypress";
 
-for await (const event: KeyPressEvent of keypress()) {
+for await (const event of keypress()) {
   console.log(
     "type: %s, key: %s, ctrl: %s, meta: %s, shift: %s, alt: %s, repeat: %s",
     event.type,
@@ -67,7 +67,7 @@ for await (const event: KeyPressEvent of keypress()) {
 ```
 
 ```console
-$ deno run --reload https://deno.land/x/cliffy/examples/keypress/async_iterator.ts
+$ deno run --reload examples/keypress/async_iterator.ts
 ```
 
 ### Event Target
@@ -107,5 +107,5 @@ keypress().addEventListener("keydown", (event: KeyPressEvent) => {
 ```
 
 ```console
-$ deno run --reload https://deno.land/x/cliffy/examples/keypress/event_target.ts
+$ deno run --reload examples/keypress/event_target.ts
 ```

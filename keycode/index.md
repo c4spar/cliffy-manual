@@ -18,7 +18,7 @@ console.log(
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/keycode/example.ts
+$ deno run examples/keycode/example.ts
 ```
 
 **Output:**
@@ -72,5 +72,5 @@ for await (const key of keypress()) {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/keycode/read_key.ts
+$ deno run examples/keycode/read_key.ts
 ```

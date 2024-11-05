@@ -22,7 +22,7 @@ new Table()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/table/table_options.ts
+$ deno run examples/table/table_options.ts
 ```
 
 ![](assets/img/table_options.gif)
@@ -56,7 +56,7 @@ new Table()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/table/header_and_body.ts
+$ deno run examples/table/header_and_body.ts
 ```
 
 ![](assets/img/header_and_body.gif)

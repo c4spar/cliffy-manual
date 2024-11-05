@@ -45,7 +45,9 @@ module.
 ```typescript
 import { cursorTo, eraseDown, image, link } from "@cliffy/ansi/ansi-escapes";
 
-const response = await fetch("https://deno.land/images/hashrock_simple.png");
+const response = await fetch(
+  "https://raw.githubusercontent.com/c4spar/deno-cliffy/main/logo.png",
+);
 const imageBuffer: ArrayBuffer = await response.arrayBuffer();
 
 console.log(
@@ -56,7 +58,7 @@ console.log(
       preserveAspectRatio: true,
     }) +
     "\n          " +
-    link("Deno Land", "https://deno.land") +
+    link("Deno", "https://deno.com") +
     "\n",
 );
 ```

@@ -41,10 +41,10 @@ console.log(options);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/common_option_types.ts -p
+$ deno run examples/command/common_option_types.ts -p
 Error: Missing value for option "--pizza-type".
 
-$ deno run https://deno.land/x/cliffy/examples/command/common_option_types.ts -sp vegetarian --amount 3
+$ deno run examples/command/common_option_types.ts -sp vegetarian --amount 3
 { small: true, pizzaType: "vegetarian", amount: 3 }
 ```
 
@@ -89,11 +89,11 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/enum_option_type.ts --color red --animal dog
+$ deno run examples/command/enum_option_type.ts --color red --animal dog
 color: red
 animal: dog
 
-$ deno run https://deno.land/x/cliffy/examples/command/enum_option_type.ts --color foo
+$ deno run examples/command/enum_option_type.ts --color foo
 error: Option "--color" must be of type "color", but got "foo". Expected values: "blue", "yellow", "red"
 ```
 
@@ -121,10 +121,10 @@ console.log(options);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/list_option_type.ts -l 1,2,3
+$ deno run examples/command/list_option_type.ts -l 1,2,3
 { list: [ 1, 2, 3 ] }
 
-$ deno run https://deno.land/x/cliffy/examples/command/list_option_type.ts -o "1 2 3"
+$ deno run examples/command/list_option_type.ts -o "1 2 3"
 { otherList: [ "1", "2", "3" ] }
 ```
 
@@ -149,7 +149,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/global_custom_type.ts login --color "red"
+$ deno run examples/command/global_custom_type.ts login --color "red"
 { color: "red" }
 ```
 
@@ -189,9 +189,9 @@ const { options } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -c "red"
+$ deno run examples/command/custom_option_type.ts -c "red"
 { color: "red" }
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type.ts -c "green"
+$ deno run examples/command/custom_option_type.ts -c "green"
 Error: Option "--color" must be a valid color, but got "green". Possible values are: red, blue, yellow
 ```
 
@@ -227,9 +227,9 @@ const { options } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.ts -c "red"
+$ deno run examples/command/custom_option_type_class.ts -c "red"
 { color: "red" }
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_type_class.ts -c "green"
+$ deno run examples/command/custom_option_type_class.ts -c "green"
 Error: Option "--color" must be a valid color, but got "green". Possible values are: red, blue, yellow
 ```
 
@@ -246,7 +246,7 @@ to your type. Read more about shell completions
 import { ArgumentValue, Command, Type } from "@cliffy/command";
 
 class ColorType extends Type<string> {
-  complete(): Array<string> {
+  override complete(): Array<string> {
     return ["red", "blue", "yellow"];
   }
 
@@ -265,7 +265,7 @@ To override possible values listed in the auto generated help, you can add a
 import { ArgumentValue, Command, Type } from "@cliffy/command";
 
 class ColorType extends Type<string> {
-  values(): Array<string> {
+  override values(): Array<string> {
     return ["red", "blue", "yellow"];
   }
 

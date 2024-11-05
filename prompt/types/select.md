@@ -5,7 +5,7 @@ The `Select` prompt lets you select a option from an options list.
 ![](../assets/img/select.gif)
 
 ```typescript
-import { Select } from "@cliffy/prompt/select.ts";
+import { Select } from "@cliffy/prompt/select";
 
 const color: string = await Select.prompt({
   message: "Pick a color",
@@ -21,7 +21,7 @@ const color: string = await Select.prompt({
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/select.ts
+$ deno run examples/prompt/select.ts
 ```
 
 ## Options
@@ -75,7 +75,7 @@ The `options` option allows you to group options together. It accepts an array
 of child options, of which you can nest as many as you want.
 
 ```ts
-import { Select } from "@cliffy/prompt/select.ts";
+import { Select } from "@cliffy/prompt/select";
 
 const title: string = await Select.prompt({
   message: "Pick a book",

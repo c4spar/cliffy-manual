@@ -1,7 +1,7 @@
 # Colors
 
 The colors module is a simple and tiny chainable wrapper around
-[deno's std colors](https://deno.land/std/fmt/colors.ts) module and works
+[@std/fmt/colors](https://jsr.io/@std/fmt@1.0.3/doc/colors) module and works
 similar to node's [chalk](https://github.com/chalk/chalk) module.
 
 ```typescript

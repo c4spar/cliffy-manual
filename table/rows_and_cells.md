@@ -27,7 +27,7 @@ new Table()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/table/rows_and_cells.ts
+$ deno run examples/table/rows_and_cells.ts
 ```
 
 ![](assets/img/rows_and_cells.gif)
@@ -131,7 +131,7 @@ Table.from([
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/table/colspan_and_rowspan.ts
+$ deno run examples/table/colspan_and_rowspan.ts
 ```
 
 ![](assets/img/colspan_and_rowspan.gif)

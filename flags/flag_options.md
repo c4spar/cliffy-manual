@@ -96,7 +96,7 @@ console.log(flags);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/collect.ts --color red --color blue
+$ deno run examples/flags/collect.ts --color red --color blue
 { color: ["red", "blue"] }
 ```
 
@@ -136,9 +136,9 @@ console.log(flags);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/value.ts --value fooo
+$ deno run examples/flags/value.ts --value fooo
 error: Uncaught Error: Option "--value" must be one of "foo", "bar" or "baz", but got "fooo".
-$ deno run https://deno.land/x/cliffy/examples/flags/value.ts --value foo
+$ deno run examples/flags/value.ts --value foo
 { value: ["foo"] }
 ```
 

@@ -25,7 +25,7 @@ console.log(table.toString());
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/table/basic_usage.ts
+$ deno run examples/table/basic_usage.ts
 ```
 
 ![](assets/img/basic_usage.gif)
@@ -50,7 +50,7 @@ table.render();
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/table/using_as_array.ts
+$ deno run examples/table/using_as_array.ts
 ```
 
 ![](assets/img/using_as_array.gif)

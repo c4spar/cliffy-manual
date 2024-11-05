@@ -40,17 +40,18 @@ console.log("server running at %s:%s", options.host, options.port);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/options.ts -p 80
+$ deno run examples/command/options.ts -p 80
 server running at localhost:80
 ```
 
 > Note: There is a difference of defining option values without an equals sign
 > like `--foo <bar>` and with an equals sign like `--foo=<bar>`.
 >
-> - If the option is defined **without** an equals sign, the option can be
+> - If the option is defined **without** an equals sign, the option can be >
 >   called with and without an equals sign.
 > - If the option is defined **with** an equals sign, the option must be called
->   with an equals sign as well.
+>
+>> with an equals sign as well.
 >
 > The difference is, an option with an optional value which is defined with an
 > equals sign can be used before an argument without the option value:
@@ -77,7 +78,7 @@ console.log(options);
 The variadic option is returned as an array.
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/variadic_options.ts -d dir1 dir2 dir3
+$ deno run examples/command/variadic_options.ts -d dir1 dir2 dir3
 { dir: [ "dir1", "dir2", "dir3" ] }
 ```
 
@@ -104,13 +105,13 @@ console.log(options);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/dotted_options.ts -b.a 300 -b.v 900
+$ deno run examples/command/dotted_options.ts -b.a 300 -b.v 900
 { bitrate: { audio: 300, video: 900 } }
 
-$ deno run https://deno.land/x/cliffy/examples/command/dotted_options.ts --bitrate.audio 300 --bitrate.video 900
+$ deno run examples/command/dotted_options.ts --bitrate.audio 300 --bitrate.video 900
 { bitrate: { audio: 300, video: 900 } }
 
-$ deno run https://deno.land/x/cliffy/examples/command/dotted_options.ts --audio-bitrate 300 --video-bitrate 900
+$ deno run examples/command/dotted_options.ts --audio-bitrate 300 --video-bitrate 900
 { bitrate: { audio: 300, video: 900 } }
 ```
 
@@ -146,10 +147,10 @@ console.log(`cheese: ${options.cheese}`);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/default_option_value.ts
+$ deno run examples/command/default_option_value.ts
 cheese: blue
 
-$ deno run https://deno.land/x/cliffy/examples/command/default_option_value.ts --cheese mozzarella
+$ deno run examples/command/default_option_value.ts --cheese mozzarella
 cheese: mozzarella
 ```
 
@@ -168,7 +169,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/required_options.ts
+$ deno run examples/command/required_options.ts
 Error: Missing required option "--cheese".
 ```
 
@@ -224,10 +225,10 @@ console.log(options);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/negatable_options.ts
+$ deno run examples/command/negatable_options.ts
 { check: true, color: "yellow" }
 
-$ deno run https://deno.land/x/cliffy/examples/command/negatable_options.ts --no-check --no-color --no-remote
+$ deno run examples/command/negatable_options.ts --no-check --no-color --no-remote
 { check: false, color: false, remote: false }
 ```
 
@@ -264,11 +265,11 @@ await new Command()
 Global options can also be placed before a sub-command.
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/global_options.ts -g test command1 command2
+$ deno run examples/command/global_options.ts -g test command1 command2
 { global: "test" }
-$ deno run https://deno.land/x/cliffy/examples/command/global_options.ts command1 -g test command2
+$ deno run examples/command/global_options.ts command1 -g test command2
 { global: "test" }
-$ deno run https://deno.land/x/cliffy/examples/command/global_options.ts command1 command2 -g test
+$ deno run examples/command/global_options.ts command1 command2 -g test
 { global: "test" }
 ```
 
@@ -288,7 +289,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/hidden_options.ts -h
+$ deno run examples/command/hidden_options.ts -h
 ```
 
 ## Standalone options
@@ -309,7 +310,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/standalone_options.ts --standalone --other
+$ deno run examples/command/standalone_options.ts --standalone --other
 Error: Option --standalone cannot be combined with other options.
 ```
 
@@ -332,13 +333,13 @@ console.log(options);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/conflicting_options.ts -f file1
+$ deno run examples/command/conflicting_options.ts -f file1
 { file: "file1" }
 
-$ deno run https://deno.land/x/cliffy/examples/command/conflicting_options.ts -i
+$ deno run examples/command/conflicting_options.ts -i
 { stdin: true }
 
-$ deno run https://deno.land/x/cliffy/examples/command/conflicting_options.ts -if file1
+$ deno run examples/command/conflicting_options.ts -if file1
 Error: Option --stdin conflicts with option: --file
 ```
 
@@ -359,13 +360,13 @@ const { options } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/depending_options.ts -a aac
+$ deno run examples/command/depending_options.ts -a aac
 { audioCodec: "aac" }
 
-$ deno run https://deno.land/x/cliffy/examples/command/depending_options.ts -v x265
+$ deno run examples/command/depending_options.ts -v x265
 Error: Option "--video-codec" depends on option "--audio-codec".
 
-$ deno run https://deno.land/x/cliffy/examples/command/depending_options.ts -a aac -v x265
+$ deno run examples/command/depending_options.ts -a aac -v x265
 { audioCodec: "aac", videoCodec: "x265" }
 ```
 
@@ -385,7 +386,7 @@ console.log(options);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/collect_options.ts --color yellow --color red --color blue
+$ deno run examples/command/collect_options.ts --color yellow --color red --color blue
 { color: [ "yellow", "red", "blue" ] }
 ```
 
@@ -430,10 +431,10 @@ const { options } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_processing.ts --object a
+$ deno run examples/command/custom_option_processing.ts --object a
 { object: { value: "a" } }
 
-$ deno run https://deno.land/x/cliffy/examples/command/custom_option_processing.ts --color blue \
+$ deno run examples/command/custom_option_processing.ts --color blue \
                                                                                    --color yellow \
                                                                                    --color red
 { color: [ "blue", "yellow", "red" ] }
@@ -478,14 +479,14 @@ console.log("main context");
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/action_options.ts --foo
+$ deno run examples/command/action_options.ts --foo
 --foo action
 main action
 main context
-$ deno run https://deno.land/x/cliffy/examples/command/action_options.ts --bar
+$ deno run examples/command/action_options.ts --bar
 --bar action
 main context
-$ deno run https://deno.land/x/cliffy/examples/command/action_options.ts --baz
+$ deno run examples/command/action_options.ts --baz
 --baz action
 ```
 
@@ -514,7 +515,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/grouped_options.ts --help
+$ deno run examples/command/grouped_options.ts --help
 
   Usage:   COMMAND
   Version: 0.1.0

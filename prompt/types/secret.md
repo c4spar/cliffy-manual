@@ -5,13 +5,13 @@ The `Secret` prompt is a hidden text input which doesn't diplay the input value.
 ![](../assets/img/secret.gif)
 
 ```typescript
-import { Secret } from "@cliffy/prompt/secret.ts";
+import { Secret } from "@cliffy/prompt/secret";
 
 const password: string = await Secret.prompt("Enter your password");
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/secret.ts
+$ deno run examples/prompt/secret.ts
 ```
 
 ## Options

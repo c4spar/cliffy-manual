@@ -45,10 +45,6 @@ const fooCommand = new Command<
     if (options.color) {
       console.log("color", options.color);
     }
-    // @ts-expect-error option foo does not exist.
-    if (options.foo) {
-      console.log("foo");
-    }
   });
 
 await new Command()

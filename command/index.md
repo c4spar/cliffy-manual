@@ -1,7 +1,5 @@
 # Command
 
-The complete and type safe solution for building command-line interfaces.
-
 The command module supports type safe options and arguments, input validation,
 auto generated help, built-in shell completions, and more.
 
@@ -35,7 +33,7 @@ You can run this example and print the auto-generated help by executing the
 following command:
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/usage.ts --help
+$ deno run examples/command/usage.ts --help
 ```
 
 This shows you the default help if no additional options and arguments are

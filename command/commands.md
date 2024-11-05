@@ -90,7 +90,7 @@ const { args } = await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/arguments_syntax.ts
+$ deno run examples/command/arguments_syntax.ts
 Error: Missing argument(s): input
 ```
 
@@ -115,7 +115,7 @@ for (const dir of dirs) {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/variadic_arguments.ts dir1 dir2 dir3  
+$ deno run examples/command/variadic_arguments.ts dir1 dir2 dir3  
 rmdir dir1  
 rmdir dir2  
 rmdir dir3
@@ -166,7 +166,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/action_handler.ts rm dir
+$ deno run examples/command/action_handler.ts rm dir
 remove dir
 ```
 
@@ -196,7 +196,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/use_raw_args.ts --foo abc --bar xyz
+$ deno run examples/command/use_raw_args.ts --foo abc --bar xyz
 options: {}
 args: [ "--foo", "abc", "--bar", "xyz" ]
 ```
@@ -222,7 +222,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/stop_early.ts -d warning server -p 80
+$ deno run examples/command/stop_early.ts -d warning server -p 80
 options: { debugLevel: "warning" }
 script: server
 args: [ "-p", "80" ]
@@ -273,7 +273,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/global_commands.ts command1 command2 global test
+$ deno run examples/command/global_commands.ts command1 command2 global test
 {} test
 ```
 
@@ -312,7 +312,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/hidden_commands.ts -h
+$ deno run examples/command/hidden_commands.ts -h
 ```
 
 ## Command alias

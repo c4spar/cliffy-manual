@@ -25,6 +25,6 @@ try {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/error_handling.ts -d
+$ deno run examples/flags/error_handling.ts -d
 [VALIDATION_ERROR] Unknown option "-d". Did you mean option "--debug"?
 ```

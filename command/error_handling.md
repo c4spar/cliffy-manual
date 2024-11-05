@@ -73,9 +73,9 @@ try {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/general_error_handling.ts -t
+$ deno run examples/command/general_error_handling.ts -t
 Unknown option "-t". Did you mean option "-h"?
-$ deno run https://deno.land/x/cliffy/examples/command/general_error_handling.ts
+$ deno run examples/command/general_error_handling.ts
 [CUSTOM_ERROR] Some error happened.
 ```
 
@@ -112,7 +112,7 @@ try {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/validation_error_handling.ts -t
+$ deno run examples/command/validation_error_handling.ts -t
 Usage error: Unknown option "-t". Did you mean option "-h"?
 ```
 
@@ -166,16 +166,16 @@ if (options.runtimeError) {
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/throw.ts --runtime-error
+$ deno run examples/command/throw.ts --runtime-error
 error handler...
 error: Uncaught Error: runtime error message.
   cmd.throw(new Error("runtime error message."));
             ^
-    at https://deno.land/x/cliffy/examples/command/throw.ts:21:13
+    at examples/command/throw.ts:21:13
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/throw.ts --validation-error
+$ deno run examples/command/throw.ts --validation-error
 error handler...
 
   Usage: COMMAND

@@ -31,7 +31,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/help.ts --help
+$ deno run examples/command/help.ts --help
 ```
 
 ![](assets/img/help.gif)
@@ -186,8 +186,8 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/version_options.ts -V
-$ deno run https://deno.land/x/cliffy/examples/command/version_options.ts --version
+$ deno run examples/command/version_options.ts -V
+$ deno run examples/command/version_options.ts --version
 0.0.1
 ```
 
@@ -255,7 +255,7 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/examples.ts help
+$ deno run examples/command/examples.ts help
 ```
 
 ![](assets/img/examples.gif)

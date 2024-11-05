@@ -70,7 +70,7 @@ used for shell completions. You can read more about custom types
 import { Command, StringType } from "@cliffy/command";
 
 class ColorType extends StringType {
-  complete(): Array<string> {
+  override complete(): Array<string> {
     return ["red", "blue", "yellow"];
   }
 }

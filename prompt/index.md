@@ -1,6 +1,7 @@
 # Prompt
 
-Create simple and powerful interactive prompts with cliffy's prompt module.
+Cliffy's prompt module allows you to create simple yet powerful interactive
+prompts for your command-line applications.
 
 ## Usage
 
@@ -70,5 +71,5 @@ console.log(result);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/prompt_list.ts
+$ deno run examples/prompt/prompt_list.ts
 ```
