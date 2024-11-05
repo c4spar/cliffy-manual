@@ -12,6 +12,10 @@ console.log(
 );
 ```
 
+```console
+$ deno run examples/ansi/colors.ts
+```
+
 ## Themes
 
 You can create your own re-usable themes just by storing your styles into a
@@ -34,4 +38,8 @@ console.log(info("[INFO]"), "Some information!");
 console.log(error.underline("[ERROR]"), "Some error!");
 console.log(warn.underline("[WARN]"), "Some warning!");
 console.log(info.underline("[INFO]"), "Some information!");
+```
+
+```console
+$ deno run examples/ansi/color_themes.ts
 ```
