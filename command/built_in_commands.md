@@ -93,7 +93,13 @@ To enable zsh completions add the following line to your `~/.zshrc`:
 source <(COMMAND completions zsh)
 ```
 
-> ❗ Replace `COMMAND` with the name of your cli.
+or run following command to use **zsh fpath** completions:
+
+```shell script
+COMMAND completions zsh > /path/to/zsh/site-functions/_COMMAND
+```
+
+> ❗ Replace `COMMAND` with the name of your CLI.
 
 ## Upgrade command
 
