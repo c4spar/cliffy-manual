@@ -141,10 +141,12 @@ If your cli needs some permissions, you can specify the permissions with the
 
 ### Providers
 
-There are three built-in providers: `deno.land`, `nest.land` and `github`. If
-multiple providers are registered, you can specify the registry that should be
-used with the `--registry` option. The github provider can also be used to
-`upgrade` to any git branch.
+There are a view built-in providers: [jsr](https://jsr.io),
+[npm](https://www.npmjs.com/), [deno.land](https://deno.land/x),
+[nest.land](https://nest.land) and [github](https://github.com). If multiple
+providers are registered, you can specify the registry that should be used with
+the `--registry` option provided by the `UpgradeCommand`. The github provider
+can also be used to `upgrade` to any git branch.
 
 ```shell
 COMMAND upgrade --registry github --version main
@@ -154,10 +156,38 @@ The `--registry` option is hidden if only one provider is registered. If the
 `upgrade` command is called without the `--registry` option, the default
 registry is used. The default registry is the first registered provider.
 
-The `GithubProvider` requires the `repository` name as option. The
-`DenoLandProvider` and `NestLandProvider` does not require any options but you
-can optionally pass the registry module name to the provider which defaults to
-the command name.
+The package name defaults to the command name for all providers. If you want to
+use a different module name, you can override it with the `name` option.
+
+#### Package providers
+
+The `JsrProvider` and `NpmProvider` can be used if your cli is published as a
+package. The `scope` option is required for the `JsrProvider` and the
+`NpmProvider`.
+
+```typescript
+import { Command } from "@cliffy/command";
+import { UpgradeCommand } from "@cliffy/command/upgrade";
+import { JsrProvider } from "@cliffy/command/upgrade/provider/jsr";
+import { NpmProvider } from "@cliffy/command/upgrade/provider/npm";
+
+new Command()
+  .name("my-package")
+  .command(
+    "upgrade",
+    new UpgradeCommand({
+      provider: [
+        new JsrProvider({ scope: "@my-scope" }),
+        new NpmProvider({ scope: "@my-scope" }),
+      ],
+    }),
+  );
+```
+
+#### CDN providers
+
+The following providers can be used if your CLI is published to a CDN from which
+it can be imported from a URL.
 
 ```typescript
 import { Command } from "@cliffy/command";
@@ -167,12 +197,13 @@ import { GithubProvider } from "@cliffy/command/upgrade/provider/github";
 import { NestLandProvider } from "@cliffy/command/upgrade/provider/nest-land";
 
 new Command()
+  .name("my-package")
   .command(
     "upgrade",
     new UpgradeCommand({
       provider: [
-        new DenoLandProvider({ name: "cliffy" }),
-        new NestLandProvider({ name: "cliffy" }),
+        new DenoLandProvider(),
+        new NestLandProvider(),
         new GithubProvider({ repository: "c4spar/deno-cliffy" }),
       ],
     }),
