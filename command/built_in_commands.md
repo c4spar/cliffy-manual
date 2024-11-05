@@ -161,13 +161,15 @@ the command name.
 
 #### Package providers
 
-The `JsrProvider` can be used if your cli is published as a package. The `scope`
-option is required for the `JsrProvider`.
+The `JsrProvider` and `NpmProvider` can be used if your cli is published as a
+package. The `scope` option is required for the `JsrProvider` and the
+`NpmProvider`.
 
 ```typescript
 import { Command } from "@cliffy/command";
 import { UpgradeCommand } from "@cliffy/command/upgrade";
 import { JsrProvider } from "@cliffy/command/upgrade/provider/jsr";
+import { NpmProvider } from "@cliffy/command/upgrade/provider/npm";
 
 new Command()
   .name("my-package")
@@ -176,6 +178,7 @@ new Command()
     new UpgradeCommand({
       provider: [
         new JsrProvider({ scope: "@my-scope" }),
+        new NpmProvider({ scope: "@my-scope" }),
       ],
     }),
   );
@@ -201,7 +204,7 @@ new Command()
       provider: [
         new DenoLandProvider(),
         new NestLandProvider(),
-        new GithubProvider({ repository: "my-org/my-repo" }),
+        new GithubProvider({ repository: "c4spar/deno-cliffy" }),
       ],
     }),
   );
