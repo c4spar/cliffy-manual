@@ -141,10 +141,10 @@ If your cli needs some permissions, you can specify the permissions with the
 
 ### Providers
 
-There are three built-in providers: `deno.land`, `nest.land` and `github`. If
-multiple providers are registered, you can specify the registry that should be
-used with the `--registry` option. The github provider can also be used to
-`upgrade` to any git branch.
+There are a view built-in providers: `jsr.io`, `deno.land`, `nest.land` and
+`github`. If multiple providers are registered, you can specify the registry
+that should be used with the `--registry` option. The github provider can also
+be used to `upgrade` to any git branch.
 
 ```shell
 COMMAND upgrade --registry github --version main
@@ -159,6 +159,33 @@ The `GithubProvider` requires the `repository` name as option. The
 can optionally pass the registry module name to the provider which defaults to
 the command name.
 
+#### Package providers
+
+The `JsrProvider` can be used if your cli is published as a package. The `scope`
+option is required for the `JsrProvider`.
+
+```typescript
+import { Command } from "@cliffy/command";
+import { UpgradeCommand } from "@cliffy/command/upgrade";
+import { JsrProvider } from "@cliffy/command/upgrade/provider/jsr";
+
+new Command()
+  .name("my-package")
+  .command(
+    "upgrade",
+    new UpgradeCommand({
+      provider: [
+        new JsrProvider({ scope: "@my-scope" }),
+      ],
+    }),
+  );
+```
+
+#### CDN providers
+
+The following providers can be used if your CLI is published to a CDN from which
+it can be imported from a URL.
+
 ```typescript
 import { Command } from "@cliffy/command";
 import { UpgradeCommand } from "@cliffy/command/upgrade";
@@ -167,13 +194,14 @@ import { GithubProvider } from "@cliffy/command/upgrade/provider/github";
 import { NestLandProvider } from "@cliffy/command/upgrade/provider/nest-land";
 
 new Command()
+  .name("my-package")
   .command(
     "upgrade",
     new UpgradeCommand({
       provider: [
-        new DenoLandProvider({ name: "cliffy" }),
-        new NestLandProvider({ name: "cliffy" }),
-        new GithubProvider({ repository: "c4spar/deno-cliffy" }),
+        new DenoLandProvider(),
+        new NestLandProvider(),
+        new GithubProvider({ repository: "my-org/my-repo" }),
       ],
     }),
   );
