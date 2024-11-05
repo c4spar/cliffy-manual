@@ -107,6 +107,7 @@ import { Command } from "@cliffy/command";
 const { args: dirs } = await new Command()
   .description("Remove directories.")
   .arguments("<dirs...>")
+  .action((_, ...rest) => console.log(`removing ${rest}`))
   .parse(Deno.args);
 
 for (const dir of dirs) {
@@ -116,6 +117,7 @@ for (const dir of dirs) {
 
 ```console
 $ deno run examples/command/variadic_arguments.ts dir1 dir2 dir3  
+removing dir1,dir2,dir3
 rmdir dir1  
 rmdir dir2  
 rmdir dir3
