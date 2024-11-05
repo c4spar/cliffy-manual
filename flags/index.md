@@ -18,13 +18,13 @@ and all flags specified after the double dash (`--`) are added to the `literal`
 array.
 
 ```typescript
-import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags } from "@cliffy/flags";
 
 console.log(parseFlags(Deno.args));
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/flags.ts -a foo -b bar
+$ deno run examples/flags/flags.ts -a foo -b bar
 {
   flags: { a: "foo", b: "bar" },
   literal: [],
@@ -33,7 +33,7 @@ $ deno run https://deno.land/x/cliffy/examples/flags/flags.ts -a foo -b bar
   stopOnUnknown: false
 }
 
-$ deno run https://deno.land/x/cliffy/examples/flags/flags.ts \
+$ deno run examples/flags/flags.ts \
     -x 3 \
     -y.z -n5 \
     -abc \
@@ -67,7 +67,7 @@ an `ValidationError` is thrown. Read more about error handling
 [here](./flag_options.md).
 
 ```typescript
-import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags } from "@cliffy/flags";
 
 const { flags } = parseFlags(Deno.args, {
   flags: [{
@@ -90,7 +90,7 @@ console.log(flags);
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/flags/options.ts -vvv -f ./example.ts
+$ deno run examples/flags/options.ts -vvv -f ./example.ts
 { verbose: 3, file: "./example.ts" }
 ```
 
@@ -104,7 +104,7 @@ This can be used to parse command line flags in multiple steps, for example,
 when parsing options that precede a subcommand.
 
 ```ts
-import { parseFlags } from "https://deno.land/x/cliffy/flags/mod.ts";
+import { parseFlags } from "@cliffy/flags";
 
 const globalFlags = [{
   name: "foo-global",

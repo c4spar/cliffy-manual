@@ -5,13 +5,13 @@ The `Confirm` prompt is a simple yes or no prompt.
 ![](../assets/img/confirm.gif)
 
 ```typescript
-import { Confirm } from "https://deno.land/x/cliffy/prompt/confirm.ts";
+import { Confirm } from "@cliffy/prompt/confirm";
 
 const confirmed: boolean = await Confirm.prompt("Can you confirm?");
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/confirm.ts
+$ deno run examples/prompt/confirm.ts
 ```
 
 ## Options

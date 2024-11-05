@@ -5,7 +5,7 @@ added to the `Table` with the [.columns()](./options.md) and
 [.column()](./options.md) method.
 
 ```ts
-import { Column, Table } from "https://deno.land/x/cliffy/table/mod.ts";
+import { Column, Table } from "@cliffy/table";
 
 new Table()
   .body([

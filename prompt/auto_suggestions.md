@@ -21,7 +21,7 @@ deno run you/cli.ts --location https://example.com
 The `suggestions` options specifies a list of default suggestions.
 
 ```typescript
-import { Input } from "https://deno.land/x/cliffy/prompt/input.ts";
+import { Input } from "@cliffy/prompt/input";
 
 const color: string = await Input.prompt({
   message: "Choose a color",
@@ -43,7 +43,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions.ts
+$ deno run examples/prompt/suggestions.ts
 ```
 
 ![](assets/img/suggestions.gif)
@@ -73,7 +73,7 @@ You can also display the info bar with the `info` option to show the number of
 available suggestions and usage information.
 
 ```typescript
-import { Input } from "https://deno.land/x/cliffy/prompt/input.ts";
+import { Input } from "@cliffy/prompt/input";
 
 const color: string = await Input.prompt({
   message: "Choose a color",
@@ -97,7 +97,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions_list.ts
+$ deno run examples/prompt/suggestions_list.ts
 ```
 
 ![](assets/img/suggestions_list.gif)

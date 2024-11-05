@@ -17,7 +17,7 @@ will be parsed to `{ someEnvVar: true }`.
 > environment variable.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...")
@@ -26,10 +26,10 @@ await new Command()
 ```
 
 ```console
-$ SOME_ENV_VAR=abc deno run --allow-env=SOME_ENV_VAR https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ SOME_ENV_VAR=abc deno run --allow-env=SOME_ENV_VAR examples/command/environment_variables.ts
 Error: Environment variable "SOME_ENV_VAR" must be of type "number", but got "abc".
 
-$ SOME_ENV_VAR=1 deno run --allow-env=SOME_ENV_VAR https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ SOME_ENV_VAR=1 deno run --allow-env=SOME_ENV_VAR examples/command/environment_variables.ts
 { someEnvVar: 1 }
 ```
 
@@ -40,7 +40,7 @@ global environment variables either with the `.env()` method and the `global`
 option or with the `.globalEnv()` method.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...", { global: true })
@@ -57,7 +57,7 @@ Required environment variables can be added with the `required` option. If a
 required environment variable is not defined on command line an error is thrown.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...", { required: true })
@@ -66,13 +66,13 @@ await new Command()
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ deno run examples/command/environment_variables.ts
 error: Missing required environment variable "SOME_ENV_VAR".
 
-$ SOME_ENV_VAR=abc deno run --allow-env=SOME_ENV_VAR https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ SOME_ENV_VAR=abc deno run --allow-env=SOME_ENV_VAR examples/command/environment_variables.ts
 Error: Environment variable "SOME_ENV_VAR" must be of type "number", but got "abc".
 
-$ SOME_ENV_VAR=1 deno run --allow-env=SOME_ENV_VAR https://deno.land/x/cliffy/examples/command/environment_variables.ts
+$ SOME_ENV_VAR=1 deno run --allow-env=SOME_ENV_VAR examples/command/environment_variables.ts
 { someEnvVar: 1 }
 ```
 
@@ -82,7 +82,7 @@ Hidden environment variables can be added with the `hidden` option and will be
 not displayed in the auto generated help.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...", { hidden: true })
@@ -98,7 +98,7 @@ remove before the value is added to the options object. This works also in
 combination with options.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .env(
@@ -115,6 +115,6 @@ await new Command()
 ```
 
 ```console
-$ DENO_INSTALL_ROOT=foo/bar deno run --allow-env=DENO_INSTALL_ROOT https://deno.land/x/cliffy/examples/command/environment_variables_prefix.ts
+$ DENO_INSTALL_ROOT=foo/bar deno run --allow-env=DENO_INSTALL_ROOT examples/command/environment_variables_prefix.ts
 { installRoot: "foo/bar" }
 ```

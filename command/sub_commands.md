@@ -20,7 +20,7 @@ are explained in the following section.
 Sub-command implemented using the `.command()` method with an action handler.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .command(
@@ -45,7 +45,7 @@ The command method accepts as second argument a instance of a command. This way
 you can move your sub-commands into different files.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 const clone = new Command()
   .arguments("<source:string> [destination:string]")
@@ -64,7 +64,7 @@ await new Command()
 For arguments with `--` the following can be used.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .name("my-command")

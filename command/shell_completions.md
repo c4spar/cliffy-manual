@@ -24,7 +24,7 @@ used for shell completions. Read more about the enum type
 [here](./types.md#enum-type).
 
 ```typescript
-import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, EnumType } from "@cliffy/command";
 
 const colorType = new EnumType(["red", "blue", "yellow"]);
 
@@ -50,7 +50,7 @@ separated by colon.
 > method.
 
 ```typescript
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 await new Command()
   .complete("color", () => ["red", "blue", "yellow"])
@@ -67,10 +67,10 @@ used for shell completions. You can read more about custom types
 [here](./types.md#custom-types).
 
 ```typescript
-import { Command, StringType } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, StringType } from "@cliffy/command";
 
 class ColorType extends StringType {
-  complete(): Array<string> {
+  override complete(): Array<string> {
     return ["red", "blue", "yellow"];
   }
 }

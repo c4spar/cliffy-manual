@@ -1,11 +1,11 @@
 # Colors
 
 The colors module is a simple and tiny chainable wrapper around
-[deno's std colors](https://deno.land/std/fmt/colors.ts) module and works
+[@std/fmt/colors](https://jsr.io/@std/fmt@1.0.3/doc/colors) module and works
 similar to node's [chalk](https://github.com/chalk/chalk) module.
 
 ```typescript
-import { colors } from "https://deno.land/x/cliffy/ansi/colors.ts";
+import { colors } from "@cliffy/ansi/colors";
 
 console.log(
   colors.bold.underline.rgb24("Welcome to Deno.Land!", 0xff3333),
@@ -13,7 +13,7 @@ console.log(
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/ansi/colors.ts
+$ deno run examples/ansi/colors.ts
 ```
 
 ## Themes
@@ -22,7 +22,7 @@ You can create your own re-usable themes just by storing your styles into a
 variable.
 
 ```typescript
-import { colors } from "https://deno.land/x/cliffy/ansi/colors.ts";
+import { colors } from "@cliffy/ansi/colors";
 
 // Define theme colors.
 const error = colors.bold.red;
@@ -41,5 +41,5 @@ console.log(info.underline("[INFO]"), "Some information!");
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/ansi/color_themes.ts
+$ deno run examples/ansi/color_themes.ts
 ```

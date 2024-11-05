@@ -25,7 +25,7 @@ The first parameter defines required global options and/or environment
 variables. The second parameter defines required global custom types.
 
 ```typescript
-import { Command, EnumType } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command, EnumType } from "@cliffy/command";
 
 const colorType = new EnumType(["red", "blue"]);
 
@@ -44,10 +44,6 @@ const fooCommand = new Command<
     }
     if (options.color) {
       console.log("color", options.color);
-    }
-    // @ts-expect-error option foo does not exist.
-    if (options.foo) {
-      console.log("foo");
     }
   });
 
@@ -84,7 +80,7 @@ because in typescript you can only return an instance in the constructor that is
 compatible to it self.
 
 ```ts
-import { Command } from "https://deno.land/x/cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 class FooCommand extends Command<
   void,

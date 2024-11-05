@@ -8,13 +8,13 @@ The `Input` prompt is a simple text input with support for
 The `Input` prompt can be imported from `prompt/mod.ts` or `prompt/input.ts`.
 
 ```typescript
-import { Input } from "https://deno.land/x/cliffy/prompt/input.ts";
+import { Input } from "@cliffy/prompt/input";
 
 const name: string = await Input.prompt("What's your github user name?");
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/input.ts
+$ deno run examples/prompt/input.ts
 ```
 
 ## Options
@@ -53,7 +53,7 @@ suggestions [here](../auto_suggestions.md).
 > deno `1.16.0` the `--location` flag is optional.
 
 ```typescript
-import { Input } from "https://deno.land/x/cliffy/prompt/input.ts";
+import { Input } from "@cliffy/prompt/input";
 
 const color: string = await Input.prompt({
   message: "Choose a color",
@@ -76,7 +76,7 @@ console.log({ color });
 ```
 
 ```console
-$ deno run https://deno.land/x/cliffy/examples/prompt/suggestions_list_prompt.ts
+$ deno run examples/prompt/suggestions_list_prompt.ts
 ```
 
 ![](../assets/img/suggestions.gif)

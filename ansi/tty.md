@@ -5,7 +5,7 @@ The tty module exports a `tty` object which works almost the same way as the
 sequences directly to stdout.
 
 ```typescript
-import { tty } from "https://deno.land/x/cliffy/ansi/tty.ts";
+import { tty } from "@cliffy/ansi/tty";
 
 tty.cursorSave
   .cursorHide
@@ -16,7 +16,7 @@ tty.cursorSave
 Create a new instance.
 
 ```typescript
-import { tty } from "https://deno.land/x/cliffy/ansi/tty.ts";
+import { tty } from "@cliffy/ansi/tty";
 
 const myTty = tty({
   writer: Deno.stdout,
