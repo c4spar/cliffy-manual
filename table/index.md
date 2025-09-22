@@ -2,6 +2,60 @@
 
 Fast and customizable table module to render unicode tables on the command line.
 
+## Installation
+
+<!--tabs-start-->
+
+### Deno
+
+```bash
+deno add jsr:@cliffy/table
+```
+
+### Pnpm
+
+```bash
+pnpm add jsr:@cliffy/table
+```
+
+or (using pnpm 10.8 or older):
+
+```bash
+pnpm dlx jsr add @cliffy/table
+```
+
+### Yarn
+
+```bash
+yarn add jsr:@cliffy/table
+```
+
+or (using Yarn 4.8 or older):
+
+```bash
+yarn dlx jsr add @cliffy/table
+```
+
+### Vlt
+
+```bash
+vlt install jsr:@cliffy/table
+```
+
+### Npm
+
+```bash
+npx jsr add @cliffy/table
+```
+
+### Bun
+
+```bash
+bunx jsr add @cliffy/table
+```
+
+<!--tabs-end-->
+
 ## Usage
 
 ### Basic Usage

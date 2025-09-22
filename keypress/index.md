@@ -2,6 +2,60 @@
 
 Keypress module with promise, async iterator and event target API.
 
+## Installation
+
+<!--tabs-start-->
+
+### Deno
+
+```bash
+deno add jsr:@cliffy/keypress
+```
+
+### Pnpm
+
+```bash
+pnpm add jsr:@cliffy/keypress
+```
+
+or (using pnpm 10.8 or older):
+
+```bash
+pnpm dlx jsr add @cliffy/keypress
+```
+
+### Yarn
+
+```bash
+yarn add jsr:@cliffy/keypress
+```
+
+or (using Yarn 4.8 or older):
+
+```bash
+yarn dlx jsr add @cliffy/keypress
+```
+
+### Vlt
+
+```bash
+vlt install jsr:@cliffy/keypress
+```
+
+### Npm
+
+```bash
+npx jsr add @cliffy/keypress
+```
+
+### Bun
+
+```bash
+bunx jsr add @cliffy/keypress
+```
+
+<!--tabs-end-->
+
 ## Usage
 
 There are two ways to use this module. You can use the `keypress()` method,

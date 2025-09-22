@@ -2,6 +2,60 @@
 
 Command line arguments parser with built-in validations.
 
+## Installation
+
+<!--tabs-start-->
+
+### Deno
+
+```bash
+deno add jsr:@cliffy/flags
+```
+
+### Pnpm
+
+```bash
+pnpm add jsr:@cliffy/flags
+```
+
+or (using pnpm 10.8 or older):
+
+```bash
+pnpm dlx jsr add @cliffy/flags
+```
+
+### Yarn
+
+```bash
+yarn add jsr:@cliffy/flags
+```
+
+or (using Yarn 4.8 or older):
+
+```bash
+yarn dlx jsr add @cliffy/flags
+```
+
+### Vlt
+
+```bash
+vlt install jsr:@cliffy/flags
+```
+
+### Npm
+
+```bash
+npx jsr add @cliffy/flags
+```
+
+### Bun
+
+```bash
+bunx jsr add @cliffy/flags
+```
+
+<!--tabs-end-->
+
 ## Usage
 
 The `parseFlags` method takes as its first argument the arguments to be parsed,
