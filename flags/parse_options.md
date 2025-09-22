@@ -13,7 +13,8 @@ unknown or invalid flags. You can find a list of all possible flag options
 With the `parse` method you can add a custom handler for handling and parsing
 types.
 
-> ❗ The `parse` method will be called for all types, which means it overrides
+> [!NOTE]
+> The `parse` method will be called for all types, which means it overrides
 > also all built-in types!
 
 ```typescript
