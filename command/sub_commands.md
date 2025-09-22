@@ -8,10 +8,10 @@ command description or an instance of a `Command` class. The description can be
 also defined with the `.description()` method.
 
 > [!NOTE]
-> The `.command()` method returns the instance of the added command. If you
-> call the `.action()` method after the `.command()` method is called, the
-> action will be registered to the sub command and not to your main command. You
-> can use the `.reset()` method to get the instance of the parent command back.
+> The `.command()` method returns the instance of the added command. If you call
+> the `.action()` method after the `.command()` method is called, the action
+> will be registered to the sub command and not to your main command. You can
+> use the `.reset()` method to get the instance of the parent command back.
 
 There are two ways to specify sub-commands with the `.command()` method which
 are explained in the following section.

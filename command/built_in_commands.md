@@ -145,8 +145,7 @@ If your cli needs some permissions, you can specify the permissions with the
 
 > - When `args` is defined, `--force` and `--name` is set by default.
 > - When `args` is not defined, `--force`, `--name`, `--quiet` and `--no-check`
->
->> is set by default.
+>   is set by default.
 
 ### Providers
 

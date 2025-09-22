@@ -14,8 +14,8 @@ With the `parse` method you can add a custom handler for handling and parsing
 types.
 
 > [!NOTE]
-> The `parse` method will be called for all types, which means it overrides
-> also all built-in types!
+> The `parse` method will be called for all types, which means it overrides also
+> all built-in types!
 
 ```typescript
 import { ArgumentValue, parseFlags } from "@cliffy/flags";
