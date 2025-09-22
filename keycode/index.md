@@ -2,6 +2,60 @@
 
 ANSI key code parser.
 
+## Installation
+
+<!--tabs-start-->
+
+### Deno
+
+```bash
+deno add jsr:@cliffy/keycode
+```
+
+### Pnpm
+
+```bash
+pnpm add jsr:@cliffy/keycode
+```
+
+or (using pnpm 10.8 or older):
+
+```bash
+pnpm dlx jsr add @cliffy/keycode
+```
+
+### Yarn
+
+```bash
+yarn add jsr:@cliffy/keycode
+```
+
+or (using Yarn 4.8 or older):
+
+```bash
+yarn dlx jsr add @cliffy/keycode
+```
+
+### Vlt
+
+```bash
+vlt install jsr:@cliffy/keycode
+```
+
+### Npm
+
+```bash
+npx jsr add @cliffy/keycode
+```
+
+### Bun
+
+```bash
+bunx jsr add @cliffy/keycode
+```
+
+<!--tabs-end-->
+
 ## Usage
 
 The `keycode` module exports a `parse()` method which accepts an ansi string and

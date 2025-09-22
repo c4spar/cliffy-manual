@@ -4,6 +4,60 @@ Chainable ansi escape sequences.
 
 ![](assets/img/demo.gif)
 
+## Installation
+
+<!--tabs-start-->
+
+### Deno
+
+```bash
+deno add jsr:@cliffy/ansi
+```
+
+### Pnpm
+
+```bash
+pnpm add jsr:@cliffy/ansi
+```
+
+or (using pnpm 10.8 or older):
+
+```bash
+pnpm dlx jsr add @cliffy/ansi
+```
+
+### Yarn
+
+```bash
+yarn add jsr:@cliffy/ansi
+```
+
+or (using Yarn 4.8 or older):
+
+```bash
+yarn dlx jsr add @cliffy/ansi
+```
+
+### Vlt
+
+```bash
+vlt install jsr:@cliffy/ansi
+```
+
+### Npm
+
+```bash
+npx jsr add @cliffy/ansi
+```
+
+### Bun
+
+```bash
+bunx jsr add @cliffy/ansi
+```
+
+<!--tabs-end-->
+
 ## Usage
 
 ### Ansi escape sequences

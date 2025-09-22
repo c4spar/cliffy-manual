@@ -3,6 +3,60 @@
 The command module supports type safe options and arguments, input validation,
 auto generated help, built-in shell completions, and more.
 
+## Installation
+
+<!--tabs-start-->
+
+### Deno
+
+```bash
+deno add jsr:@cliffy/command
+```
+
+### Pnpm
+
+```bash
+pnpm add jsr:@cliffy/command
+```
+
+or (using pnpm 10.8 or older):
+
+```bash
+pnpm dlx jsr add @cliffy/command
+```
+
+### Yarn
+
+```bash
+yarn add jsr:@cliffy/command
+```
+
+or (using Yarn 4.8 or older):
+
+```bash
+yarn dlx jsr add @cliffy/command
+```
+
+### Vlt
+
+```bash
+vlt install jsr:@cliffy/command
+```
+
+### Npm
+
+```bash
+npx jsr add @cliffy/command
+```
+
+### Bun
+
+```bash
+bunx jsr add @cliffy/command
+```
+
+<!--tabs-end-->
+
 ## Usage
 
 To create a program with cliffy you can import the `Command` class from the main

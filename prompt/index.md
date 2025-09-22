@@ -3,6 +3,60 @@
 Cliffy's prompt module allows you to create simple yet powerful interactive
 prompts for your command-line applications.
 
+## Installation
+
+<!--tabs-start-->
+
+### Deno
+
+```bash
+deno add jsr:@cliffy/prompt
+```
+
+### Pnpm
+
+```bash
+pnpm add jsr:@cliffy/prompt
+```
+
+or (using pnpm 10.8 or older):
+
+```bash
+pnpm dlx jsr add @cliffy/prompt
+```
+
+### Yarn
+
+```bash
+yarn add jsr:@cliffy/prompt
+```
+
+or (using Yarn 4.8 or older):
+
+```bash
+yarn dlx jsr add @cliffy/prompt
+```
+
+### Vlt
+
+```bash
+vlt install jsr:@cliffy/prompt
+```
+
+### Npm
+
+```bash
+npx jsr add @cliffy/prompt
+```
+
+### Bun
+
+```bash
+bunx jsr add @cliffy/prompt
+```
+
+<!--tabs-end-->
+
 ## Usage
 
 There are two ways of using this module. You can either use standalone (single)
