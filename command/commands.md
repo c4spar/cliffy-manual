@@ -358,5 +358,5 @@ const { args, options, literal, cmd } = await new Command()
 All types and names for options, arguments and environment variables are
 automatically inferred and properly typed. If the command has sub commands,
 options and arguments will be of type `Record<string, unknown>` and
-`Array<unknown>`, because cliffy can not know with sub command was executed to
+`Array<unknown>`, because cliffy can not know which sub command was executed to
 provide the specific types. In this case use action handlers.
