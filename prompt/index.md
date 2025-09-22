@@ -94,7 +94,8 @@ To execute a list of prompts you can use the `prompt()` method. The prompt
 method accepts an array of [prompt options](./types/index.md) combined with a
 `name` and `type` property.
 
-> ❗ Make sure to give each prompt a unique name to prevent overwriting values!
+> [!NOTE]
+> Make sure to give each prompt a unique name to prevent overwriting values!
 
 Unlike npm's inquirer, the `type` property accepts a prompt object and not the
 name of the prompt.

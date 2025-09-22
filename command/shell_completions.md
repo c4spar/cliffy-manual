@@ -45,7 +45,8 @@ shell completions.
 To use these completions you can add the name of the action after the type
 separated by colon.
 
-> ❗ Completions defined with the `.complete()` or `.globalComplete()` method
+> [!NOTE]
+> Completions defined with the `.complete()` or `.globalComplete()` method
 > will override completions defined with the `.type()` or `.globalType()`
 > method.
 

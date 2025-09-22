@@ -1,6 +1,7 @@
 # Environment variables
 
-> ❗ To allow deno to access environment variables the `--allow-env=<allow-env>`
+> [!NOTE]
+> To allow deno to access environment variables the `--allow-env=<allow-env>`
 > flag is required. If the `--allow-env` flag is not provided, environment
 > variables will be ignored if not marked as required.
 
@@ -13,7 +14,8 @@ is thrown. They are also shown in the auto generated [help](./help.md).
 Environment variable names will be camel cased. For example `SOME_ENV_VAR=true`
 will be parsed to `{ someEnvVar: true }`.
 
-> ❗ If an option with the same name is defined, the option will override the
+> [!NOTE]
+> If an option with the same name is defined, the option will override the
 > environment variable.
 
 ```typescript

@@ -66,7 +66,8 @@ To enable bash completions add the following line to your `~/.bashrc`:
 source <(COMMAND completions bash)
 ```
 
-> ❗ Replace `COMMAND` with the name of your cli.
+> [!NOTE]
+> Replace `COMMAND` with the name of your cli.
 
 ### Fish Completions
 
@@ -80,7 +81,8 @@ To enable fish completions add the following line to your
 source (COMMAND completions fish | psub)
 ```
 
-> ❗ Replace `COMMAND` with the name of your cli.
+> [!NOTE]
+> Replace `COMMAND` with the name of your cli.
 
 ### Zsh Completions
 
@@ -99,7 +101,8 @@ or run following command to use **zsh fpath** completions:
 COMMAND completions zsh > /path/to/zsh/site-functions/_COMMAND
 ```
 
-> ❗ Replace `COMMAND` with the name of your CLI.
+> [!NOTE]
+> Replace `COMMAND` with the name of your CLI.
 
 ## Upgrade command
 

@@ -131,7 +131,8 @@ The Keypress class extends from the EventTarget class that provides a
 addEventListener method starts an event loop in the background that reads from
 stdin and emits an event for each input.
 
-> ❗ As long as the event loop is running, stdin is blocked for other resources.
+> [!NOTE]
+> As long as the event loop is running, stdin is blocked for other resources.
 
 You can stop the event loop with `keypress().dispose()`.
 

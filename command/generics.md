@@ -3,7 +3,8 @@
 Since `v0.21.0`, cliffy has strict types by default. All types, option and
 environment-variable names will be automatically magically inferred 🪄.
 
-> ❗ It is no longer recommended to define the types manually with the generic
+> [!NOTE]
+> It is no longer recommended to define the types manually with the generic
 > parameters.
 
 The only exception where you define generics manually is when you want to
