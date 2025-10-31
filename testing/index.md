@@ -4,6 +4,11 @@ Helper functions for testing.
 
 ## Installation
 
+> [!WARNING]
+> The testing module currently only supports Deno.
+
+## Installation
+
 <!--tabs-start-->
 
 ### Deno

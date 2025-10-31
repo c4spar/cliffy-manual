@@ -343,7 +343,8 @@ an error and exit the program with `Deno.exit(1)`. Read more about error
 handling [here](./error_handling.md).
 
 The parse method accepts optionally as first argument an array of command-line
-arguments that should be consumed. By default `Deno.args` is used.
+arguments that should be consumed. By default `Deno.args`, `process.argv.slice(2)`
+or `Bun.argv.slice(2)` is used, depending on the runtime.
 
 ```ts
 import { Command } from "@cliffy/command";
@@ -352,7 +353,7 @@ const { args, options, literal, cmd } = await new Command()
   .env("DEBUG", "Enable debugging.")
   .option("--debug", "Enable debugging.")
   .arguments("<input:string>")
-  .parse();
+  .parse(Deno.args);
 ```
 
 All types and names for options, arguments and environment variables are

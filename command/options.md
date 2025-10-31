@@ -50,8 +50,7 @@ server running at localhost:80
 > - If the option is defined **without** an equals sign, the option can be
 >   called with and without an equals sign.
 > - If the option is defined **with** an equals sign, the option must be called
->
-> with an equals sign as well.
+>   with an equals sign as well.
 >
 > The difference is, an option with an optional value which is defined with an
 > equals sign can be used before an argument without the option value:

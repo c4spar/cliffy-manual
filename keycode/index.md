@@ -91,6 +91,10 @@ $ deno run examples/keycode/example.ts
 
 ## Example
 
+<!--tabs-start-->
+
+### Deno
+
 ```typescript
 import { KeyCode, parse } from "@cliffy/keycode";
 
@@ -125,6 +129,14 @@ for await (const key of keypress()) {
 }
 ```
 
+<!--tabs-end-->
+
+<!--tabs-start-->
+
+### Deno
+
 ```console
 $ deno run examples/keycode/read_key.ts
 ```
+
+<!--tabs-end-->
