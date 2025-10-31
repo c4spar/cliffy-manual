@@ -8,7 +8,7 @@ support for [auto suggestions](#auto-suggestions).
 ```typescript
 import { List } from "@cliffy/prompt/list";
 
-const keywords: string[] = await List.prompt("Enter some keywords");
+const keywords = await List.prompt("Enter some keywords");
 ```
 
 ```console
@@ -60,13 +60,14 @@ local storage key. With `suggestions` you can provide some default suggestions.
 Both options can be defined at the same time. You can read more about auto
 suggestions [here](../auto_suggestions.md).
 
-> ❕ The `id` option requires deno >= `1.10` and the `--location` flag. Since
+> [!NOTE]
+> The `id` option requires deno >= `1.10` and the `--location` flag. Since
 > deno `1.16.0` the `--location` flag is optional.
 
 ```typescript
 import { List } from "@cliffy/prompt/list";
 
-const color: Array<string> = await List.prompt({
+const color = await List.prompt({
   message: "Choose a color",
   id: "<local-storage-key>",
   suggestions: [

@@ -7,7 +7,7 @@ The `Select` prompt lets you select a option from an options list.
 ```typescript
 import { Select } from "@cliffy/prompt/select";
 
-const color: string = await Select.prompt({
+const color = await Select.prompt({
   message: "Pick a color",
   options: [
     { name: "Red", value: "#ff0000" },
@@ -77,7 +77,7 @@ of child options, of which you can nest as many as you want.
 ```ts
 import { Select } from "@cliffy/prompt/select";
 
-const title: string = await Select.prompt({
+const title = await Select.prompt({
   message: "Pick a book",
   search: true,
   options: [

@@ -32,7 +32,7 @@ await new Command()
   .type("color", colorType)
   .arguments("[color-name:color]")
   .option("-c, --color <name:color>", "Choose a color.")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Complete method
@@ -56,7 +56,7 @@ await new Command()
   .complete("color", () => ["red", "blue", "yellow"])
   .arguments("[color-name:string:color]")
   .option("-c, --color <name:string:color>", "Choose a color.")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Custom type
@@ -78,5 +78,5 @@ class ColorType extends StringType {
 await new Command()
   .type("color", new ColorType())
   .option("-c, --color <name:color>", "Choose a color.")
-  .parse(Deno.args);
+  .parse();
 ```

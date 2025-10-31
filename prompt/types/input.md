@@ -10,7 +10,7 @@ The `Input` prompt can be imported from `prompt/mod.ts` or `prompt/input.ts`.
 ```typescript
 import { Input } from "@cliffy/prompt/input";
 
-const name: string = await Input.prompt("What's your github user name?");
+const name = await Input.prompt("What's your github user name?");
 ```
 
 ```console
@@ -49,13 +49,14 @@ local storage key. With `suggestions` you can provide some default suggestions.
 Both options can be defined at the same time. You can read more about auto
 suggestions [here](../auto_suggestions.md).
 
-> ❕ The `id` option requires deno >= `1.10` and the `--location` flag. Since
+> [!NOTE]
+> The `id` option requires deno >= `1.10` and the `--location` flag. Since
 > deno `1.16.0` the `--location` flag is optional.
 
 ```typescript
 import { Input } from "@cliffy/prompt/input";
 
-const color: string = await Input.prompt({
+const color = await Input.prompt({
   message: "Choose a color",
   id: "<local-storage-key>",
   suggestions: [

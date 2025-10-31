@@ -71,7 +71,7 @@ available on the main command. All methods from the command class are chainable.
 
 You should start with creating a main command and adding a name, version and
 description to it. It is required to define the name for your main command
-manually, because cliffy cannot know the name of the installed script.
+manually.
 
 ```typescript
 import { Command } from "@cliffy/command";
@@ -80,7 +80,7 @@ await new Command()
   .name("cliffy")
   .version("0.1.0")
   .description("Command line framework for Deno")
-  .parse(Deno.args);
+  .parse();
 ```
 
 You can run this example and print the auto-generated help by executing the
@@ -111,7 +111,8 @@ when the command is executed. Options and environment variables are passed as
 first argument to the action handler, followed by the command arguments in the
 same order they were defined with the `arguments` method.
 
-> ❕ Cliffy infers all types and names from all option, argument and environment
+> [!NOTE]
+> Cliffy infers all types and names from all option, argument and environment
 > variable definitions automatically and applies them properly to the types of
 > the options object and arguments array 🚀.
 
@@ -135,7 +136,7 @@ await new Command()
   })
   .arguments("<input:string> [output:string]")
   .action((options, ...args) => {})
-  .parse(Deno.args);
+  .parse();
 ```
 
 The type of the options object will look like this:
@@ -187,7 +188,7 @@ await new Command()
   .option("-b, --bar", "Bar option.")
   .arguments("<input:string> [output:string]")
   .action((options, ...args) => console.log("Bar command called."))
-  .parse(Deno.args);
+  .parse();
 ```
 
 > To make types, options and environment variables also available on child

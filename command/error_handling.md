@@ -75,6 +75,7 @@ try {
 ```console
 $ deno run examples/command/general_error_handling.ts -t
 Unknown option "-t". Did you mean option "-h"?
+
 $ deno run examples/command/general_error_handling.ts
 [CUSTOM_ERROR] Some error happened.
 ```

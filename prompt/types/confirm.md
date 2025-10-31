@@ -7,7 +7,7 @@ The `Confirm` prompt is a simple yes or no prompt.
 ```typescript
 import { Confirm } from "@cliffy/prompt/confirm";
 
-const confirmed: boolean = await Confirm.prompt("Can you confirm?");
+const confirmed = await Confirm.prompt("Can you confirm?");
 ```
 
 ```console

@@ -74,7 +74,7 @@ Execute a single prompt with a message as first argument.
 ```typescript
 import { Input } from "@cliffy/prompt";
 
-const name: string = await Input.prompt(`What's your name?`);
+const name = await Input.prompt(`What's your name?`);
 ```
 
 Execute a single prompt with an options object as first argument.
@@ -82,7 +82,7 @@ Execute a single prompt with an options object as first argument.
 ```typescript
 import { Input } from "@cliffy/prompt";
 
-const name: string = await Input.prompt({
+const name = await Input.prompt({
   message: `Choose a username`,
   minLength: 8,
 });

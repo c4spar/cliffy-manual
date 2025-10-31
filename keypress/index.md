@@ -136,7 +136,8 @@ stdin and emits an event for each input.
 
 You can stop the event loop with `keypress().dispose()`.
 
-> ❕ The promise and async iterator based solution does not start an event loop
+> [!NOTE]
+> The promise and async iterator based solution does not start an event loop
 > in the background.
 
 ```typescript

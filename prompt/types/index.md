@@ -46,7 +46,7 @@ With the `pointer` option the pointer icon can be changed.
 import { colors } from "@cliffy/ansi/colors";
 import { Input } from "@cliffy/prompt/input";
 
-const result: string = await Input.prompt({
+const result = await Input.prompt({
   message: "Say hallo!",
   pointer: colors.bold.brightBlue("-->"),
 });
@@ -61,9 +61,10 @@ With the `indent` option you can change the prompt indentation. Default is
 
 ### OS signals
 
-> ⚠️ The
+> [!WARNING]
+> The
 > [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
-> option works currently only on Linux and macOS!
+> option works currently only on Linux and macOS and is not supported with Bun!
 
 The `cbreak` option enables pass-through of os signals to deno, allowing you to
 register your own signal handler. Read more about os signals

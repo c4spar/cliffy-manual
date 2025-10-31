@@ -74,7 +74,9 @@ array.
 ```typescript
 import { parseFlags } from "@cliffy/flags";
 
-console.log(parseFlags(Deno.args));
+console.log(parseFlags());
+
+// or: console.log(parseFlags(Deno.args));
 ```
 
 ```console

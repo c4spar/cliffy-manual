@@ -24,7 +24,7 @@ import { Command } from "@cliffy/command";
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...")
   .action((options) => console.log(options))
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -50,7 +50,7 @@ await new Command()
   .action((options) => console.log(options))
   .command("hello", "world ...")
   .action((options) => console.log(options))
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Required environment variables
@@ -64,7 +64,7 @@ import { Command } from "@cliffy/command";
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...", { required: true })
   .action((options) => console.log(options))
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -89,7 +89,7 @@ import { Command } from "@cliffy/command";
 await new Command()
   .env("SOME_ENV_VAR=<value:number>", "Description ...", { hidden: true })
   .action((options) => console.log(options))
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Prefix
