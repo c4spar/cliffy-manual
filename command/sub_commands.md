@@ -51,7 +51,7 @@ import { Command } from "@cliffy/command";
 const clone = new Command()
   .arguments("<source:string> [destination:string]")
   .description("Clone a repository into a newly created directory.")
-  .action((options: any, source, destination?) => {
+  .action((options, source, destination?) => {
     console.log("clone command called");
   });
 

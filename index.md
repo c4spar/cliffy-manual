@@ -5,6 +5,10 @@ interactive command-line tools with ease. It offers a range of modules that
 simplify the process of building complex command-line interfaces and
 feature-rich CLI prompts.
 
+Cliffy is platform-independent and works seamlessly with
+[Deno](https://deno.com/), [Node.js](https://nodejs.org/en) and
+[bun](https://bun.sh/).
+
 ## Key Modules
 
 - **[command](./command/index.md)**: This module allows you to create

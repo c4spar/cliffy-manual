@@ -18,6 +18,23 @@ Create a new instance.
 ```typescript
 import { tty } from "@cliffy/ansi/tty";
 
+const myTty = tty();
+
+myTty.cursorSave
+  .cursorHide
+  .cursorTo(0, 0)
+  .eraseScreen();
+```
+
+Create a new instance with custom writer and reader.
+
+<!--tabs-start-->
+
+### Deno
+
+```typescript
+import { tty } from "@cliffy/ansi/tty";
+
 const myTty = tty({
   writer: Deno.stdout,
   reader: Deno.stdin,
@@ -28,3 +45,6 @@ myTty.cursorSave
   .cursorTo(0, 0)
   .eraseScreen();
 ```
+
+<!--tabs-end-->
+
