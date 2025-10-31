@@ -1,8 +1,9 @@
 # OS signals
 
-> ⚠️ The
+> [!WARNING]
+> The
 > [cbreak](https://deno.land/api@v1.31.1?s=Deno.SetRawOptions#prop_cbreak)
-> option works currently only on Linux and macOS!
+> option works currently only on Linux and macOS and is not supported with Bun!
 
 By default, cliffy will call `Deno.exit(0)` after the user presses `ctrl+c`. If
 you need to use a custom signal handler, you can enable the `cbreak` option on
@@ -23,7 +24,7 @@ Deno.addSignalListener("SIGINT", () => {
   Deno.exit(1);
 });
 
-const confirmed: boolean = await Toggle.prompt({
+const confirmed = await Toggle.prompt({
   message: "Please confirm",
   cbreak: true,
 });

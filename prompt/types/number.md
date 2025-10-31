@@ -8,7 +8,7 @@ The `Number` prompt is a simple number input with support for
 ```typescript
 import { Number } from "@cliffy/prompt/number";
 
-const age: number = await Number.prompt("How old are you?");
+const age = await Number.prompt("How old are you?");
 ```
 
 ```console
@@ -52,13 +52,14 @@ local storage key. With `suggestions` you can provide some default suggestions.
 Both options can be defined at the same time. You can read more about auto
 suggestions [here](../auto_suggestions.md).
 
-> ❕ The `id` option requires deno >= `1.10` and the `--location` flag. Since
+> [!NOTE]
+> The `id` option requires deno >= `1.10` and the `--location` flag. Since
 > deno `1.16.0` the `--location` flag is optional.
 
 ```typescript
 import { Number } from "@cliffy/prompt/number";
 
-const color: number = await Number.prompt({
+const color = await Number.prompt({
   message: "Choose a number",
   id: "<local-storage-key>",
   suggestions: [

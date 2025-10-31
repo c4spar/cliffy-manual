@@ -29,7 +29,7 @@ await new Command()
     "Clone a repository into a newly created directory.",
   )
   .option("-r, --recursive", "Clone recursive.")
-  .action(({ recursive }, source: string, destination?: string) => {
+  .action(({ recursive }, source, destination?) => {
     console.log(
       "clone %s to %s",
       source,
@@ -37,7 +37,7 @@ await new Command()
       recursive ? " (recursive)" : "",
     );
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Command instance
@@ -51,13 +51,13 @@ import { Command } from "@cliffy/command";
 const clone = new Command()
   .arguments("<source:string> [destination:string]")
   .description("Clone a repository into a newly created directory.")
-  .action((options: any, source: string, destination?: string) => {
+  .action((options: any, source, destination?) => {
     console.log("clone command called");
   });
 
 await new Command()
   .command("clone", clone)
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Command Literal Arguments
@@ -71,7 +71,7 @@ await new Command()
   .name("my-command")
   .arguments("[...args:string]")
   .option("--foo", "Foo option.")
-  .action(function (options, ...args: Array<string>) {
+  .action(function (options, ...args) {
     console.log("Options:", options);
     console.log("Arguments:", args);
     console.log("Literal arguments:", this.getLiteralArgs());

@@ -25,7 +25,7 @@ await new Command()
     "Environment variable description ...",
   )
   .command("help", new HelpCommand().global())
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -46,7 +46,7 @@ import { CompletionsCommand } from "@cliffy/command/completions";
 
 await new Command()
   .command("completions", new CompletionsCommand())
-  .parse(Deno.args);
+  .parse();
 ```
 
 By calling `<command> completions <shell>`, the command will output the

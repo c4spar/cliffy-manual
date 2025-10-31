@@ -23,7 +23,7 @@ The `suggestions` options specifies a list of default suggestions.
 ```typescript
 import { Input } from "@cliffy/prompt/input";
 
-const color: string = await Input.prompt({
+const color = await Input.prompt({
   message: "Choose a color",
   suggestions: [
     "Abbey",
@@ -54,7 +54,8 @@ If the `id` option is provided, values are stored in the local storage using the
 id as local storage key. The stored values are used as suggestions at the next
 time the prompt is used.
 
-> ❕ The `id` option requires deno >= `1.10` and the `--location` flag. Since
+> [!NOTE]
+> The `id` option requires deno >= `1.10` and the `--location` flag. Since
 > deno `1.16.0` the `--location` flag is optional.
 
 ### Path completions
@@ -75,7 +76,7 @@ available suggestions and usage information.
 ```typescript
 import { Input } from "@cliffy/prompt/input";
 
-const color: string = await Input.prompt({
+const color = await Input.prompt({
   message: "Choose a color",
   list: true,
   info: true,

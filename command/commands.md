@@ -64,7 +64,7 @@ await new Command()
   .name("script-runner")
   .description("Simple script runner.")
   .usage("[options] [script] [script options]")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Arguments
@@ -86,7 +86,7 @@ import { Command } from "@cliffy/command";
 
 const { args } = await new Command()
   .arguments("<input> [output:string]")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -108,7 +108,7 @@ const { args: dirs } = await new Command()
   .description("Remove directories.")
   .arguments("<dirs...>")
   .action((_, ...rest) => console.log(`removing ${rest}`))
-  .parse(Deno.args);
+  .parse();
 
 for (const dir of dirs) {
   console.log("rmdir %s", dir);
@@ -141,7 +141,7 @@ import { Command } from "@cliffy/command";
 
 const { args } = await new Command()
   .option("-f, --file <path:string>", "Force option.")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Action handler
@@ -161,10 +161,10 @@ await new Command()
   .description("Remove directory.")
   .option("-r, --recursive", "Remove directory recursively.")
   .arguments("<dir>")
-  .action(({ recursive }, dir: string) => {
+  .action(({ recursive }, dir) => {
     console.log("remove " + dir + (recursive ? " recursively" : ""));
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -190,11 +190,11 @@ await new Command()
   .option("-f, --foo <val:string>", "Foo option.")
   .option("-b, --bar <val:string>", "Bar option.")
   .useRawArgs() // <-- enable raw args
-  .action((options, ...args: Array<string>) => {
+  .action((options, ...args) => {
     console.log("options:", options);
     console.log("args:", args);
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -215,12 +215,12 @@ await new Command()
   .option("-d, --debug-level <level:string>", "Debug level.")
   .arguments("[script] [...args]")
   .stopEarly() // <-- enable stop early
-  .action((options, script?: string, ...args: Array<string>) => {
+  .action((options, script?, ...args) => {
     console.log("options:", options);
     console.log("script:", script);
     console.log("args:", args);
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -247,7 +247,7 @@ await new Command()
   .action(() => console.log("Foo action."))
   .command("bar [val:string]", "Foo command.")
   .action(() => console.log("Bar action."))
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Global commands
@@ -271,7 +271,7 @@ await new Command()
           .description("Some nested sub command."),
       ),
   )
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -310,7 +310,7 @@ import { Command } from "@cliffy/command";
 await new Command()
   .command("debug", "Some internal debugging command.")
   .hidden()
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console

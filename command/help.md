@@ -27,7 +27,7 @@ await new Command()
     "Some example",
     "Example content ...\n\nSome more example content ...",
   )
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -66,16 +66,17 @@ The additional information is displayed below the command version in the auto
 generated help.
 
 ```console
-  Usage:   example
-  Version: 0.1.0
+$ deno run example.ts --help
+Usage:   example
+Version: 0.1.0
 
-  deno: 1.16.1
-  v8: 9.7.106.2
-  typescript: 4.4.2
+deno: 1.16.1
+v8: 9.7.106.2
+typescript: 4.4.2
 
-  Description:
+Description:
 
-    Example command.
+  Example command.
 ```
 
 ## Customize help
@@ -145,7 +146,7 @@ await new Command()
   .helpOption("-i, --info", "Print help info.", function (this: Command) {
     console.log("some help info ...", this.getHelp());
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 You can also override the default options of the help option. The options are
@@ -156,7 +157,7 @@ import { Command } from "@cliffy/command";
 
 await new Command()
   .helpOption(" -x, --xhelp", "Print help info.", { global: true })
-  .parse(Deno.args);
+  .parse();
 ```
 
 To disable the help option you can pass false to the `.helpOption()` method.
@@ -166,7 +167,7 @@ import { Command } from "@cliffy/command";
 
 await new Command()
   .helpOption(false)
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Version option
@@ -182,11 +183,13 @@ import { Command } from "@cliffy/command";
 
 await new Command()
   .version("0.1.0")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
 $ deno run examples/command/version_options.ts -V
+0.0.1
+
 $ deno run examples/command/version_options.ts --version
 0.0.1
 ```
@@ -211,7 +214,7 @@ await new Command()
       console.log("Version: %s", this.getVersion());
     },
   )
-  .parse(Deno.args);
+  .parse();
 ```
 
 You can also override the default options of the version option. The options are
@@ -223,7 +226,7 @@ import { Command } from "@cliffy/command";
 await new Command()
   .version("0.1.0")
   .versionOption(" -x, --xversion", "Print version info.", { global: true })
-  .parse(Deno.args);
+  .parse();
 ```
 
 The version option can be also disabled.
@@ -233,7 +236,7 @@ import { Command } from "@cliffy/command";
 
 await new Command()
   .versionOption(false)
-  .parse(Deno.args);
+  .parse();
 ```
 
 ## Add examples
@@ -251,7 +254,7 @@ await new Command()
     "example name",
     `Description ...\n\nCan have multiple lines and ${red("colors")}.`,
   )
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console

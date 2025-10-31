@@ -34,7 +34,7 @@ const { options } = await new Command()
   .option("-d, --debug [level]", "output extra debugging.")
   .option("-p, --port <port>", "the port number.")
   .option("-h, --host=[hostname]", "the host name.", { default: "localhost" })
-  .parse(Deno.args);
+  .parse();
 
 console.log("server running at %s:%s", options.host, options.port);
 ```
@@ -70,7 +70,7 @@ import { Command } from "@cliffy/command";
 const { options } = await new Command()
   .version("0.1.0")
   .option("-d, --dir [otherDirs...:string]", "Variadic option.")
-  .parse(Deno.args);
+  .parse();
 
 console.log(options);
 ```
@@ -141,7 +141,7 @@ const { options } = await new Command()
   .option("-c, --cheese [type:string]", "add the specified type of cheese", {
     default: "blue",
   })
-  .parse(Deno.args);
+  .parse();
 
 console.log(`cheese: ${options.cheese}`);
 ```
@@ -165,7 +165,7 @@ await new Command()
   .option("-c, --cheese [type:string]", "pizza must have cheese", {
     required: true,
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -196,7 +196,7 @@ new Command()
   });
 ```
 
-## Negateable options
+## Negatable options
 
 You can specify a boolean option long name with a leading `no-` to set the
 option value to false when used. Defined alone this also makes the option true
@@ -219,7 +219,7 @@ const { options } = await new Command()
   // no default value
   .option("--remote <url:string>", "Remote url.")
   .option("--no-remote", "No remote.")
-  .parse(Deno.args);
+  .parse();
 
 console.log(options);
 ```
@@ -259,7 +259,7 @@ await new Command()
           .action(console.log),
       ),
   )
-  .parse(Deno.args);
+  .parse();
 ```
 
 Global options can also be placed before a sub-command.
@@ -267,8 +267,10 @@ Global options can also be placed before a sub-command.
 ```console
 $ deno run examples/command/global_options.ts -g test command1 command2
 { global: "test" }
+
 $ deno run examples/command/global_options.ts command1 -g test command2
 { global: "test" }
+
 $ deno run examples/command/global_options.ts command1 command2 -g test
 { global: "test" }
 ```
@@ -285,7 +287,7 @@ await new Command()
   .option("-H, --hidden [hidden:boolean]", "Nobody knows about me!", {
     hidden: true,
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -306,7 +308,7 @@ await new Command()
     standalone: true,
   })
   .option("-o, --other [value:boolean]", "Some other option.")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -327,7 +329,7 @@ const { options } = await new Command()
   .option("-i, --stdin [stdin:boolean]", "read from stdin ...", {
     conflicts: ["file"],
   })
-  .parse(Deno.args);
+  .parse();
 
 console.log(options);
 ```
@@ -356,7 +358,7 @@ const { options } = await new Command()
   .option("-p, --video-codec <type:string>", "description ...", {
     depends: ["audio-codec"],
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -380,7 +382,7 @@ import { Command } from "@cliffy/command";
 
 const { options } = await new Command()
   .option("-c, --color <color:string>", "read from file ...", { collect: true })
-  .parse(Deno.args);
+  .parse();
 
 console.log(options);
 ```
@@ -427,7 +429,7 @@ const { options } = await new Command()
       return previous;
     },
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -473,7 +475,7 @@ await new Command()
     },
   })
   .action(() => console.log("main action"))
-  .parse(Deno.args);
+  .parse();
 
 console.log("main context");
 ```
@@ -511,7 +513,7 @@ await new Command()
   .group("Other options 2")
   .option("--beep", "Beep option.")
   .option("--boop", "Boop option.")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console

@@ -7,7 +7,7 @@ The `Checkbox` prompt is a multi select prompt.
 ```typescript
 import { Checkbox } from "@cliffy/prompt/checkbox";
 
-const colors: string[] = await Checkbox.prompt({
+const colors = await Checkbox.prompt({
   message: "Pick a color",
   options: [
     { name: "Red", value: "#ff0000" },
@@ -117,7 +117,7 @@ of child options, of which you can nest as many as you want.
 ```ts
 import { Checkbox } from "@cliffy/prompt/checkbox";
 
-const title: Array<string> = await Checkbox.prompt({
+const title = await Checkbox.prompt({
   message: "Pick some books",
   search: true,
   options: [

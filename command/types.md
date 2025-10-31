@@ -35,7 +35,7 @@ const { options } = await new Command()
   .option("-a, --amount <amount:integer>", "Pieces of pizza.")
   // One required and one optional command argument.
   .arguments("<input:file> [output:file]")
-  .parse(Deno.args);
+  .parse();
 
 console.log(options);
 ```
@@ -85,7 +85,7 @@ await new Command()
     console.log("color: %s", color);
     console.log("animal: %s", animal);
   })
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -115,7 +115,7 @@ const { options } = await new Command()
     "space separated list of strings.",
     { separator: " " },
   )
-  .parse(Deno.args);
+  .parse();
 
 console.log(options);
 ```
@@ -145,7 +145,7 @@ await new Command()
   .command("bar", "...")
   .option("-b, --background-color [name:color]", "Choose a background color.")
   .action(console.log)
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -185,7 +185,7 @@ const { options } = await new Command()
   .arguments("[color-name:color]")
   .option("-c, --color <name:color>", "...")
   .command("foo [color-name:color]", "...")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console
@@ -223,7 +223,7 @@ const { options } = await new Command()
   .arguments("[color-name:color]")
   .option("-c, --color <name:color>", "...")
   .command("foo [color-name:color]", "...")
-  .parse(Deno.args);
+  .parse();
 ```
 
 ```console

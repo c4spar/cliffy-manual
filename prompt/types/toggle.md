@@ -7,7 +7,7 @@ The `Toggle` prompt is a simple yes or no switch.
 ```typescript
 import { Toggle } from "@cliffy/prompt/toggle";
 
-const confirmed: boolean = await Toggle.prompt("Can you confirm?");
+const confirmed = await Toggle.prompt("Can you confirm?");
 ```
 
 ```console
