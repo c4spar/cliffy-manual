@@ -38,7 +38,40 @@ $ deno run examples/command/help.ts --help
 
 ## Print help
 
-You can use the `.showHelp()` method to output the help to stdout.
+You can use the `.showHelp()` method to output the help to stdout manually.
+
+For example, to show the help by default for a command, you can execute the
+`.showHelp()` method within the `.action()` handler of the specific command.
+
+```ts
+const cmd = new Command()
+  .name("git")
+  .action(() => cmd.showHelp())
+  .command("pull", "Pull changes from remote repository.")
+  .action(() => console.log("Pulling..."))
+  .command("fetch", "Fetch changes from remote repository.")
+  .action(() => console.log("Fetching..."));
+
+await cmd.parse();
+```
+
+you can also use `this` to refer to the current command instance inside the
+action handler:
+
+```ts
+await new Command()
+  .name("git")
+  .action(function () {
+    this.showHelp();
+  })
+  .command("pull", "Pull changes from remote repository.")
+  .action(() => console.log("Pulling..."))
+  .command("fetch", "Fetch changes from remote repository.")
+  .action(() => console.log("Fetching..."))
+  .parse();
+```
+
+Calling the command without any arguments will print the help by default.
 
 ## Get help
 
