@@ -55,8 +55,8 @@ id as local storage key. The stored values are used as suggestions at the next
 time the prompt is used.
 
 > [!NOTE]
-> The `id` option requires deno >= `1.10` and the `--location` flag. Since
-> deno `1.16.0` the `--location` flag is optional.
+> The `id` option requires deno >= `1.10` and the `--location` flag. Since deno
+> `1.16.0` the `--location` flag is optional.
 
 ### Path completions
 

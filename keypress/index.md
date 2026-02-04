@@ -137,8 +137,8 @@ stdin and emits an event for each input.
 You can stop the event loop with `keypress().dispose()`.
 
 > [!NOTE]
-> The promise and async iterator based solution does not start an event loop
-> in the background.
+> The promise and async iterator based solution does not start an event loop in
+> the background.
 
 ```typescript
 import { keypress, KeyPressEvent } from "@cliffy/keypress";

@@ -53,8 +53,8 @@ Both options can be defined at the same time. You can read more about auto
 suggestions [here](../auto_suggestions.md).
 
 > [!NOTE]
-> The `id` option requires deno >= `1.10` and the `--location` flag. Since
-> deno `1.16.0` the `--location` flag is optional.
+> The `id` option requires deno >= `1.10` and the `--location` flag. Since deno
+> `1.16.0` the `--location` flag is optional.
 
 ```typescript
 import { Number } from "@cliffy/prompt/number";

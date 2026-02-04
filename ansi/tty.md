@@ -47,4 +47,3 @@ myTty.cursorSave
 ```
 
 <!--tabs-end-->
-

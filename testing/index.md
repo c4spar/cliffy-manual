@@ -1,6 +1,6 @@
 # Testing
 
-Helper functions for testing.
+Experimental testing utilities for command line applications.
 
 ## Installation
 
