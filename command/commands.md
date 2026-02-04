@@ -69,10 +69,10 @@ await new Command()
 
 ## Arguments
 
-You can use the `.arguments()` method to specify the arguments for your
-commands. Angled brackets (e.g. `<required>`) indicate required input and square
-brackets (e.g. `[optional]`) indicate optional input. A required input cannot be
-defined after an optional input.
+You can use the `.arguments()` and `.argument()` methods to specify the
+arguments for your commands. Angled brackets (e.g. `<required>`) indicate
+required input and square brackets (e.g. `[optional]`) indicate optional input.
+A required input cannot be defined after an optional input.
 
 Arguments can be also defined with the `.command()` method. You can read more
 about the `.command()` method [here](#sub-commands).
@@ -81,17 +81,49 @@ Optionally you can define [types](./types.md) and
 [completions](./shell_completions.md) for your arguments. If no type is
 specified the type defaults to `string`.
 
+### `.arguments()`
+
+The arguments method accepts a string with space separated arguments. Optionally
+you can provide an array with descriptions for each argument.
+
 ```typescript
 import { Command } from "@cliffy/command";
 
 const { args } = await new Command()
-  .arguments("<input> [output:string]")
+  .arguments("<input:string> [output:string]", [
+    "The input file.",
+    "The output file.",
+  ])
   .parse();
 ```
 
 ```console
 $ deno run examples/command/arguments_syntax.ts
 Error: Missing argument(s): input
+```
+
+### `.argument()`
+
+The argument method can be called multiple times to define arguments one by one.
+
+You can also define a default value and value handler for the argument. The
+value handler is a function that is called with the argument value and should
+return the processed value or a promise that resolves to the processed value.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+const { args } = await new Command()
+  .argument("<input:string>", "The input file.")
+  .argument("[output:string]", "The output file.", {
+    default: "out.txt",
+    value: (value: string) => Promise.resolve({ path: value }),
+  })
+  .action((_, input, output) => {
+    console.log("input:", input); // "input: <input>"
+    console.log("output:", output); // "output: { path: 'out.txt' }"
+  })
+  .parse();
 ```
 
 ### Variadic arguments
@@ -343,8 +375,9 @@ an error and exit the program with `Deno.exit(1)`. Read more about error
 handling [here](./error_handling.md).
 
 The parse method accepts optionally as first argument an array of command-line
-arguments that should be consumed. By default `Deno.args`, `process.argv.slice(2)`
-or `Bun.argv.slice(2)` is used, depending on the runtime.
+arguments that should be consumed. By default `Deno.args`,
+`process.argv.slice(2)` or `Bun.argv.slice(2)` is used, depending on the
+runtime.
 
 ```ts
 import { Command } from "@cliffy/command";
