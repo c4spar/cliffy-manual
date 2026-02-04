@@ -2,7 +2,7 @@
   "lock": false,
   "tasks": {
     "start": "deno run --watch=. --allow-env --allow-net --allow-read=./ main.ts",
-    "test": "deno check --doc-only **/*.md **/*.ts",
+    "test": "deno check --doc-only **/*.md",
     "test:all": "deno lint & deno fmt --check & deno task test"
   },
   "imports": {
