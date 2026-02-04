@@ -59,7 +59,7 @@ With the `.border()` method you can add border to a cell.
 
 ### Align cell content
 
-The `.aling()` method aligns the content of the cell. The first argument is the
+The `.align()` method aligns the content of the cell. The first argument is the
 direction. Possible values are:
 
 - `"left"`
