@@ -44,6 +44,8 @@ For example, to show the help by default for a command, you can execute the
 `.showHelp()` method within the `.action()` handler of the specific command.
 
 ```ts
+import { Command } from "@cliffy/command";
+
 const cmd = new Command()
   .name("git")
   .action(() => cmd.showHelp())
@@ -59,6 +61,8 @@ you can also use `this` to refer to the current command instance inside the
 action handler:
 
 ```ts
+import { Command } from "@cliffy/command";
+
 await new Command()
   .name("git")
   .action(function () {
