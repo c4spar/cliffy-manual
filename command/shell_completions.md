@@ -11,13 +11,15 @@ shell environment. Currently supported shells are:
 - [fish](./built_in_commands.md#fish-completions)
 - [zsh](./built_in_commands.md#zsh-completions)
 
-The completions script enables completions for all sub-commands, options and
+The completions command enables completions for all sub-commands, options and
 arguments.
+
+## Adding shell completions
 
 There are three ways to add shell completions to types which are explained in
 the following sections.
 
-## Enum type
+### Enum type
 
 One way is to use the `EnumType`. All values defined with the `EnumType` will be
 used for shell completions. Read more about the enum type
@@ -35,7 +37,7 @@ await new Command()
   .parse();
 ```
 
-## Complete method
+### Complete method
 
 Another way to add completions is by registering a completions action with the
 `.complete()` or `.globalComplete()` method. The values returned by the callback
@@ -59,7 +61,7 @@ await new Command()
   .parse();
 ```
 
-## Custom type
+### Custom type
 
 The 3rd way to add shell completions is by creating a custom type with a
 `.complete()` method. The values returned by the `.complete()` method will be
@@ -79,4 +81,30 @@ await new Command()
   .type("color", new ColorType())
   .option("-c, --color <name:color>", "Choose a color.")
   .parse();
+```
+
+## Dynamically generating shell completions
+
+You can also dynamically generate the completions shell script. To do this you
+can call the `generateShellCompletions()` function. The function accepts the
+command instance and the shell name as arguments and returns the generated shell
+completions script as string.
+
+Optionally you can also pass a third argument to the
+`generateShellCompletions()` function. The third argument is an options object
+with the following properties:
+
+- `name`: The name of the binary. Default is the name of the command.
+
+```typescript
+import { Command, generateShellCompletions } from "@cliffy/command";
+
+const cmd = await new Command()
+  .name("mycmd")
+  .complete("color", () => ["red", "blue", "yellow"])
+  .arguments("[color-name:string:color]")
+  .parse();
+
+const bashCompletions = generateShellCompletions(cmd, "bash");
+console.log(bashCompletions);
 ```
