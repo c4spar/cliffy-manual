@@ -18,6 +18,8 @@ Following types are available by default on all commands.
 - **number:** Can be any numeric value.
 - **integer:** Can be any integer value.
 - **file:** Same as string but adds support for path completion.
+- **secret:** Same as string but hides the value in the help and shell
+  completions.
 
 ```typescript
 import { Command } from "@cliffy/command";
@@ -33,6 +35,8 @@ const { options } = await new Command()
   .option("-p, --pizza-type <type>", "Flavour of pizza.")
   // Option with required number value.
   .option("-a, --amount <amount:integer>", "Pieces of pizza.")
+  // Option that hides its default value.
+  .option("-t, --token <token:secret>", "Token.", { default: () => "SECRET" })
   // One required and one optional command argument.
   .arguments("<input:file> [output:file]")
   .parse();
