@@ -139,6 +139,7 @@ import { Command } from "@cliffy/command";
 const { options } = await new Command()
   .option("-c, --cheese [type:string]", "add the specified type of cheese", {
     default: "blue",
+    defaultText: "some cheese",
   })
   .parse();
 
@@ -151,6 +152,26 @@ cheese: blue
 
 $ deno run examples/command/default_option_value.ts --cheese mozzarella
 cheese: mozzarella
+```
+
+### Default value display text
+
+By default the default value is displayed in the help text. You can change the
+display text in the help output with the `defaultText` option.
+
+The `defaultText` option can be a string or a function which returns a string.
+If the `defaultText` option is a function, the function receives the default
+value as argument and the return value of the function is used as display text
+in the help output.
+
+```console
+$ deno run examples/command/default_option_value.ts --help
+Usage: COMMAND
+
+Options:
+
+  -h, --help            - Show this help.                                           
+  -c, --cheese  [type]  - add the specified type of cheese  (Default: "some cheese")
 ```
 
 ## Required options
