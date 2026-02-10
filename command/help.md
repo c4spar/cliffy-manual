@@ -43,7 +43,7 @@ You can use the `.showHelp()` method to output the help to stdout manually.
 For example, to show the help by default for a command, you can execute the
 `.showHelp()` method within the `.action()` handler of the specific command.
 
-```ts
+```ts ignore
 import { Command } from "@cliffy/command";
 
 const cmd = new Command()

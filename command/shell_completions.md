@@ -96,7 +96,7 @@ with the following properties:
 
 - `name`: The name of the binary. Default is the name of the command.
 
-```typescript
+```ts ignore
 import { Command, generateShellCompletions } from "@cliffy/command";
 
 const cmd = await new Command()
