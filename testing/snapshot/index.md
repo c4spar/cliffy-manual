@@ -30,7 +30,7 @@ await snapshotTest({
 To update the snapshots, run `deno test -- --update`. This creates a snapshot
 file at `__snapshots__/[filename].snap` with the following content:
 
-```ts
+```ts ignore
 export const snapshot = {};
 
 snapshot[`should log to stdout and stderr 1`] = `
