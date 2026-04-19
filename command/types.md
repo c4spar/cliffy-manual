@@ -63,10 +63,12 @@ command options and arguments.
 ```typescript
 import { Command, EnumType } from "@cliffy/command";
 
-enum Animal {
-  Dog = "dog",
-  Cat = "cat",
-}
+const Animal = {
+  Dog: "dog",
+  Cat: "cat",
+} as const;
+
+type Animal = typeof Animal[keyof typeof Animal];
 
 // Enum type with enum.
 const animal = new EnumType(Animal);
@@ -99,6 +101,34 @@ animal: dog
 
 $ deno run examples/command/enum_option_type.ts --color foo
 error: Option "--color" must be of type "color", but got "foo". Expected values: "blue", "yellow", "red"
+```
+
+### Type inference with enums
+
+When using a TypeScript `enum`, pass the enum type explicitly as a type argument
+to preserve the enum type in inferred option and argument types:
+
+```typescript
+import { Command, EnumType } from "@cliffy/command";
+
+enum Animal {
+  Dog = "dog",
+  Cat = "cat",
+}
+
+// Without explicit type argument, the EnumType infers the decomposed union
+// `Animal.Dog | Animal.Cat` instead of `Animal`.
+const animal = new EnumType<Animal>(Animal);
+
+await new Command()
+  .type("animal", animal)
+  .arguments("<name:animal>")
+  .action((_options, name) => {
+    // `name` is inferred as `Animal` (not `Animal.Dog | Animal.Cat`)
+    const a: Animal = name;
+    console.log("animal: %s", a);
+  })
+  .parse();
 ```
 
 ## List types
