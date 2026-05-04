@@ -46,6 +46,90 @@ You can set the min and max width of columns with the `.minColWidth()` and
 
 The `.padding()` method adds padding to all cell's in this column.
 
+### Flex grow
+
+The `.flexGrow(weight)` method allows a column to expand into available slack.
+Follows CSS `flex-grow` semantics: available space is distributed proportionally
+by weight, so a column with weight `2` receives twice the extra space of one
+with weight `1`. The default is `0` (no grow).
+
+> [!NOTE]
+> Flex only takes effect when `maxWidth` is set to a finite value on the table.
+> Without it the layout has no target width and flex is a no-op.
+
+```ts
+import { Column, Table } from "@cliffy/table";
+
+new Table()
+  .body([
+    ["Name", "Description"],
+    ["foo", "A short value"],
+    ["bar", "A much longer description that needs more space"],
+  ])
+  .maxWidth(80) // required — flex is a no-op without a finite maxWidth
+  .columns([
+    new Column().minWidth(10),
+    new Column().flexGrow(1), // expand to fill up to 80 columns
+  ])
+  .render();
+```
+
+### Flex shrink
+
+The `.flexShrink(weight)` method allows a column to give up space when the table
+is wider than `maxWidth`. Follows CSS `flex-shrink` semantics: each column's
+share of the reduction is proportional to `weight × width`, so a wider column or
+one with a higher weight absorbs more of the overflow. The default is `0` (rigid
+— never shrinks).
+
+> [!NOTE]
+> Flex only takes effect when `maxWidth` is set to a finite value on the table.
+> Without it the layout has no target width and flex is a no-op.
+
+```ts
+import { Column, Table } from "@cliffy/table";
+
+new Table()
+  .body([
+    ["Name", "Description"],
+    ["foo", "A short value"],
+    ["bar", "A much longer description that can be compressed"],
+  ])
+  .maxWidth(40) // required — triggers shrink when content exceeds this width
+  .columns([
+    new Column().minWidth(10),
+    new Column().flexShrink(1), // absorb overflow proportionally
+  ])
+  .render();
+```
+
+### Flex (shorthand)
+
+The `.flex(weight)` method is a shorthand that sets both `.flexGrow` and
+`.flexShrink` to the same weight. The column will both expand into and contract
+out of available space.
+
+> [!NOTE]
+> Flex only takes effect when `maxWidth` is set to a finite value on the table.
+> Without it the layout has no target width and flex is a no-op.
+
+```ts
+import { Column, Table } from "@cliffy/table";
+
+new Table()
+  .body([
+    ["Name", "Description"],
+    ["foo", "A short value"],
+    ["bar", "A much longer description"],
+  ])
+  .maxWidth(80) // required — flex is a no-op without a finite maxWidth
+  .columns([
+    new Column().minWidth(10),
+    new Column().flex(1), // grow and shrink proportionally
+  ])
+  .render();
+```
+
 ### Set multiple options
 
 The `.options()` method allows you to set multiple options at once by passing an
