@@ -8,6 +8,15 @@ type. With the `flags` option you can specify an Array of flag options. If the
 unknown or invalid flags. You can find a list of all possible flag options
 [here](./flag_options.md).
 
+## Args
+
+The `args` option accepts an array of `ArgumentOptions` objects that define the
+expected positional arguments. When defined, non-flag tokens are validated and
+typed as positional arguments instead of being added to the `unknown` array. A
+`Error` is thrown if more positional arguments are provided than defined.
+
+See [positional arguments](./index.md#positional-arguments) for usage examples.
+
 ## Parse
 
 With the `parse` method you can add a custom handler for handling and parsing
