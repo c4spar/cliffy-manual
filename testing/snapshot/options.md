@@ -70,4 +70,24 @@ logic, like determining if an environment feature is present.
 ## only
 
 If at least one test has `only` set to `true`, only run tests that have `only`
-set to `true` and fail the test suite. only?: boolean;
+set to `true` and fail the test suite.
+
+The `only` option can be set at the top level or on individual steps inside the
+`steps` object. When set on a step, only that step runs and the others are
+skipped (the test suite is still marked as failing due to the `only` filter).
+
+```ts
+import { snapshotTest } from "@cliffy/testing";
+
+await snapshotTest({
+  name: "run only specific steps",
+  meta: import.meta,
+  steps: {
+    "step 1": { args: ["foo"] },
+    "step 2": { args: ["bar"], only: true }, // only this step runs
+  },
+  async fn() {
+    console.log(Deno.args);
+  },
+});
+```
