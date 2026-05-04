@@ -150,6 +150,40 @@ $ deno run examples/flags/options.ts -vvv -f ./example.ts
 { verbose: 3, file: "./example.ts" }
 ```
 
+### Positional arguments
+
+The `args` option allows you to define typed positional arguments alongside
+flags. Positional arguments are collected into the `args` array in the returned
+context and removed from the `unknown` array.
+
+```typescript
+import { parseFlags } from "@cliffy/flags";
+
+const { flags, args } = parseFlags(["--count", "3", "file.txt"], {
+  flags: [{ name: "count", type: "number" }],
+  args: [{ name: "file", type: "string" }],
+});
+
+console.log(flags); // { count: 3 }
+console.log(args); // [ "file.txt" ]
+```
+
+Positional arguments can be required, optional, or variadic — the same
+`ArgumentOptions` interface is used for both options and positional arguments.
+Positional arguments that have a leading dash (`-foo`) are allowed when the
+argument is explicitly defined via the `args` option.
+
+```typescript
+import { parseFlags } from "@cliffy/flags";
+
+const { flags, args } = parseFlags(["--foo", "bar", "a", "b", "c"], {
+  flags: [{ name: "foo", type: "string" }],
+  args: [{ name: "files", type: "string", variadic: true }],
+});
+
+console.log(args); // [ "a", "b", "c" ]
+```
+
 ### Parse context
 
 The `parseFlags` method accepts also a parse context as first argument. The
@@ -198,4 +232,35 @@ parseFlags(ctx, {
 console.log("sub-command:", subCommand); // -> cmd1
 console.log("options:", ctx.flags); // -> { fooGlobal: [ true, true ], foo: [ true, true ] }
 console.log("arguments:", ctx.unknown); // -> [ "arg1" ]
+```
+
+### Parsed flags
+
+The parse context returned by `parseFlags` contains a `parsedFlags` property: a
+read-only array of the raw **flag** tokens in the order they were encountered,
+preserving the exact form used on the command line. Positional arguments are
+**not** included — only flag names and their values appear here.
+
+- **Space form** — flag and value as separate tokens: `command --port 80` →
+  `['--port', '80']`
+- **Equals form** — flag and value as one token: `command --port=80` →
+  `['--port=80']`
+
+```typescript
+import { parseFlags } from "@cliffy/flags";
+
+const { parsedFlags } = parseFlags([
+  "--port=80",
+  "--host",
+  "localhost",
+  "file.txt",
+], {
+  flags: [
+    { name: "port", type: "number" },
+    { name: "host", type: "string" },
+  ],
+  args: [{ name: "file", type: "string" }],
+});
+
+console.log(parsedFlags); // [ "--port=80", "--host", "localhost" ]
 ```
