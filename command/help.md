@@ -121,8 +121,8 @@ Description:
 
 ## Customize help
 
-The `.help()` method can be used to disable or enable `types`, `hints` and
-`colors` for the auto generated help.
+The `.help()` method can be used to customize the auto generated help. The help
+output is fully responsive and adapts to the terminal width by default.
 
 ```typescript
 import { Command } from "@cliffy/command";
@@ -135,6 +135,11 @@ await new Command()
     hints: true, // default: true
     // Enable/disable colors.
     colors: false, // default: true
+    // Set the target width of the help output in columns.
+    // Defaults to the terminal width (or 150 if not a TTY).
+    width: 120,
+    // Set the maximum width for the help output.
+    maxWidth: 160,
   })
   .option("-f, --foo [val:number]", "Some description.", {
     required: true,
@@ -142,6 +147,12 @@ await new Command()
   })
   .parse();
 ```
+
+### Responsive help
+
+The help output is responsive by default: it reads the current terminal width
+and wraps text accordingly. The `width` option overrides the detected terminal
+width, and `maxWidth` caps it.
 
 ### Auto help for container commands
 
