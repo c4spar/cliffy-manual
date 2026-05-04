@@ -40,8 +40,13 @@ $ deno run examples/command/help.ts --help
 
 You can use the `.showHelp()` method to output the help to stdout manually.
 
-For example, to show the help by default for a command, you can execute the
-`.showHelp()` method within the `.action()` handler of the specific command.
+Commands that have sub-commands but no action handler automatically print the
+help when called without arguments. This behaviour can be disabled with
+`.help({ auto: false })`. See
+[Auto help for container commands](#auto-help-for-container-commands).
+
+For example, to show the help programmatically inside an action handler, you can
+call `.showHelp()` directly:
 
 ```ts ignore
 import { Command } from "@cliffy/command";
@@ -57,7 +62,7 @@ const cmd = new Command()
 await cmd.parse();
 ```
 
-you can also use `this` to refer to the current command instance inside the
+You can also use `this` to refer to the current command instance inside the
 action handler:
 
 ```ts
@@ -74,8 +79,6 @@ await new Command()
   .action(() => console.log("Fetching..."))
   .parse();
 ```
-
-Calling the command without any arguments will print the help by default.
 
 ## Get help
 
@@ -137,6 +140,27 @@ await new Command()
     required: true,
     default: 2,
   })
+  .parse();
+```
+
+### Auto help for container commands
+
+By default, when a command has sub-commands but no action handler, calling it
+without any arguments automatically prints the help text. This is the `auto`
+behaviour, which is enabled by default. You can disable it by passing
+`{ auto: false }` to `.help()`.
+
+```ts
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .name("git")
+  // Disable automatic help for container commands (help must be shown manually).
+  .help({ auto: false })
+  .command("pull", "Pull changes from remote repository.")
+  .action(() => console.log("Pulling..."))
+  .command("fetch", "Fetch changes from remote repository.")
+  .action(() => console.log("Fetching..."))
   .parse();
 ```
 
