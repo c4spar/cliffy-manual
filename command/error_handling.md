@@ -30,9 +30,10 @@ Child commands can override error handlers from parent commands. If the error
 handler doesn't throw or call `Deno.exit`, the default error handler is
 executed.
 
-The first argument of the error handler is the error and the second argument the
-instance of the failed command. You can use this instance to print the help text
-from this command.
+The first argument of the error handler is the error, the second argument is the
+instance of the failed command, and the third argument is an `ErrorContext`
+object. You can use the command instance to print the help text from this
+command.
 
 ```ts
 import { Command, ValidationError } from "@cliffy/command";
@@ -49,6 +50,48 @@ await new Command()
     throw new ValidationError("validation error message.");
   })
   .parse();
+```
+
+### ErrorContext
+
+The `ErrorContext` is the third argument of the error handler and contains the
+options and arguments that were parsed at the time the error occurred. This is
+useful when the error output should depend on the options the user passed — for
+example a global `--verbose` flag that switches between a slim and a detailed
+error message.
+
+```ts
+import { Command, ValidationError } from "@cliffy/command";
+
+await new Command()
+  .globalOption("-v, --verbose", "Enable verbose error output.")
+  .error((error, cmd, ctx) => {
+    if (error instanceof ValidationError) {
+      cmd.showHelp();
+      console.error(`\nerror: ${error.message}`);
+    } else if (ctx.options.verbose) {
+      // Detailed output: full stack trace when --verbose was passed.
+      console.error(error);
+    } else {
+      // Slim output: just the message.
+      console.error(`error: ${error.message}`);
+    }
+    Deno.exit(error instanceof ValidationError ? error.exitCode : 1);
+  })
+  .command("run <script:string>", "Run a script.")
+  .action((_, script) => {
+    throw new Error(`Script not found: ${script}`);
+  })
+  .parse();
+```
+
+```console
+$ deno run example.ts run missing.ts
+error: Script not found: missing.ts
+
+$ deno run example.ts --verbose run missing.ts
+Error: Script not found: missing.ts
+    at ...
 ```
 
 ## Runtime errors
