@@ -19,7 +19,7 @@ and `stderr` outputs of this function and stored in the snapshot file.
 With the `steps` option you can add multiple steps to the test function. The
 `snapshotTest` method then calls the test function once for each step within a
 separate test step by calling `t.step()` from the test context. Each step can
-have separate options for `stdin` and `args`. (see
+have separate options for `stdin`, `args`, and `env`. (see
 [Test steps](./index.md#test-steps))
 
 ## denoArgs
@@ -59,6 +59,42 @@ Timeout in milliseconds to wait until the input stream data is buffered before
 writing the next data to the stream. This ensures that each user input is
 rendered as separate line in the snapshot file. If your test gets flaky, try to
 increase the timeout. The default timeout is `600`.
+
+## env
+
+Environment variables to inject into the test process. Can be set at the
+top-level test options or on individual steps.
+
+```ts
+import { snapshotTest } from "@cliffy/testing";
+
+await snapshotTest({
+  name: "should respect env vars",
+  meta: import.meta,
+  env: { MY_VAR: "hello" },
+  async fn() {
+    console.log(Deno.env.get("MY_VAR"));
+  },
+});
+```
+
+Per-step env vars can also be set inside a `steps` object:
+
+```ts
+import { snapshotTest } from "@cliffy/testing";
+
+await snapshotTest({
+  name: "env vars per step",
+  meta: import.meta,
+  steps: {
+    "step 1": { env: { MY_VAR: "foo" } },
+    "step 2": { env: { MY_VAR: "bar" } },
+  },
+  async fn() {
+    console.log(Deno.env.get("MY_VAR"));
+  },
+});
+```
 
 ## ignore
 

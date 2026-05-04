@@ -146,7 +146,7 @@ await snapshotTest({
 You can also add multiple steps to the test function. The `snapshotTest` method
 then calls the test function once for each step within a separate test step by
 calling `t.step()` from the test context. Each step can have separate options
-for `stdin` and `args`.
+for `stdin`, `args`, and `env`.
 
 ```ts
 import { snapshotTest } from "@cliffy/testing";
@@ -157,6 +157,44 @@ await snapshotTest({
   steps: {
     "step 1": { args: ["foo"], stdin: ["bar"] },
     "step 2": { args: ["beep"], stdin: ["boop"] },
+  },
+  async fn() {
+    console.log(Deno.args);
+  },
+});
+```
+
+You can use the `env` option to inject environment variables into each step:
+
+```ts
+import { snapshotTest } from "@cliffy/testing";
+
+await snapshotTest({
+  name: "should use env vars per step",
+  meta: import.meta,
+  steps: {
+    "step 1": { env: { MY_VAR: "hello" } },
+    "step 2": { env: { MY_VAR: "world" } },
+  },
+  async fn() {
+    console.log(Deno.env.get("MY_VAR"));
+  },
+});
+```
+
+You can also run only specific steps by setting `only: true` on a step. When any
+step has `only: true`, all other steps are skipped and the test suite is marked
+as failed (same semantics as `Deno.test`'s `only` option).
+
+```ts
+import { snapshotTest } from "@cliffy/testing";
+
+await snapshotTest({
+  name: "run only specific steps",
+  meta: import.meta,
+  steps: {
+    "step 1": { args: ["foo"] },
+    "step 2": { args: ["bar"], only: true }, // only this step runs
   },
   async fn() {
     console.log(Deno.args);
