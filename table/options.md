@@ -113,8 +113,62 @@ string you can use the `.toString()` method return the table as string.
 
 ## Column width
 
-You can set the min/max with of columns with the `.minColWidth()` and
+You can set the min/max width of columns with the `.minColWidth()` and
 `.maxColWidth()` methods.
+
+## Max width
+
+The `.maxWidth(width)` method sets the maximum total width of the table in
+columns. This is required for `flexGrow`, `flexShrink`, and `flex` to work.
+Without a finite max width the layout has no target and flex is a no-op.
+
+```ts
+import { Table } from "@cliffy/table";
+
+new Table()
+  .body([["foo", "bar"]])
+  .maxWidth(80)
+  .flexShrink([0, 1])
+  .render();
+```
+
+## Responsive flex
+
+The `.flexGrow()`, `.flexShrink()`, and `.flex()` table-level methods set a
+default flex weight for all columns. They accept either a single number (applied
+to every column) or an array of per-column weights.
+
+> [!NOTE]
+> A finite `.maxWidth()` must be set on the table for flex to have any effect.
+
+```ts
+import { Table } from "@cliffy/table";
+
+// Grow the second column to fill available space, keep others rigid.
+new Table()
+  .body([["Name", "Description", "Version"]])
+  .maxWidth(100)
+  .flexGrow([0, 1, 0])
+  .render();
+
+// Shrink only the second column on overflow.
+new Table()
+  .body([["Name", "Description", "Version"]])
+  .maxWidth(60)
+  .flexShrink([0, 1, 0])
+  .render();
+
+// Shorthand: grow and shrink together.
+new Table()
+  .body([["Name", "Description", "Version"]])
+  .maxWidth(80)
+  .flex([0, 1, 0])
+  .render();
+```
+
+For per-column control use the `Column` class — see
+[Flex grow](./columns.md#flex-grow), [Flex shrink](./columns.md#flex-shrink),
+and [Flex (shorthand)](./columns.md#flex-shorthand) in the column docs.
 
 ## Cell padding
 
