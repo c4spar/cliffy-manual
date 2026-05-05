@@ -109,7 +109,7 @@ new Table()
 ## Render
 
 The `.render()` method outputs the table to stdout. If you need the output as
-string you can use the `.toString()` method return the table as string.
+string you can use the `.toString()` method to return the table as string.
 
 ## Column width
 
@@ -172,7 +172,7 @@ and [Flex (shorthand)](./columns.md#flex-shorthand) in the column docs.
 
 ## Cell padding
 
-The `.padding()` method adds padding to all cell.
+The `.padding()` method adds padding to all cells.
 
 ## Border
 

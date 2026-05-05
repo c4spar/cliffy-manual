@@ -22,7 +22,7 @@ value, you can set the `hideDefault` option to `true`.
 ### Transform displayed value
 
 The `transform` callback option lets you transform the value to display. The
-method receives the user input and the value returned value will be displayed.
+method receives the user input and the returned value will be displayed.
 
 ### Validate value
 
@@ -72,7 +72,7 @@ register your own signal handler. Read more about os signals
 ### Prefix
 
 By default each prompt message is prefixed with `yellow("? ")`. The prefix can
-be change with the `prefix` option. The value supports ansi color codes. To
+be changed with the `prefix` option. The value supports ansi color codes. To
 disable the prefix, set the `prefix` option to an empty string `""`.
 
 ### Reader

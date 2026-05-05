@@ -8,8 +8,8 @@ environment-variable names will be automatically magically inferred 🪄.
 > parameters.
 
 The only exception where you define generics manually is when you want to
-organize your sub commands in separate files, than you can use the first two
-generic constructor parameters which are used do define required global options
+organize your sub commands in separate files, then you can use the first two
+generic constructor parameters which are used to define required global options
 and types which is explained in [Generic parent types](#generic-parent-types).
 
 Another exception is, if you want to extend the command class to share it with
@@ -78,7 +78,7 @@ parameters of the `Command` class. But this is completely optional. You can add
 
 This way you can ensure the constructor typings matches your command typings,
 because in typescript you can only return an instance in the constructor that is
-compatible to it self.
+compatible to itself.
 
 ```ts
 import { Command } from "@cliffy/command";

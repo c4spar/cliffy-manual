@@ -41,7 +41,7 @@ await new Command()
 
 Another way to add completions is by registering a completions action with the
 `.complete()` or `.globalComplete()` method. The values returned by the callback
-method from the`.complete()` or `.globalComplete()` method will be used for
+method from the `.complete()` or `.globalComplete()` method will be used for
 shell completions.
 
 To use these completions you can add the name of the action after the type

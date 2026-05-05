@@ -7,7 +7,7 @@ want to use them.
 ## Help command
 
 The `HelpCommand` prints the auto generated help. It is mostly the same as the
-`--help` option but it also accepts the name of an child command as optional
+`--help` option but it also accepts the name of a child command as optional
 argument to show the help of the given sub-command.
 
 To make the help command globally available for all child commands you can use
@@ -37,8 +37,8 @@ $ deno run examples/command/help_option_and_command.ts completions help
 ## Completions command
 
 The `CompletionsCommand` includes sub commands for all supported shell
-environments. The sub commands generates the shell completions script and
-outputs it to stdout. The completions command must be registered manually.
+environments. The sub commands generate the shell completions script and outputs
+it to stdout. The completions command must be registered manually.
 
 ```ts
 import { Command } from "@cliffy/command";
@@ -50,7 +50,7 @@ await new Command()
 ```
 
 By calling `<command> completions <shell>`, the command will output the
-completions script fo the specified shell to stdout.
+completions script for the specified shell to stdout.
 
 Each shell command provides also a `--name` option which allows you to override
 the command name: `<command> completions <shell> --name <my-command>`
@@ -149,7 +149,7 @@ If your cli needs some permissions, you can specify the permissions with the
 
 ### Providers
 
-There are a view built-in providers: [jsr](https://jsr.io),
+There are a few built-in providers: [jsr](https://jsr.io),
 [npm](https://www.npmjs.com/), [deno.land](https://deno.land/x),
 [nest.land](https://nest.land) and [github](https://github.com). If multiple
 providers are registered, you can specify the registry that should be used with
@@ -220,7 +220,7 @@ new Command()
 
 ### List available versions
 
-The upgrade command can be also used, to list all available versions with the
+The upgrade command can also be used to list all available versions with the
 `-l` or `--list-versions` option. The current installed version is highlighted
 and prefixed with a `*`.
 

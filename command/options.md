@@ -6,7 +6,7 @@ returned by the `.parse()` method.
 
 With the first argument of the `.option()` method you define the option names
 and arguments. Each option can have multiple short and long flags, separated by
-comma. The name of the first long flag will be unused as an option name. If no
+comma. The name of the first long flag will be used as an option name. If no
 long flag is provided the first short flag will be used.
 
 Multi-word options such as `--template-engine` are camel-cased to
@@ -316,7 +316,7 @@ $ deno run examples/command/hidden_options.ts -h
 
 ## Standalone options
 
-Standalone options cannot be combine with any command and option. For example
+Standalone options cannot be combined with any command and option. For example
 the `--help` and `--version` flag. You can achieve this with the `standalone`
 option.
 
@@ -395,7 +395,7 @@ $ deno run examples/command/depending_options.ts -a aac -v x265
 ## Collect options
 
 An option can occur multiple times in the command line to collect multiple
-values. Todo this, you have to activate the `collect` option.
+values. To do this, you have to activate the `collect` option.
 
 ```typescript
 import { Command } from "@cliffy/command";

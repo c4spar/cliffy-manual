@@ -60,7 +60,7 @@ bunx jsr add @cliffy/table
 
 ### Basic Usage
 
-To create a table you can simple create an instance of the `Table` class and
+To create a table you can simply create an instance of the `Table` class and
 pass the rows as arguments to the constructor. The example below will output a
 simple table with three rows and without any styles. The only default option is
 `padding` which is set to `1`.

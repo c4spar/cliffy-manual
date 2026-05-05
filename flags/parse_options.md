@@ -76,7 +76,7 @@ argument will be added to the `unknown` array (can be combined with
 
 ## Allow empty
 
-If an required option is specified, by default an error is thrown if the command
+If a required option is specified, by default an error is thrown if the command
 is invoked without any flags. To disable this behavior you can set `allowEmpty`
 to `true`. The default is `false`.
 

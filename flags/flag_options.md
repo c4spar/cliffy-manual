@@ -21,7 +21,7 @@ boolean value.
 
 ## Optional value
 
-by default the value is required for all options with an explicitly defined
+By default the value is required for all options with an explicitly defined
 type. You can make the value optional by setting `optionalValue` to `true`.
 
 ## Variadic value
@@ -31,8 +31,8 @@ can occur multiple times and is collected in an array.
 
 ## List value
 
-If `list` is set to `true`, the argument will be splittet by `,` and the values
-will be stored in an array. You can overide the seperator with the `seperator`
+If `list` is set to `true`, the argument will be split by `,` and the values
+will be stored in an array. You can override the separator with the `separator`
 option.
 
 ## Aliases
@@ -55,31 +55,31 @@ not specified on commandline.
 
 ## Required
 
-If `required` is set to `true` an error is throw if the flag is not set on
+If `required` is set to `true` an error is thrown if the flag is not set on
 commandline.
 
 ## Depends
 
 You can specify flags which must be provided if a specific flag is set. If
-`depends` is set to `["foo", "bar"]`, an error is throw if one of this flags are
-not provided on commandline.
+`depends` is set to `["foo", "bar"]`, an error is thrown if one of this flags
+are not provided on commandline.
 
 ## Conflicts
 
 This is the opposite of the `conflicts` option. You can specify flags which can
 not be provided if a specific flag is set. If `conflicts` is set to
-`["foo", "bar"]`, an error is throw if one of this flags is provided on
+`["foo", "bar"]`, an error is thrown if one of this flags is provided on
 commandline.
 
 ## Equals sign
 
-If `equalsSign` is set to `true` the option must be call with an equals sign
+If `equalsSign` is set to `true` the option must be called with an equals sign
 `--foo=bar`.
 
 ## Collect values
 
-If `collect` is enabled, an flag can be specified multiple times on commandline.
-All values will be collected in to an array.
+If `collect` is enabled, a flag can be specified multiple times on commandline.
+All values will be collected into an array.
 
 ```typescript
 import { parseFlags } from "@cliffy/flags";

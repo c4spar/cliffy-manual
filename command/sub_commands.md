@@ -42,7 +42,7 @@ await new Command()
 
 ## Command instance
 
-The command method accepts as second argument a instance of a command. This way
+The command method accepts as second argument an instance of a command. This way
 you can move your sub-commands into different files.
 
 ```typescript

@@ -1,7 +1,7 @@
 # Commands
 
 The command class is used to create main and sub commands. All methods from the
-command class are chainable and returns the current command instance. There are
+command class are chainable and return the current command instance. There are
 only two exceptions:
 
 - The `.command()` method returns the new created sub command, so you can add
@@ -25,7 +25,7 @@ is displayed in the auto generated help and the
 ## Description
 
 The `.description()` method adds a description for the command that will be
-displayed in the auto generated help. If the help options is called with the
+displayed in the auto generated help. If the help option is called with the
 short flag `-h` only the first line is displayed. If called with the long name
 `--help`, the full description is displayed.
 
@@ -182,7 +182,7 @@ The action handler is called when the command is executed and can be registered
 with the `.action()` method. The first arguments is the options object, which
 contains all options and environment variables, followed by all arguments, in
 the same order in which they were defined with the `.arguments()` method.
-Options and arguments will be automatically typed by infering the types and
+Options and arguments will be automatically typed by inferring the types and
 names of all options, arguments and environment variables 🚀.
 
 ```typescript
@@ -264,8 +264,8 @@ args: [ "-p", "80" ]
 
 ## Sub commands
 
-With the `.command()` method you can add and nest sub commands as many you want.
-The first argument is the command name with optional arguments. The seconds
+With the `.command()` method you can add and nest sub commands as many as you
+want. The first argument is the command name with optional arguments. The second
 argument is optional and can be either the description of the command or an
 instance of `Command`. You can read more about sub commands
 [here](./sub_commands.md).

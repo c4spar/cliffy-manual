@@ -1,7 +1,7 @@
 # Types
 
 Cliffy provides some default types which are used to validate user input,
-providing shell completions and adding infos to the help text. It is also
+providing shell completions and adding info to the help text. It is also
 possible to register custom types. You can read more about custom types
 [here](#custom-types).
 
@@ -133,7 +133,7 @@ await new Command()
 
 ## List types
 
-Each type can be used as a list. A list type accepts a `,` seperated list of
+Each type can be used as a list. A list type accepts a `,` separated list of
 items with the specified type. The default separator is `,` but can be changed
 with the `separator` option.
 

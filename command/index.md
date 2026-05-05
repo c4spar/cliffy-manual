@@ -97,7 +97,7 @@ defined.
 
 ### Defining your command
 
-You can than add options, environment variables, arguments and custom types to
+You can then add options, environment variables, arguments and custom types to
 your command as many you want.
 
 Environment variables will be merged into the options object. They have the same

@@ -18,7 +18,7 @@ deno run you/cli.ts --location https://example.com
 
 ### Suggestions
 
-The `suggestions` options specifies a list of default suggestions.
+The `suggestions` option specifies a list of default suggestions.
 
 ```typescript
 import { Input } from "@cliffy/prompt/input";
@@ -51,8 +51,8 @@ $ deno run examples/prompt/suggestions.ts
 ### Local storage id
 
 If the `id` option is provided, values are stored in the local storage using the
-id as local storage key. The stored values are used as suggestions at the next
-time the prompt is used.
+id as local storage key. The stored values are used as suggestions the next time
+the prompt is used.
 
 > [!NOTE]
 > The `id` option requires deno >= `1.10` and the `--location` flag. Since deno

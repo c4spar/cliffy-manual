@@ -1,10 +1,10 @@
 # Error and exit handling
 
-Cliffy throws an `ValidationError` for invalid options, arguments and
-environment variables. `ValidationError`'s can be also throw manually. By
-default, when a `ValidationError` is thrown, cliffy prints the auto generated
-help and the error message and calls `Deno.exit(validationError.exitCode ?? 1)`
-to exit the program. This behaviour can be changed by calling
+Cliffy throws a `ValidationError` for invalid options, arguments and environment
+variables. `ValidationError`s can also be thrown manually. By default, when a
+`ValidationError` is thrown, cliffy prints the auto generated help and the error
+message and calls `Deno.exit(validationError.exitCode ?? 1)` to exit the
+program. This behaviour can be changed by calling
 [`.throwErrors()`](#throw-errors) or [`.noExit()`](#no-exit) or by adding an
 [error handler](#error-handler).
 
@@ -120,7 +120,7 @@ Usage error: Unknown option "-t". Did you mean option "-h"?
 ### Custom validation errors
 
 You can throw custom validation errors by throwing an instance of
-`ValidationError`. Optional you can define the exit code that should be used
+`ValidationError`. Optionally you can define the exit code that should be used
 when `Deno.exit()` is called after displaying the auto generated help and the
 error message.
 
