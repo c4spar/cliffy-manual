@@ -1,7 +1,7 @@
 # Dynamic prompts
 
 You can dynamically control the flow of the prompt list with the `before` and
-`after` callbacks which works like a middleware function.
+`after` callbacks which work like a middleware function.
 
 ```typescript
 import { Checkbox, Confirm, Number, prompt } from "@cliffy/prompt";

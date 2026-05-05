@@ -152,7 +152,7 @@ for `stdin`, `args`, and `env`.
 import { snapshotTest } from "@cliffy/testing";
 
 await snapshotTest({
-  name: "should log to stdout and atderr",
+  name: "should log to stdout and stderr",
   meta: import.meta,
   steps: {
     "step 1": { args: ["foo"], stdin: ["bar"] },

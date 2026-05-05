@@ -179,8 +179,8 @@ await new Command()
 
 The `.help()` method can be also used to override the help output. This
 overrides the output of the `.getHelp()` and `.showHelp()` methods which are
-used by the help option and help command. The help handler will be also used for
-all sub command, but can be overridden in each sub command separately.
+used by the help option and help command. The help handler will also be used for
+all sub commands, but can be overridden in each sub command separately.
 
 ```typescript
 import { Command } from "@cliffy/command";
@@ -245,7 +245,7 @@ await new Command()
 ## Version option
 
 The `--version` and `-V` option flag prints the version number defined with the
-`version()` method. The version number will be also display in the auto
+`version()` method. The version number will also be displayed in the auto
 generated help. If the long `--version` option is used, the long format will be
 printed including command name and all meta data defined with the
 [.meta()](#additional-info) method.

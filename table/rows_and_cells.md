@@ -1,6 +1,6 @@
 # Rows and cells
 
-It is also possible to customize single rows and cell. To do this you can use
+It is also possible to customize single rows and cells. To do this you can use
 the `Row` and `Cell` class. The `Row` class is also an `Array` class like the
 `Table` class.
 
@@ -72,7 +72,7 @@ direction. Possible values are:
 width/height of more than one column and/or row. With `.colSpan()` and
 `.rowSpan()` the next or lower cell is moved to the right if the next or lower
 cell is not of type `undefined`. If it's of type `undefined` the cell is
-overriden.
+overridden.
 
 The following examples both have the same output.
 

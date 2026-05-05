@@ -32,7 +32,7 @@ specific options.
 ### Select options
 
 With the `options` option you specify an array of options. An option can be
-either a string or an options object. Options can be also nested, see
+either a string or an options object. Options can also be nested, see
 [child options](#child-options).
 
 #### Select option
@@ -121,7 +121,7 @@ which will be displayed.
 
 #### Breadcrumb separator
 
-with the `breadcrumbSeparator` option the breadcrumb separator can be changed.
+With the `breadcrumbSeparator` option the breadcrumb separator can be changed.
 
 #### Back pointer
 

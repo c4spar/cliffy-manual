@@ -59,7 +59,7 @@ bunx jsr add @cliffy/keycode
 ## Usage
 
 The `keycode` module exports a `parse()` method which accepts an ansi string and
-return an array of [`KeyCode`](./keycode.md).
+returns an array of [`KeyCode`](./keycode.md).
 
 ```typescript
 import { parse } from "@cliffy/keycode";

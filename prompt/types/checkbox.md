@@ -32,7 +32,7 @@ prompt specific options.
 ### Checkbox options
 
 With the `options` option you specify an array of options. An option can be
-either a string or an options object. Options can be also nested, see
+either a string or an options object. Options can also be nested, see
 [options](#child-options).
 
 #### Checkbox option
@@ -90,7 +90,7 @@ string value.
 
 ### uncheck icon
 
-With the `uncheck` option you can change the icon of a unselected option to any
+With the `uncheck` option you can change the icon of an unselected option to any
 string value.
 
 ### Partial check icon
@@ -161,7 +161,7 @@ which will be displayed.
 
 #### Breadcrumb separator
 
-with the `breadcrumbSeparator` option the breadcrumb separator can be changed.
+With the `breadcrumbSeparator` option the breadcrumb separator can be changed.
 
 #### Back pointer
 

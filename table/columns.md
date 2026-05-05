@@ -44,7 +44,7 @@ You can set the min and max width of columns with the `.minColWidth()` and
 
 ### Cell padding
 
-The `.padding()` method adds padding to all cell's in this column.
+The `.padding()` method adds padding to all cells in this column.
 
 ### Flex grow
 

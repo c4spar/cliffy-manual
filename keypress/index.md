@@ -126,7 +126,7 @@ $ deno run --reload examples/keypress/async_iterator.ts
 
 ### Event Target
 
-The Keypress class extends from the EventTarget class that provides a
+The Keypress class extends the EventTarget class that provides a
 `.addEventListener()` method that can be used to register event listeners. The
 addEventListener method starts an event loop in the background that reads from
 stdin and emits an event for each input.

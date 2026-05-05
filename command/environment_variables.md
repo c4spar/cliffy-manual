@@ -96,7 +96,7 @@ await new Command()
 
 It is very common to prefix environment variables with a name like `DENO_DIR`
 and `DENO_INSTALL_ROOT`. With the `prefix` option you can ensure the prefix is
-remove before the value is added to the options object. This works also in
+removed before the value is added to the options object. This works also in
 combination with options.
 
 ```typescript

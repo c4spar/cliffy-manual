@@ -78,7 +78,7 @@ tty.cursorSave
 
 The [colors](./colors.md) module is a simple and tiny chainable wrapper for
 [@std/fmt/colors](https://jsr.io/@std/fmt@1.0.3/doc/colors) module and works
-similar to node's [chalk](https://github.com/chalk/chalk) module.
+similarly to node's [chalk](https://github.com/chalk/chalk) module.
 
 ```typescript
 import { colors } from "@cliffy/ansi/colors";
