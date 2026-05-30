@@ -192,6 +192,14 @@ new Command()
   );
 ```
 
+> [!NOTE]
+> When upgrading to `latest`, the `JsrProvider` and `NpmProvider` let the
+> runtime resolve the concrete version instead of pinning it themselves. This
+> way a configured minimum dependency age policy is respected
+> (`minimumDependencyAge` in Deno, `min-release-age` in npm/pnpm/bun): the
+> upgrade installs the newest version allowed by the policy rather than the
+> absolute latest.
+
 #### CDN providers
 
 The following providers can be used if your CLI is published to a CDN from which
