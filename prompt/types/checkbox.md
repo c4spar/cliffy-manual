@@ -83,6 +83,12 @@ option is useful if you have a large list of options.
 
 You can change the search input label with the `searchLabel` option.
 
+> [!NOTE]
+> While searching, the single-letter navigation keys (`j`, `k`, `n`, `p`, etc.)
+> are typed into the search input instead of moving the selection. Use the arrow
+> keys, or the readline shortcuts `ctrl+n` (next) and `ctrl+p` (previous), to
+> move through the list without leaving the search input.
+
 ### check icon
 
 With the `check` option you can change the icon of a selected option to any
