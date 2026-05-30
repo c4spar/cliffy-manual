@@ -76,6 +76,10 @@ commandline.
 If `equalsSign` is set to `true` the option must be called with an equals sign
 `--foo=bar`.
 
+This only has an effect for options with an **optional** value. For options with
+a **required** value, `equalsSign` has no effect, the option can always be
+called with or without an equals sign.
+
 ## Collect values
 
 If `collect` is enabled, a flag can be specified multiple times on commandline.

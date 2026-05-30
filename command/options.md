@@ -44,8 +44,14 @@ $ deno run examples/command/options.ts -p 80
 server running at localhost:80
 ```
 
-> Note: There is a difference of defining option values without an equals sign
-> like `--foo <bar>` and with an equals sign like `--foo=<bar>`.
+> Note: The equals sign only has an effect for options with an **optional**
+> value. For options with a **required** value, the `=` in the definition (and
+> the [`equalsSign`](../flags/flag_options.md#equals-sign) option) have no
+> effect, the option can always be called with or without an equals sign.
+>
+> For options with an **optional** value, there is a difference between defining
+> the value without an equals sign like `--foo [bar]` and with an equals sign
+> like `--foo=[bar]`:
 >
 > - If the option is defined **without** an equals sign, the option can be
 >   called with and without an equals sign.
@@ -53,7 +59,8 @@ server running at localhost:80
 >   with an equals sign as well.
 >
 > The difference is, an option with an optional value which is defined with an
-> equals sign can be used before an argument without the option value:
+> equals sign can be used before an argument without consuming it as the option
+> value:
 >
 > - `deno run --allow-env mod.ts`
 > - `deno run --allow-env=FOO,BAR mod.ts`
