@@ -67,8 +67,9 @@ prompts.
 ### Suggestions list
 
 With the `list` option you can display a list of suggestions. Matched
-suggestions will be highlighted in the list and can be completed with the `tab`
-key.
+suggestions are highlighted in the list. Press `tab` to complete the highlighted
+suggestion, or `enter` to accept and submit it (see
+[Complete on submit](#complete-on-submit)).
 
 You can also display the info bar with the `info` option to show the number of
 available suggestions and usage information.
@@ -107,3 +108,41 @@ $ deno run examples/prompt/suggestions_list.ts
 
 With the `maxRows` option you specify the number of suggestions displayed per
 page. Defaults to `10`.
+
+### Complete on submit
+
+The `completeOnSubmit` option controls whether the highlighted suggestion is
+accepted when the prompt is submitted. When enabled and a suggestion is
+highlighted, pressing `enter` completes the highlighted suggestion and submits
+it instead of the raw input value. If no suggestion matches the current input,
+the typed value is submitted. A custom `complete` handler and
+[path completions](#path-completions) are respected.
+
+The default depends on the `list` option:
+
+- With `list: true`, suggestions are shown as a highlighted list and
+  `completeOnSubmit` defaults to `true`, so `enter` accepts the highlighted
+  entry (menu-like behavior).
+- For inline suggestions (`list` disabled), it defaults to `false`, so `enter`
+  submits the typed value, like fish/zsh autosuggestions.
+
+Set the option explicitly to override the per-mode default:
+
+```ts ignore
+import { Input } from "@cliffy/prompt/input";
+
+const color = await Input.prompt({
+  message: "Choose a color",
+  list: true,
+  suggestions: ["Abbey", "Acadia", "Aero"],
+  completeOnSubmit: false,
+});
+
+console.log({ color });
+```
+
+To submit a value that is a prefix of a suggestion (for example `Ab` while
+`Abbey` is highlighted), press `escape` to dismiss the highlighted suggestion,
+then `enter` to submit the typed value. Typing or navigating the list
+re-activates suggestions. The dismiss key can be changed with the `deselect`
+keymap (`keys: { deselect: ["escape"] }`).
