@@ -348,6 +348,12 @@ Error: Option --standalone cannot be combined with other options.
 To define options which conflicts with other options you can use the `conflicts`
 option by defining an array with the names of these options.
 
+Conflicts are only checked against explicitly provided options (as command line
+argument or environment variable). A conflicting option that only has its
+default value does not trigger an error. For example, an option `--table` with
+`conflicts: ["json"]` can be used even when a `--json` option defaults to
+`true`, but fails when `--json` is provided explicitly.
+
 ```typescript
 import { Command } from "@cliffy/command";
 

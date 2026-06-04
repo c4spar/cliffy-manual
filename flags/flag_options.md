@@ -66,10 +66,14 @@ are not provided on commandline.
 
 ## Conflicts
 
-This is the opposite of the `conflicts` option. You can specify flags which can
+This is the opposite of the `depends` option. You can specify flags which can
 not be provided if a specific flag is set. If `conflicts` is set to
 `["foo", "bar"]`, an error is thrown if one of this flags is provided on
 commandline.
+
+Conflicts are only checked against explicitly provided flags (as command line
+argument or environment variable). A conflicting flag that only has its default
+value does not trigger an error.
 
 ## Equals sign
 
