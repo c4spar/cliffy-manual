@@ -26,9 +26,10 @@ is called.
 Errors can be caught by simply wrapping the `.parse()` method into a try catch
 block. But you can also register an error handler with the `.error()` method.
 
-Child commands can override error handlers from parent commands. If the error
-handler doesn't throw or call `Deno.exit`, the default error handler is
-executed.
+The error handler is inherited by all nested sub-commands, at any depth. Child
+commands can override error handlers from ancestor commands, in which case the
+handler closest to the failed command is executed. If the error handler doesn't
+throw or call `Deno.exit`, the default error handler is executed.
 
 The first argument of the error handler is the error, the second argument is the
 instance of the failed command, and the third argument is an `ErrorContext`

@@ -84,3 +84,37 @@ With the `reader` option you can change the input stream which defaults to
 
 With the `writer` option you can change the output stream which defaults to
 `Deno.stdout`.
+
+### Keymap
+
+With the `keys` option you can assign custom key names to prompt actions. The
+available actions depend on the prompt type.
+
+All text input prompts (`Input`, `Number`, `List`, `Secret` and `Confirm`), and
+also the search input of the `Select` and `Checkbox` prompts, support
+readline-style cursor navigation and word editing with the following default key
+bindings:
+
+| Action            | Keymap name       | Default keys              |
+| ----------------- | ----------------- | ------------------------- |
+| Move cursor left  | `moveCursorLeft`  | `left`                    |
+| Move cursor right | `moveCursorRight` | `right`                   |
+| Move word left    | `moveWordLeft`    | `alt+left`, `ctrl+left`   |
+| Move word right   | `moveWordRight`   | `alt+right`, `ctrl+right` |
+| Delete char left  | `deleteCharLeft`  | `backspace`               |
+| Delete char right | `deleteCharRight` | `delete`                  |
+| Delete word left  | `deleteWordLeft`  | `ctrl+w`, `alt+backspace` |
+| Delete word right | `deleteWordRight` | `alt+d`                   |
+
+```ts
+import { Input } from "@cliffy/prompt/input";
+
+const sentence = await Input.prompt({
+  message: "Enter a sentence",
+  keys: {
+    deleteWordLeft: ["ctrl+w", "ctrl+backspace"],
+  },
+});
+
+console.log({ sentence });
+```

@@ -65,6 +65,16 @@ option is useful if you have a large list of options.
 
 You can change the search input label with the `searchLabel` option.
 
+The `searchMode` option controls how options are matched, ranked and highlighted
+while searching. Defaults to `"all"`.
+
+- `"substring"`: classic contiguous substring match.
+- `"fuzzy"`: match the typed characters in order, allowing gaps (e.g. `strubu`
+  matches `structure-builder`).
+- `"typo"`: tolerate misspellings via edit distance (e.g. `stroberry` matches
+  `strawberry`), without fuzzy subsequence matching.
+- `"all"`: combines `"substring"`, `"fuzzy"` and `"typo"`.
+
 > [!NOTE]
 > While searching, the single-letter navigation keys (`j`, `k`, `n`, `p`, etc.)
 > are typed into the search input instead of moving the selection. Use the arrow

@@ -109,6 +109,34 @@ $ deno run examples/prompt/suggestions_list.ts
 With the `maxRows` option you specify the number of suggestions displayed per
 page. Defaults to `10`.
 
+### Search mode
+
+The `searchMode` option controls the matching strategy used to filter, rank and
+highlight suggestions. Defaults to `"all"`.
+
+- `"substring"`: classic contiguous substring match.
+- `"fuzzy"`: match the typed characters in order, allowing gaps (e.g. `strubu`
+  matches `structure-builder`).
+- `"typo"`: tolerate misspellings via edit distance (e.g. `stroberry` matches
+  `strawberry`), without fuzzy subsequence matching.
+- `"all"`: combines `"substring"`, `"fuzzy"` and `"typo"`.
+
+Substring matches always rank above fuzzy matches, which always rank above
+typo-tolerant matches, regardless of their inner scores.
+
+```ts ignore
+import { Input } from "@cliffy/prompt/input";
+
+const color = await Input.prompt({
+  message: "Choose a color",
+  list: true,
+  searchMode: "substring",
+  suggestions: ["Abbey", "Acadia", "Aero"],
+});
+
+console.log({ color });
+```
+
 ### Complete on submit
 
 The `completeOnSubmit` option controls whether the highlighted suggestion is
