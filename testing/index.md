@@ -2,8 +2,6 @@
 
 Experimental testing utilities for command line applications.
 
-## Installation
-
 > [!WARNING]
 > The testing module currently only supports Deno.
 

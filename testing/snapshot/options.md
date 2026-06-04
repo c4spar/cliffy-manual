@@ -1,6 +1,6 @@
 # Options
 
-## Name
+## name
 
 The name of the test.
 
@@ -14,6 +14,18 @@ required for executing the snapshot tests.
 Test function that executes your test code. A snapshot is taken of the `stdout`
 and `stderr` outputs of this function and stored in the snapshot file.
 
+## args
+
+Script arguments injected into the test function. Read them with `Deno.args` as
+you normally would. Can be set at the top level or on individual steps. (see
+[Script arguments](./index.md#script-arguments))
+
+## stdin
+
+Data injected into `Deno.stdin`. Read it from `Deno.stdin` as you normally would
+when reading from stdin. Useful for snapshotting prompts. Can be set at the top
+level or on individual steps. (see [Stdin](./index.md#stdin))
+
 ## steps
 
 With the `steps` option you can add multiple steps to the test function. The
@@ -25,7 +37,10 @@ have separate options for `stdin`, `args`, and `env`. (see
 ## denoArgs
 
 Arguments passed to the `deno test` command when executing the snapshot tests.
-`--allow-env=SNAPSHOT_TEST_NAME` is passed by default.
+Use this to grant your CLI the permissions it needs at runtime (e.g.
+`--allow-read`, `--allow-env`). `--allow-env=SNAPSHOT_TEST_NAME` is always added
+on top of whatever you pass. Adding `--quiet` keeps Deno's own output out of the
+snapshot.
 
 ## dir
 
@@ -63,38 +78,8 @@ increase the timeout. The default timeout is `600`.
 ## env
 
 Environment variables to inject into the test process. Can be set at the
-top-level test options or on individual steps.
-
-```ts
-import { snapshotTest } from "@cliffy/testing";
-
-await snapshotTest({
-  name: "should respect env vars",
-  meta: import.meta,
-  env: { MY_VAR: "hello" },
-  async fn() {
-    console.log(Deno.env.get("MY_VAR"));
-  },
-});
-```
-
-Per-step env vars can also be set inside a `steps` object:
-
-```ts
-import { snapshotTest } from "@cliffy/testing";
-
-await snapshotTest({
-  name: "env vars per step",
-  meta: import.meta,
-  steps: {
-    "step 1": { env: { MY_VAR: "foo" } },
-    "step 2": { env: { MY_VAR: "bar" } },
-  },
-  async fn() {
-    console.log(Deno.env.get("MY_VAR"));
-  },
-});
-```
+top-level test options or on individual steps. (see
+[Test steps](./index.md#test-steps))
 
 ## ignore
 
@@ -111,19 +96,4 @@ set to `true` and fail the test suite.
 The `only` option can be set at the top level or on individual steps inside the
 `steps` object. When set on a step, only that step runs and the others are
 skipped (the test suite is still marked as failing due to the `only` filter).
-
-```ts
-import { snapshotTest } from "@cliffy/testing";
-
-await snapshotTest({
-  name: "run only specific steps",
-  meta: import.meta,
-  steps: {
-    "step 1": { args: ["foo"] },
-    "step 2": { args: ["bar"], only: true }, // only this step runs
-  },
-  async fn() {
-    console.log(Deno.args);
-  },
-});
-```
+(see [Test steps](./index.md#test-steps))
