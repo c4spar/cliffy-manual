@@ -302,6 +302,58 @@ $ deno run examples/command/global_options.ts command1 command2 -g test
 { global: "test" }
 ```
 
+### Global options and method chaining
+
+A global option is registered on the command that is currently selected in the
+chain, which is not always the main command. The `.command()` method selects the
+new sub command, so a global option that is added after a `.command()` call
+belongs to that sub command. It is shared with the child commands of that sub
+command, but not with the main command or its sibling commands. See
+[reset](./commands.md#reset) for how command chaining works.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .name("my-cli")
+  .globalOption("-a, --alpha", "Available on all commands.")
+  .command(
+    "foo",
+    new Command()
+      .description("Foo command.")
+      .command("baz", "Baz command."),
+  )
+  // Registered on the foo command, not on the main command:
+  .globalOption("-b, --beta", "Available on foo and baz.")
+  .command("bar", "Bar command.")
+  .parse();
+```
+
+`--alpha` is available on every command, but `--beta` only on `foo` and its
+child command `baz`:
+
+```console
+$ my-cli foo baz --beta
+
+$ my-cli bar --beta
+  error: Unknown option "--beta". Did you mean option "--help"?
+```
+
+To register a global option on the main command after a sub command was added,
+use the `.reset()` method to select the main command again.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .name("my-cli")
+  .command("foo", "Foo command.")
+  .reset()
+  // Registered on the main command:
+  .globalOption("-b, --beta", "Available on all commands.")
+  .parse();
+```
+
 ## Hidden options
 
 To exclude options from the help and completion commands you can use the

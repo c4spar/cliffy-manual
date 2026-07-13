@@ -7,8 +7,8 @@ only two exceptions:
 - The `.command()` method returns the new created sub command, so you can add
   options, argument, environment variables and types to your sub commands in a
   chainable way.
-- The `.reset()` method returns the main command from your current command
-  chain.
+- The [`.reset()`](#reset) method returns the main command from your current
+  command chain.
 
 ## Name
 
@@ -281,6 +281,34 @@ await new Command()
   .action(() => console.log("Bar action."))
   .parse();
 ```
+
+## Reset
+
+All methods are applied to the command that is currently selected in the chain.
+The `.command()` method selects the new sub command, so every method that
+follows is registered on that sub command and not on your main command. With the
+`.reset()` method you can select the main command of the chain again.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("-f, --foo", "Registered on the main command.")
+  .command("bar", "Bar command.")
+  .option("-b, --baz", "Registered on the bar command.")
+  .reset()
+  .option("-q, --qux", "Registered on the main command.")
+  .parse();
+```
+
+The `.command()` method itself always adds the new sub command to the main
+command of the chain, so chained `.command()` calls create sibling commands. To
+nest sub commands, pass a `Command` instance as second argument, as shown in
+[sub commands](./sub_commands.md#command-instance).
+
+This is a common source of confusion with
+[global options](./options.md#global-options-and-method-chaining), which are
+registered on the selected command as well.
 
 ## Global commands
 
