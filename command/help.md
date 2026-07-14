@@ -133,8 +133,10 @@ await new Command()
     types: true, // default: false
     // Show hints.
     hints: true, // default: true
-    // Enable/disable colors.
-    colors: false, // default: true
+    // Enable/disable colors. Defaults to the global color state of
+    // `@std/fmt/colors`, which is disabled if the `NO_COLOR` environment
+    // variable is set, or if colors are disabled with `setColorEnabled()`.
+    colors: false,
     // Set the target width of the help output in columns.
     // Defaults to the terminal width (or 150 if not a TTY).
     width: 120,
