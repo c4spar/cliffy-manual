@@ -102,7 +102,7 @@ COMMAND completions zsh > /path/to/zsh/site-functions/_COMMAND
 ```
 
 > [!NOTE]
-> Replace `COMMAND` with the name of your CLI.
+> Replace `COMMAND` with the name of your cli.
 
 ## Upgrade command
 
@@ -114,10 +114,10 @@ the long version output if a new version is available.
 COMMAND upgrade --version 1.0.2
 ```
 
-```typescript
+```typescript ignore
 import { Command } from "@cliffy/command";
 import { UpgradeCommand } from "@cliffy/command/upgrade";
-import { DenoLandProvider } from "@cliffy/command/upgrade/provider/deno-land";
+import { DenoLandProvider } from "@cliffy/upgrade/provider/deno-land";
 
 new Command()
   .command(
@@ -133,104 +133,49 @@ new Command()
 With the `provider` option you specify which registries are supported. This
 option is required.
 
-The `main` option is the entry file of your cli. With the `name` option you can
-optionally define the name of your cli which defaults to the name of your main
-file (`[name].ts`).
+The `main` option is the entry file of your cli, appended to the registry url.
+On Deno the cli is reinstalled under the name of your main command.
 
 > ❗️ The name cannot have spaces! If you use spaces, you (or your users!) will
 > get an error when upgrading.
 
 If your cli needs some permissions, you can specify the permissions with the
-`args` option which are passed to `deno install`.
+`args` option which are passed to the runtime's install command. Use the
+`runtime` option to pass different `args` or a different `main` per runtime.
 
-> - When `args` is defined, `--force` and `--name` is set by default.
-> - When `args` is not defined, `--force`, `--name`, `--quiet` and `--no-check`
->   is set by default.
+> - Deno installs with `--name`, `--global` and `--force`.
+> - Node and bun install with `--global` and `--force`.
+> - The install command is silenced (`--quiet` on Deno, `--silent` on node and
+>   bun) unless the upgrade is run with `-v` or `--verbose`.
 
-### Providers
+### Selecting a registry
 
-There are a few built-in providers: [jsr](https://jsr.io),
-[npm](https://www.npmjs.com/), [deno.land](https://deno.land/x),
-[nest.land](https://nest.land) and [github](https://github.com). If multiple
-providers are registered, you can specify the registry that should be used with
-the `--registry` option provided by the `UpgradeCommand`. The github provider
-can also be used to `upgrade` to any git branch.
+The `provider` option is required and takes one provider or an array of them.
+Cliffy ships providers for [jsr](https://jsr.io), [npm](https://www.npmjs.com/),
+[deno.land](https://deno.land/x), [nest.land](https://nest.land),
+[github](https://github.com), [gitlab](https://gitlab.com), and any
+[url](../upgrade/providers/url.md). Their options are documented in
+[providers](../upgrade/providers/index.md).
+
+With multiple providers, users select one with the `--registry` option (hidden
+when only one is registered). Without it, the first registered provider is used.
+For a standalone executable, the first provider that supports binary upgrades is
+used instead.
 
 ```shell
 COMMAND upgrade --registry github --version main
 ```
 
-The `--registry` option is hidden if only one provider is registered. If the
-`upgrade` command is called without the `--registry` option, the default
-registry is used. The default registry is the first registered provider.
-
-The package name defaults to the command name for all providers. If you want to
-use a different module name, you can override it with the `name` option.
-
-#### Package providers
-
-The `JsrProvider` and `NpmProvider` can be used if your cli is published as a
-package. The `scope` option is required for the `JsrProvider` and the
-`NpmProvider`.
-
-```typescript
-import { Command } from "@cliffy/command";
-import { UpgradeCommand } from "@cliffy/command/upgrade";
-import { JsrProvider } from "@cliffy/command/upgrade/provider/jsr";
-import { NpmProvider } from "@cliffy/command/upgrade/provider/npm";
-
-new Command()
-  .name("my-package")
-  .command(
-    "upgrade",
-    new UpgradeCommand({
-      provider: [
-        new JsrProvider({ scope: "@my-scope" }),
-        new NpmProvider({ scope: "@my-scope" }),
-      ],
-    }),
-  );
-```
-
-> [!NOTE]
-> When upgrading to `latest`, the `JsrProvider` and `NpmProvider` let the
-> runtime resolve the concrete version instead of pinning it themselves. This
-> way a configured minimum dependency age policy is respected
-> (`minimumDependencyAge` in Deno, `min-release-age` in npm/pnpm/bun): the
-> upgrade installs the newest version allowed by the policy rather than the
-> absolute latest.
-
-#### CDN providers
-
-The following providers can be used if your CLI is published to a CDN from which
-it can be imported from a URL.
-
-```typescript
-import { Command } from "@cliffy/command";
-import { UpgradeCommand } from "@cliffy/command/upgrade";
-import { DenoLandProvider } from "@cliffy/command/upgrade/provider/deno-land";
-import { GithubProvider } from "@cliffy/command/upgrade/provider/github";
-import { NestLandProvider } from "@cliffy/command/upgrade/provider/nest-land";
-
-new Command()
-  .name("my-package")
-  .command(
-    "upgrade",
-    new UpgradeCommand({
-      provider: [
-        new DenoLandProvider(),
-        new NestLandProvider(),
-        new GithubProvider({ repository: "c4spar/deno-cliffy" }),
-      ],
-    }),
-  );
-```
+The package name defaults to the command name for the jsr, npm, deno.land and
+nest.land providers. Override it with the `name` option. The github and gitlab
+providers use the `repository` option instead, and the url provider builds the
+url itself.
 
 ### List available versions
 
-The upgrade command can also be used to list all available versions with the
-`-l` or `--list-versions` option. The current installed version is highlighted
-and prefixed with a `*`.
+The `-l` or `--list-versions` option lists the available versions. The current
+version is highlighted and prefixed with a `*`. The option is only registered if
+at least one of the providers can list versions.
 
 ```console
 $ COMMAND upgrade -l
@@ -240,24 +185,22 @@ $ COMMAND upgrade -l
   v0.1.0
 ```
 
-The github registry shows all available tags and branches. Branches can be
-disabled with the `branches` option `GithubProvider({ branches: false })`. If
-the versions list is larger than `25`, the versions are displayed as table.
+What each registry lists (for example the github provider's tags and branches)
+is covered under
+[listing versions](../upgrade/providers/github.md#listing-versions).
 
-```console
-$ COMMAND upgrade --registry github --list-versions
-Tags:
+### Binary upgrade
 
-  v0.18.2   v0.17.0   v0.14.1   v0.11.2   v0.8.2   v0.6.1   v0.3.0
-  v0.18.1 * v0.16.0   v0.14.0   v0.11.1   v0.8.1   v0.6.0   v0.2.0
-  v0.18.0   v0.15.0   v0.13.0   v0.11.0   v0.8.0   v0.5.1   v0.1.0
-  v0.17.2   v0.14.3   v0.12.1   v0.10.0   v0.7.1   v0.5.0
-  v0.17.1   v0.14.2   v0.12.0   v0.9.0    v0.7.0   v0.4.0
+For a cli distributed as a standalone executable, the `GithubProvider`,
+`GitlabProvider` and `UrlProvider` can replace the running binary in place
+instead of reinstalling from a registry. Configure the provider with the `asset`
+option, force the binary path with `standalone: true` when it can't be
+auto-detected, and let users pick an install path with the `-o` or `--output`
+flag (or an env var via the `outputEnv` option). The `--output` flag is only
+registered if at least one of the providers supports binary upgrades. See
+[binary upgrade](../upgrade/binary_upgrade.md) for the full configuration.
 
-Branches:
-
-  main (Protected)
-  keypress/add-keypress-module
-  keycode/refactoring
-  command/upgrade-command
-```
+> [!NOTE]
+> The `UpgradeCommand` wraps the parser-agnostic
+> [`@cliffy/upgrade`](../upgrade/index.md) package. To add an upgrade command to
+> a cli built with `@cliffy/flags` or another parser, use that package directly.
