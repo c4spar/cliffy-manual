@@ -133,9 +133,8 @@ await new Command()
     types: true, // default: false
     // Show hints.
     hints: true, // default: true
-    // Enable/disable colors. Defaults to the global color state of
-    // `@std/fmt/colors`, which is disabled if the `NO_COLOR` environment
-    // variable is set, or if colors are disabled with `setColorEnabled()`.
+    // Enable, disable or auto-detect colors. Defaults to the global color
+    // state of `@std/fmt/colors`. See the colors section below.
     colors: false,
     // Set the target width of the help output in columns.
     // Defaults to the terminal width (or 150 if not a TTY).
@@ -155,6 +154,39 @@ await new Command()
 The help output is responsive by default: it reads the current terminal width
 and wraps text accordingly. The `width` option overrides the detected terminal
 width, and `maxWidth` caps it.
+
+### Colors
+
+The `colors` option controls the colored output of the help.
+
+- `true` enables colors.
+- `false` disables colors.
+- `"auto"` enables colors only when they are globally enabled and standard
+  output is a terminal, so the output stays plain when it is piped into a file
+  or another program.
+
+Without the option, the global color state of `@std/fmt/colors` is used, which
+can be changed with `setColorEnabled()`.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .help({ colors: "auto" })
+  .option("-f, --foo", "Some description.")
+  .parse();
+```
+
+> [!NOTE]
+> Colors are always disabled when the `NO_COLOR` environment variable is set to
+> a non-empty value, regardless of this option. On Node and Bun, the
+> `NODE_DISABLE_COLORS` environment variable has the same effect. `"auto"`
+> becomes the default in 2.0.
+
+Cliffy reads those variables by default. Any non-empty value disables colors,
+`NO_COLOR=false` included. To colorize your own output the same way the help
+does, read `getColorEnabled()` from `@std/fmt/colors` rather than reading the
+variable yourself.
 
 ### Auto help for container commands
 
