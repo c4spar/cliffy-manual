@@ -18,6 +18,11 @@ will be parsed to `{ someEnvVar: true }`.
 > If an option with the same name is defined, the option will override the
 > environment variable.
 
+> [!NOTE]
+> An option can also read its value from an environment variable with the `env`
+> option. See [environment variables](./options.md#environment-variables) on the
+> options page.
+
 ```typescript
 import { Command } from "@cliffy/command";
 
