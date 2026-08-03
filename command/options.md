@@ -297,6 +297,67 @@ $ deno run --allow-env example.ts
 { check: true }
 ```
 
+### Environment variable type
+
+An option and its linked environment variable share a type. For a flag without a
+value that type is boolean, which is wrong for a variable like `NO_COLOR`, where
+any non-empty value counts and the value itself is irrelevant. It would be
+parsed, so `NO_COLOR=false` would enable colors and `NO_COLOR=yes` would fail
+with a type error. The [presence type](./types.md#presence-type) exists for
+those.
+
+The `type` option of `env` sets the type of the variable on its own.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("--no-color", "Disable colors.", { env: { type: "presence" } })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ NO_COLOR=1 deno run --allow-env example.ts
+{ color: false }
+
+$ NO_COLOR=whatever deno run --allow-env example.ts
+{ color: false }
+
+$ deno run --allow-env example.ts
+{ color: true }
+```
+
+The option itself is untouched, it still takes no value and the help shows no
+value hint for it.
+
+```console
+$ deno run example.ts --no-color=true
+error: Option "--no-color" doesn't take a value, but got "true".
+```
+
+Any registered type works, not only `presence`, and it can be combined with
+`prefix`. When the type of the variable differs from the type of the option, the
+value of the option becomes the union of both.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("--port <port:string>", "Port to listen on.", {
+    env: { type: "number" },
+  })
+  .action((options) => console.log(options))
+  .parse();
+
+// options.port is of type `string | number | undefined`.
+```
+
+```console
+$ PORT=80 deno run --allow-env example.ts
+{ port: 80 }
+```
+
 ### Restrictions
 
 - An option without a long flag needs an explicit name, for example
