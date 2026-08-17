@@ -126,6 +126,36 @@ const { args } = await new Command()
   .parse();
 ```
 
+### Empty argument values
+
+An empty value means the argument was not provided, the same rule
+[options](./options.md#empty-values) follow. An optional argument falls back to
+its default value, and a required argument is rejected, because skipping it
+would shift every argument after it.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+const { args } = await new Command()
+  .argument("<input:string>", "The input file.")
+  .argument("[output:string]", "The output file.", { default: "out.txt" })
+  .parse();
+
+console.log(args);
+```
+
+```console
+$ deno run example.ts in.txt ""
+[ "in.txt", "out.txt" ]
+
+$ deno run example.ts "" out.txt
+Error: Missing argument: input
+```
+
+For a [variadic argument](#variadic-arguments) the position does not matter, so
+empty values are dropped from the list instead. `<dirs...>` still requires at
+least one non-empty value.
+
 ### Variadic arguments
 
 The last argument of a command can be variadic. To make an argument variadic you
