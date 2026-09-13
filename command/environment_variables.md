@@ -120,3 +120,73 @@ await new Command()
 $ DENO_INSTALL_ROOT=foo/bar deno run --allow-env=DENO_INSTALL_ROOT examples/command/environment_variables_prefix.ts
 { installRoot: "foo/bar" }
 ```
+
+## Negatable environment variables
+
+A variable like `NO_CACHE` expresses the negation of a value. With the
+`negatable` option the `NO_` prefix is stripped from the property name and the
+boolean is inverted, the same way a
+[negatable option](./options.md#negatable-options) works. `NO_CACHE=true`
+becomes `{ cache: false }`.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .env("NO_CACHE=<value:boolean>", "Disable the cache.", { negatable: true })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ NO_CACHE=true deno run --allow-env=NO_CACHE examples/command/negatable_environment_variables.ts
+{ cache: false }
+
+$ NO_CACHE=false deno run --allow-env=NO_CACHE examples/command/negatable_environment_variables.ts
+{ cache: true }
+
+$ deno run --allow-env=NO_CACHE examples/command/negatable_environment_variables.ts
+{}
+```
+
+Unlike a negatable flag, the variable carries a value, so `NO_CACHE=false` turns
+the property on.
+
+The name must start with `NO_` and the value must be of type boolean, otherwise
+an error is thrown.
+
+This also works with the [prefix](#prefix) option, where the `NO_` has to follow
+the prefix, for example `MYCLI_NO_CACHE` with `{ prefix: "MYCLI_" }`.
+
+If a variable and its negated counterpart are both defined and set, the negated
+one wins.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .env("CACHE=<value:boolean>", "Enable the cache.")
+  .env("NO_CACHE=<value:boolean>", "Disable the cache.", { negatable: true })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ CACHE=true NO_CACHE=true deno run --allow-env examples/command/negatable_environment_variables.ts
+{ cache: false }
+```
+
+> [!NOTE]
+> The option is opt-in for backwards compatibility. Without it, `NO_CACHE=true`
+> is camel cased like any other name and results in `{ noCache: true }`. In v2
+> this becomes the default for boolean `NO_*` environment variables and the
+> option is removed.
+
+> [!NOTE]
+> Variables that follow a presence-based convention, `NO_COLOR` and
+> `NODE_DISABLE_COLORS` among them, are disabled by any non-empty value,
+> whatever the value is. Declaring them as a boolean parses the value and
+> reaches the opposite conclusion for `NO_COLOR=false`. Declare them with the
+> [presence type](./types.md) instead, or read the color state with
+> `getColorEnabled()` from `@std/fmt/colors`, which is what cliffy uses for its
+> own [help](./help.md) output.
