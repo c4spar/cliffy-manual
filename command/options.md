@@ -454,6 +454,62 @@ await new Command()
 $ deno run examples/command/hidden_options.ts -h
 ```
 
+## Conditional options
+
+With the `enabled` option you can decide at runtime whether an option is
+registered. It defaults to `true`. A disabled option is not added to the
+command, so it is missing from the help output, is rejected as an unknown flag
+and has no property on the options object.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+const isWindows = Deno.build.os === "windows";
+
+await new Command()
+  .option("-m, --mode <mode:string>", "File mode of the created file.", {
+    enabled: !isWindows,
+  })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ deno run example.ts --mode 644
+{ mode: "644" }
+
+# On Windows:
+$ deno run example.ts --mode 644
+error: Unknown option "--mode". Did you mean option "--help"?
+```
+
+The type of the options object depends on the value you pass:
+
+- A literal `false`, for example from a `const` declaration, removes the option
+  from the options object.
+- A `boolean` that is only known at runtime widens the value to
+  `<type> | undefined`, because the option may not have been registered.
+- `enabled: true` and omitting the option behave like any other option.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+const EXPERIMENTAL = false;
+const isWindows = Deno.build.os === "windows";
+
+const { options } = await new Command()
+  .option("--jit", "Enable the experimental jit compiler.", {
+    enabled: EXPERIMENTAL,
+  })
+  .option("-m, --mode <mode:string>", "File mode of the created file.", {
+    enabled: !isWindows,
+  })
+  .parse();
+
+// options.jit does not exist, because EXPERIMENTAL has the literal type `false`.
+// options.mode is of type `string | undefined`.
+```
+
 ## Standalone options
 
 Standalone options cannot be combined with any command and option. For example
