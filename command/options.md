@@ -223,6 +223,87 @@ new Command()
   });
 ```
 
+## Environment variables
+
+With the `env` option an option falls back to an environment variable when the
+flag is not used, so there is no need to register a matching environment
+variable separately with the [`.env()`](./environment_variables.md) method. The
+value is read into the property of the option, with the precedence
+`flag > environment variable > default value`.
+
+- `true` derives the name from the long flag. `--install-root` becomes
+  `INSTALL_ROOT`.
+- A string sets the name explicitly.
+- `{ prefix }` prepends a prefix to the derived name.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("--cache <dir:string>", "Cache directory.", { env: true })
+  .option("--token <token:string>", "Auth token.", { env: "MY_TOKEN" })
+  .option("--install-root <path:string>", "Set install root.", {
+    env: { prefix: "DENO_" },
+  })
+  .option("--port <port:number>", "Port to listen on.", {
+    env: true,
+    default: 8080,
+  })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ CACHE=/tmp/cache MY_TOKEN=secret DENO_INSTALL_ROOT=foo/bar PORT=3000 deno run --allow-env example.ts
+{ cache: "/tmp/cache", token: "secret", installRoot: "foo/bar", port: 3000 }
+
+$ PORT=3000 deno run --allow-env example.ts --port 9000
+{ port: 9000 }
+
+$ deno run --allow-env example.ts
+{ port: 8080 }
+```
+
+The linked environment variable is listed in the environment variables section
+of the help and as a hint on the option itself:
+
+```console
+--port  <port>  - Port to listen on.  (Default: 8080, env: PORT)
+```
+
+A required option is satisfied by its environment variable, so no error is
+thrown when the flag is missing but the variable is set.
+
+### Negated environment variables
+
+A [negatable option](#negatable-options) registers a negated environment
+variable and inverts its value, the same way the flag does. `--no-check` reads
+`NO_CHECK` and stores the result in `check`.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("--no-check", "Disable type checking.", { env: true })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ NO_CHECK=true deno run --allow-env example.ts
+{ check: false }
+
+$ deno run --allow-env example.ts
+{ check: true }
+```
+
+### Restrictions
+
+- An option without a long flag needs an explicit name, for example
+  `.option("-f", "Force.", { env: "FORCE" })`.
+- [Dotted options](#dotted-options) are not supported. Register the environment
+  variable with the [`.env()`](./environment_variables.md) method instead.
+
 ## Negatable options
 
 You can specify a boolean option long name with a leading `no-` to set the
