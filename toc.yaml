@@ -15,6 +15,20 @@
         /error-handling: Error handling
         /generics: Generics
         /others: Others
+    /upgrade:
+      name: Upgrade
+      children:
+        /providers:
+          name: Providers
+          children:
+            /jsr: Jsr
+            /npm: Npm
+            /deno-land: Deno Land
+            /nest-land: Nest Land
+            /github: Github
+            /gitlab: Gitlab
+            /url: Url
+        /binary-upgrade: Binary upgrade
     /flags:
       name: Flags
       children:
