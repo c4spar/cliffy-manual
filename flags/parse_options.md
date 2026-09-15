@@ -65,14 +65,40 @@ The `option` callback method is called for each parsed option.
 ## Stop early
 
 If `stopEarly` is enabled, all values starting from the first non option
-argument will be added to the `unknown` array (can be combined with
+argument are no longer parsed as options. Values that match an
+[expected argument](#args) are typed and added to the `args` array, and all
+remaining values are added to the `unknown` array (can be combined with
 [stopOnUnknown](#stop-on-unknown)).
+
+Without expected arguments, all values are added to the `unknown` array.
+
+```typescript
+import { parseFlags } from "@cliffy/flags";
+
+const argv = ["--debug-level", "warning", "server", "--port", "80"];
+const flags = [{ name: "debug-level", type: "string" }];
+
+const withArgs = parseFlags(argv, {
+  stopEarly: true,
+  flags,
+  args: [
+    { name: "script", type: "string" },
+    { name: "args", type: "string", variadic: true, optional: true },
+  ],
+});
+// withArgs.args -> [ "server", "--port", "80" ]
+// withArgs.unknown -> []
+
+const withoutArgs = parseFlags(argv, { stopEarly: true, flags });
+// withoutArgs.unknown -> [ "server", "--port", "80" ]
+```
 
 ## Stop on unknown
 
 If `stopOnUnknown` is enabled, all values starting from the first unknown option
-argument will be added to the `unknown` array (can be combined with
-[stopEarly](#stop-early)).
+argument are no longer parsed as options. They are matched against the expected
+arguments the same way as with [stopEarly](#stop-early), and everything left
+over is added to the `unknown` array.
 
 ## Allow empty
 
