@@ -223,6 +223,148 @@ new Command()
   });
 ```
 
+## Environment variables
+
+With the `env` option an option falls back to an environment variable when the
+flag is not used, so there is no need to register a matching environment
+variable separately with the [`.env()`](./environment_variables.md) method. The
+value is read into the property of the option, with the precedence
+`flag > environment variable > default value`.
+
+- `true` derives the name from the long flag. `--install-root` becomes
+  `INSTALL_ROOT`.
+- A string sets the name explicitly.
+- `{ prefix }` prepends a prefix to the derived name.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("--cache <dir:string>", "Cache directory.", { env: true })
+  .option("--token <token:string>", "Auth token.", { env: "MY_TOKEN" })
+  .option("--install-root <path:string>", "Set install root.", {
+    env: { prefix: "DENO_" },
+  })
+  .option("--port <port:number>", "Port to listen on.", {
+    env: true,
+    default: 8080,
+  })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ CACHE=/tmp/cache MY_TOKEN=secret DENO_INSTALL_ROOT=foo/bar PORT=3000 deno run --allow-env example.ts
+{ cache: "/tmp/cache", token: "secret", installRoot: "foo/bar", port: 3000 }
+
+$ PORT=3000 deno run --allow-env example.ts --port 9000
+{ port: 9000 }
+
+$ deno run --allow-env example.ts
+{ port: 8080 }
+```
+
+The linked environment variable is listed in the environment variables section
+of the help and as a hint on the option itself:
+
+```console
+--port  <port>  - Port to listen on.  (Default: 8080, env: PORT)
+```
+
+A required option is satisfied by its environment variable, so no error is
+thrown when the flag is missing but the variable is set.
+
+### Negated environment variables
+
+A [negatable option](#negatable-options) registers a negated environment
+variable and inverts its value, the same way the flag does. `--no-check` reads
+`NO_CHECK` and stores the result in `check`.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("--no-check", "Disable type checking.", { env: true })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ NO_CHECK=true deno run --allow-env example.ts
+{ check: false }
+
+$ deno run --allow-env example.ts
+{ check: true }
+```
+
+### Environment variable type
+
+An option and its linked environment variable share a type. For a flag without a
+value that type is boolean, which is wrong for a variable like `NO_COLOR`, where
+any non-empty value counts and the value itself is irrelevant. It would be
+parsed, so `NO_COLOR=false` would enable colors and `NO_COLOR=yes` would fail
+with a type error. The [presence type](./types.md#presence-type) exists for
+those.
+
+The `type` option of `env` sets the type of the variable on its own.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("--no-color", "Disable colors.", { env: { type: "presence" } })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ NO_COLOR=1 deno run --allow-env example.ts
+{ color: false }
+
+$ NO_COLOR=whatever deno run --allow-env example.ts
+{ color: false }
+
+$ deno run --allow-env example.ts
+{ color: true }
+```
+
+The option itself is untouched, it still takes no value and the help shows no
+value hint for it.
+
+```console
+$ deno run example.ts --no-color=true
+error: Option "--no-color" doesn't take a value, but got "true".
+```
+
+Any registered type works, not only `presence`, and it can be combined with
+`prefix`. When the type of the variable differs from the type of the option, the
+value of the option becomes the union of both.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .option("--port <port:string>", "Port to listen on.", {
+    env: { type: "number" },
+  })
+  .action((options) => console.log(options))
+  .parse();
+
+// options.port is of type `string | number | undefined`.
+```
+
+```console
+$ PORT=80 deno run --allow-env example.ts
+{ port: 80 }
+```
+
+### Restrictions
+
+- An option without a long flag needs an explicit name, for example
+  `.option("-f", "Force.", { env: "FORCE" })`.
+- [Dotted options](#dotted-options) are not supported. Register the environment
+  variable with the [`.env()`](./environment_variables.md) method instead.
+
 ## Negatable options
 
 You can specify a boolean option long name with a leading `no-` to set the
@@ -371,6 +513,62 @@ await new Command()
 
 ```console
 $ deno run examples/command/hidden_options.ts -h
+```
+
+## Conditional options
+
+With the `enabled` option you can decide at runtime whether an option is
+registered. It defaults to `true`. A disabled option is not added to the
+command, so it is missing from the help output, is rejected as an unknown flag
+and has no property on the options object.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+const isWindows = Deno.build.os === "windows";
+
+await new Command()
+  .option("-m, --mode <mode:string>", "File mode of the created file.", {
+    enabled: !isWindows,
+  })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ deno run example.ts --mode 644
+{ mode: "644" }
+
+# On Windows:
+$ deno run example.ts --mode 644
+error: Unknown option "--mode". Did you mean option "--help"?
+```
+
+The type of the options object depends on the value you pass:
+
+- A literal `false`, for example from a `const` declaration, removes the option
+  from the options object.
+- A `boolean` that is only known at runtime widens the value to
+  `<type> | undefined`, because the option may not have been registered.
+- `enabled: true` and omitting the option behave like any other option.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+const EXPERIMENTAL = false;
+const isWindows = Deno.build.os === "windows";
+
+const { options } = await new Command()
+  .option("--jit", "Enable the experimental jit compiler.", {
+    enabled: EXPERIMENTAL,
+  })
+  .option("-m, --mode <mode:string>", "File mode of the created file.", {
+    enabled: !isWindows,
+  })
+  .parse();
+
+// options.jit does not exist, because EXPERIMENTAL has the literal type `false`.
+// options.mode is of type `string | undefined`.
 ```
 
 ## Standalone options

@@ -18,6 +18,9 @@ Following types are available by default on all commands.
 - **number:** Can be any numeric value.
 - **integer:** Can be any integer value.
 - **file:** Same as string but adds support for path completion.
+- **presence:** Resolves any non-empty value to `true`, for
+  [environment variables](./environment_variables.md) where only being set
+  matters. See [presence type](#presence-type).
 - **secret:** Same as string but hides the value in the help and shell
   completions.
 
@@ -51,6 +54,43 @@ Error: Missing value for option "--pizza-type".
 $ deno run examples/command/common_option_types.ts -sp vegetarian --amount 3
 { small: true, pizzaType: "vegetarian", amount: 3 }
 ```
+
+## Presence type
+
+Some environment variables signal something by being set, and their value is
+irrelevant. [`NO_COLOR`](https://no-color.org) is the best known example: any
+non-empty value disables colored output, whatever the value says. Reading such a
+variable as a boolean gets both cases wrong, `NO_COLOR=false` would enable
+colors and `NO_COLOR=yes` would fail with a type error.
+
+The `presence` type resolves any non-empty value to `true`. An unset or empty
+variable is treated as not set and adds no value at all.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+await new Command()
+  .env("NO_CACHE=<value:presence>", "Disable the cache.", { negatable: true })
+  .action((options) => console.log(options))
+  .parse();
+```
+
+```console
+$ NO_CACHE=1 deno run --allow-env=NO_CACHE example.ts
+{ cache: false }
+
+$ NO_CACHE=whatever deno run --allow-env=NO_CACHE example.ts
+{ cache: false }
+
+$ deno run --allow-env=NO_CACHE example.ts
+{}
+```
+
+Options are presence based already, an option without a value is `true` when
+used, so this type is meant for
+[environment variables](./environment_variables.md). To read the environment
+variable of an option this way, set the type with the `env` option of the
+`.option()` method instead of on the option itself.
 
 ## Enum type
 
