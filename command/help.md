@@ -48,7 +48,7 @@ help when called without arguments. This behaviour can be disabled with
 For example, to show the help programmatically inside an action handler, you can
 call `.showHelp()` directly:
 
-```ts ignore
+```ts
 import { Command } from "@cliffy/command";
 
 const cmd = new Command()

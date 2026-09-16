@@ -120,9 +120,12 @@ In a real project you would import the command from your entry file instead of
 defining it inline, and use `denoArgs` to grant your CLI the permissions it
 needs at runtime.
 
-```ts ignore
+```ts
 import { snapshotTest } from "@cliffy/testing";
-import { cli } from "./main.ts";
+import type { Command } from "@cliffy/command";
+
+// import { cli } from "./main.ts";
+declare const cli: Command;
 
 await snapshotTest({
   name: "smoke",

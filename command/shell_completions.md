@@ -96,14 +96,16 @@ with the following properties:
 
 - `name`: The name of the binary. Default is the name of the command.
 
-```ts ignore
-import { Command, generateShellCompletions } from "@cliffy/command";
+```ts
+import { Command } from "@cliffy/command";
+import { generateShellCompletions } from "@cliffy/command/completions";
 
-const cmd = await new Command()
+const cmd = new Command()
   .name("mycmd")
   .complete("color", () => ["red", "blue", "yellow"])
-  .arguments("[color-name:string:color]")
-  .parse();
+  .arguments("[color-name:string:color]");
+
+await cmd.parse();
 
 const bashCompletions = generateShellCompletions(cmd, "bash");
 console.log(bashCompletions);

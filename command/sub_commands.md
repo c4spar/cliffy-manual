@@ -68,7 +68,7 @@ promise of a command, or a module with the command as its default export. The
 function is called the first time the sub-command is needed, and only once, so
 its module is only imported when it is used.
 
-```typescript ignore
+```typescript
 import { Command } from "@cliffy/command";
 
 await new Command()
@@ -96,7 +96,7 @@ Methods chained after the `.command()` method are registered on the sub-command
 and applied on top of the lazy loaded command, so it can be configured without
 importing its module.
 
-```typescript ignore
+```typescript
 import { Command } from "@cliffy/command";
 
 await new Command()

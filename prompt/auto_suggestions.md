@@ -124,7 +124,7 @@ highlight suggestions. Defaults to `"all"`.
 Substring matches always rank above fuzzy matches, which always rank above
 typo-tolerant matches, regardless of their inner scores.
 
-```ts ignore
+```ts
 import { Input } from "@cliffy/prompt/input";
 
 const color = await Input.prompt({
@@ -156,7 +156,7 @@ The default depends on the `list` option:
 
 Set the option explicitly to override the per-mode default:
 
-```ts ignore
+```ts
 import { Input } from "@cliffy/prompt/input";
 
 const color = await Input.prompt({
