@@ -184,6 +184,22 @@ const { flags, args } = parseFlags(["--foo", "bar", "a", "b", "c"], {
 console.log(args); // [ "a", "b", "c" ]
 ```
 
+An empty value means the argument was not provided. An optional argument falls
+back to its default value, and a required one throws, because skipping it would
+shift every argument after it. Empty values are dropped from a variadic
+argument, which still requires at least one non-empty value unless it is
+optional.
+
+```typescript
+import { parseFlags } from "@cliffy/flags";
+
+const { args } = parseFlags(["a", "", "b"], {
+  args: [{ type: "string", variadic: true }],
+});
+
+console.log(args); // [ "a", "b" ]
+```
+
 ### Parse context
 
 The `parseFlags` method accepts also a parse context as first argument. The

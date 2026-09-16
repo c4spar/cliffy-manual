@@ -58,6 +58,17 @@ not specified on commandline.
 If `required` is set to `true` an error is thrown if the flag is not set on
 commandline.
 
+## Empty values
+
+An empty value means the flag was not provided. `--foo ""` and `--foo=` are
+treated the same as leaving the flag out, so the [default](#default) value
+applies. If [required](#required) is set to `true`, an error is thrown instead.
+
+The same applies to positional arguments defined with the
+[args](./parse_options.md#args) parse option, except for variadic arguments,
+where empty values are dropped from the list. See
+[empty values](../command/options.md#empty-values) for an example.
+
 ## Depends
 
 You can specify flags which must be provided if a specific flag is set. If

@@ -181,6 +181,42 @@ Options:
   -c, --cheese  [type]  - add the specified type of cheese  (Default: "some cheese")
 ```
 
+### Empty values
+
+An empty value means the option was not provided. Both `--cheese ""` and
+`--cheese=` are treated the same as leaving the option out, so the default value
+applies. This is what you want when the value comes from a shell variable that
+may be unset, as in `--cheese "$CHEESE"`.
+
+A [required option](#required-options) has no such fallback, so an empty value
+is rejected with the same error as a missing one.
+
+```typescript
+import { Command } from "@cliffy/command";
+
+const { options } = await new Command()
+  .option("-c, --cheese <type:string>", "Type of cheese.", { default: "blue" })
+  .option("-n, --name <name:string>", "Your name.", { required: true })
+  .parse();
+
+console.log(options);
+```
+
+```console
+$ deno run example.ts --name Tom --cheese ""
+{ name: "Tom", cheese: "blue" }
+
+$ deno run example.ts --name ""
+Error: Missing value for option "--name".
+```
+
+An empty string can therefore not be passed as a value. To let the user turn an
+option off from the command line, declare a
+[negatable option](#negatable-options).
+
+The same rule applies to
+[command arguments](./commands.md#empty-argument-values).
+
 ## Required options
 
 You may specify a required (mandatory) option.
@@ -373,6 +409,11 @@ by default.
 
 If you define `--foo`, adding `--no-foo` does not change the default value from
 what it would otherwise be.
+
+This is also the way to clear a default value from the command line, since an
+[empty value](#empty-values) is treated as not provided. A negated option
+resolves to `false`, not to an empty string. Use [`.value()`](#map-option-value)
+if you need a different value.
 
 You can specify a default value for a flag and it can be overridden on command
 line.
