@@ -585,31 +585,22 @@ $ deno run example.ts --mode 644
 error: Unknown option "--mode". Did you mean option "--help"?
 ```
 
-The type of the options object depends on the value you pass:
-
-- A literal `false`, for example from a `const` declaration, removes the option
-  from the options object.
-- A `boolean` that is only known at runtime widens the value to
-  `<type> | undefined`, because the option may not have been registered.
-- `enabled: true` and omitting the option behave like any other option.
+The type follows: the value of a conditional option is `<type> | undefined`,
+because the option may not have been registered. This also applies to a
+[required option](#required-options), which is otherwise never `undefined`.
 
 ```typescript
 import { Command } from "@cliffy/command";
 
-const EXPERIMENTAL = false;
 const isWindows = Deno.build.os === "windows";
 
-const { options } = await new Command()
-  .option("--jit", "Enable the experimental jit compiler.", {
-    enabled: EXPERIMENTAL,
-  })
+await new Command()
   .option("-m, --mode <mode:string>", "File mode of the created file.", {
+    required: true,
     enabled: !isWindows,
   })
+  .action(({ mode }) => console.log("mode: %s", mode))
   .parse();
-
-// options.jit does not exist, because EXPERIMENTAL has the literal type `false`.
-// options.mode is of type `string | undefined`.
 ```
 
 ## Standalone options
